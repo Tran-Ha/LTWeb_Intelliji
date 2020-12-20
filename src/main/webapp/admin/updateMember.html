@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html class="smart-style-1">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>updateMember.admin.Zoe</title>
+    <!-- Basic Styles -->
+    <link href="Scripts/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="App_Themes/Admin/font-awesome.min.css" rel="stylesheet">
+
+    <!-- SmartAdmin Styles : Caution! DO NOT change the order -->
+    <link rel="stylesheet" type="text/css" media="screen" href="App_Themes/Admin/smartadmin-production-plugins.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="App_Themes/Admin/smartadmin-production.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="App_Themes/Admin/smartadmin-skins.min.css">
+    <!-- SmartAdmin RTL Support  -->
+
+
+    <!-- We recommend you use "your_style.css" to override SmartAdmin
+             specific styles this will also ensure you retrain your customization with each SmartAdmin update. -->
+    <link rel="stylesheet" type="text/css" media="screen" href="App_Themes/Admin/style.css">
+    <!-- Demo purpose only: goes with demo.js, you can delete this css when designing your own WebApp -->
+
+
+    <!-- FAVICONS -->
+    <link rel="shortcut icon" href="Areas/Admin/Images/favicon/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="Areas/Admin/Images/favicon/favicon.ico" type="image/x-icon">
+
+    <!-- GOOGLE FONT -->
+
+
+    <!-- Specifying a Webpage Icon for Web Clip
+         Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html -->
+    <link rel="apple-touch-icon" href="Areas/Admin/Images/splash/sptouch-icon-iphone.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="Areas/Admin/Images/splash/touch-icon-ipad.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="Areas/Admin/Images/splash/touch-icon-iphone-retina.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="Areas/Admin/Images/splash/touch-icon-ipad-retina.png">
+
+    <!-- iOS web-app metas : hides Safari UI Components and Changes Status Bar Appearance -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!-- Startup image for web apps -->
+    <link rel="apple-touch-startup-image" href="Areas/Admin/Images/splash/ipad-landscape.png"
+        media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
+    <link rel="apple-touch-startup-image" href="Areas/Admin/Images/splash/ipad-portrait.png"
+        media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
+    <link rel="apple-touch-startup-image" href="Areas/Admin/Images/splash/iphone.png"
+        media="screen and (max-device-width: 320px)">
+
+    <style>
+        .cke {
+            visibility: hidden;
+        }
+    </style>
+
+    <style type="text/css">
+        .jqstooltip {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            visibility: hidden;
+            background: rgb(0, 0, 0) transparent;
+            background-color: rgba(0, 0, 0, 0.6);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+            -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+            color: white;
+            font: 10px arial, san serif;
+            text-align: left;
+            white-space: nowrap;
+            padding: 5px;
+            border: 1px solid white;
+            z-index: 10000;
+        }
+
+        .jqsfield {
+            color: white;
+            font: 10px arial, san serif;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body class="fixed-header fixed-navigation smart-style-1 desktop-detected ng-scope" ng-app="appModule">
+
+    <!-- HEADER -->
+    <header id="header">
+        <div id="logo-group">
+            <!-- PLACE YOUR LOGO HERE -->
+            <span id="logo">
+                <div class="text-center">
+                    <a href="index.html">
+                        <div class="logo-web" style="font-size: 30px;">Zoe</div>
+                    </a>
+                </div>
+            </span>
+            <!-- END LOGO PLACEHOLDER -->
+            <!-- Note: The activity badge color changes when clicked and resets the number to 0
+        Suggestion: You may want to set a flag when this happens to tick off all checked messages / notifications -->
+        </div>
+        <!-- pulled right: nav area -->
+        <div class="pull-right">
+            <!-- #MOBILE -->
+            <!-- Top menu profile link : this shows only when top menu is active -->
+            <ul id="profile-img" class="header-dropdown-list hidden-xs padding-5">
+                <li class="">
+                    <a href="#" target="_self" class="dropdown-toggle  no-margin avatar" data-toggle="dropdown"
+                        aria-expanded="false">
+                        <img src="Areas/Admin/Images/avatars/user.png" alt="Zoe" class="img-circle">
+                        <span>zoe</span>
+                        <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu pull-right">
+                        <li>
+                            <a href="/admin#/userlogin/changepassword"
+                                class="padding-10 padding-top-0 padding-bottom-0"><i class="fa fa-cog"></i> Đổi mật
+                                khẩu</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0"
+                                data-action="launchFullscreen"><i class="fa fa-arrows-alt"></i> Full Screen</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="/admin/account/login" class="padding-10 padding-top-5 padding-bottom-5"
+                                data-action="userLogout" data-logout-msg="Bạn có muốn đăng xuất khỏi hệ thống không?"><i
+                                    class="fa fa-sign-out fa-lg"></i> <strong>Đăng xuất</strong></a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- multiple lang dropdown : find all flags in the flags page -->
+            <ul class="header-dropdown-list hidden-xs">
+                <li>
+                    <a href="#" target="_self" class="dropdown-toggle" data-toggle="dropdown"> <img
+                            src="Areas/Admin/Images/blank.gif" class="flag flag-vn" alt="Tiếng Việt"> <span> Tiếng Việt
+                        </span> <i class="fa fa-caret-down"></i> </a>
+                    <ul class="dropdown-menu pull-right">
+                        <li class="active">
+                            <a href="javascript:void(0);"><img src="Areas/Admin/Images/blank.gif" class="flag flag-vn"
+                                    alt="France"> Tiếng Việt</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);"><img src="Areas/Admin/Images/blank.gif" class="flag flag-us"
+                                    alt="United States"> English</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- end multiple lang -->
+        </div>
+        <!-- end pulled right: nav area -->
+
+    </header>
+    <!-- END HEADER -->
+
+    <!-- Left panel : Navigation area -->
+    <!-- Note: This width of the aside area can be adjusted through LESS variables -->
+    <aside id="left-panel">
+        <!-- NAVIGATION : This navigation is also responsive-->
+        <nav>
+            <ul>
+                <li>
+                    <a href="home.html" title="Tổng quan"><i class="fa fa-fw fa-dashboard"></i> <span
+                            class="menu-item-parent">Tổng quan</span></a>
+                </li>
+                <li class="">
+                    <a href="product.html"><i class="fa fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Sản
+                            phẩm</span><b class="collapse-sign"><em class="fa fa-plus-square-o"></em></b></a>
+                    <ul style="display: none;">
+                        <li>
+                            <a href="product.html">Sản phẩm</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="">
+                    <a href="news.html"><i class="fa fa-fw fa-table"></i> <span class="menu-item-parent">Tin
+                            tức</span><b class="collapse-sign"><em class="fa fa-plus-square-o"></em></b></a>
+                    <ul style="display: none;">
+                        <li>
+                            <a href="news.html">Danh sách tin tức</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="order.html"><i class="fa fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">Đơn
+                            hàng</span><b class="collapse-sign"><em class="fa fa-plus-square-o"></em></b></a>
+                    <ul style="display: none;">
+                        <li>
+                            <a href="order.html">Đơn hàng</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="member.html"><i class="fa fa-fw fa-windows"></i> <span class="menu-item-parent">Khách
+                            hàng</span><b class="collapse-sign"><em class="fa fa-plus-square-o"></em></b></a>
+                    <ul style="display: none;">
+                        <li>
+                            <a href="member.html">Danh sách khách hàng</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <span class="minifyme" data-action="minifyMenu">
+            <i class="fa fa-arrow-circle-left hit"></i>
+        </span>
+
+    </aside>
+    <!-- END NAVIGATION -->
+
+
+    <!-- MAIN PANEL -->
+
+    <!-- ngView:  -->
+    <div data-ng-view="" class="ng-scope">
+        <div id="main" role="main" block-ui="myBlockUI" ng-controller="memberController"
+            ng-init="initializeController()" class="ng-scope block-ui block-ui-anim-fade" aria-busy="false">
+            <!-- RIBBON -->
+            <div id="ribbon">
+
+                <!-- breadcrumb -->
+                <ol class="breadcrumb">
+                    <li>Home</li>
+                    <li>Thành viên</li>
+                    <li>Cập nhật thành viên</li>
+                </ol>
+                <!-- end breadcrumb -->
+                <!-- You can also add more buttons to the
+                ribbon for further usability
+                Example below:-->
+                <span class="ribbon-button-alignment pull-right">
+                    <button type="button" class="btn btn-primary btn-sm" data-title="save" ng-click="create()"><i class="fa fa-save"></i> Lưu</button>
+                    <button type="button" class="btn btn-primary btn-sm" data-title="save" ng-click="createBack()"><i class="fa fa-plus"></i> Lưu &amp; Quay lại</button>
+                    <a href="/admin#/member" class="btn btn-default btn-sm">Trở về</a>
+                </span>
+            </div>
+            <!-- END RIBBON -->
+            <!-- MAIN CONTENT -->
+            <div id="content">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="well form-horizontal">
+                            <h2>Thông tin tài khoản</h2>
+
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Tên tài khoản</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control ng-pristine ng-untouched ng-valid"
+                                        ng-model="UserName">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Emai đăng nhập</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control ng-pristine ng-untouched ng-valid"
+                                        ng-model="Email">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Mật khẩu</label>
+                                <div class="col-md-8">
+                                    <input type="password" class="form-control ng-pristine ng-untouched ng-valid"
+                                        ng-model="Password">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Nhắc lại mật khẩu</label>
+                                <div class="col-md-8">
+                                    <input type="password" class="form-control ng-pristine ng-untouched ng-valid"
+                                        ng-model="RePassword">
+                                </div>
+                            </div>
+
+                            <h2>Thông tin cá nhân</h2>
+                            <hr>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Họ tên</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control ng-pristine ng-untouched ng-valid"
+                                        ng-model="Name">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Ngày sinh</label>
+                                <div class="col-md-8">
+                                    <input type="date" class="form-control ng-pristine ng-untouched ng-valid"
+                                        ng-model="DateOfBirth">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Giới tính</label>
+                                <div class="col-md-8">
+                                    <input type="radio" id="nam" name="gender" value="nam">
+                                    <label for="nam">Nam</label><br>
+
+                                    <input type="radio" id="nu" name="gender" value="nu">
+                                    <label for="nu">Nữ</label><br>
+
+                                    <input type="radio" id="chuaRo" name="gender" value="chuaRo" checked="checked">
+                                    <label for="chuaRo">Chưa rõ</label><br>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Avatar</label>
+                                <div class="col-md-8">
+                                    <img class="img-upload" src="Areas/Admin/Images/icon-upload.png"
+                                        ng-init="Image='Areas/Admin/Images/icon-upload.png'" onclick="UploadImage()">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Tỉnh/Thành phố</label>
+                                <div class="col-md-8">
+                                    <select class="form-control ng-pristine ng-untouched ng-valid" ng-model="ProvinceId"
+                                        ng-options="item.Id as item.Name for item in Provinces"
+                                        ng-change="getDistricts(ProvinceId)">
+                                        <option value="?" selected="selected"></option>
+                                        <option value="number:1" label="Hồ Chí Minh">Hồ Chí Minh</option>
+                                        <option value="number:2" label="Hà Nội">Hà Nội</option>
+                                        <option value="number:3" label="Đà Nẵng">Đà Nẵng</option>
+                                        <option value="number:4" label="Cần Thơ">Cần Thơ</option>
+                                        <option value="number:5" label=" Thừa Thiên - Huế"> Thừa Thiên - Huế</option>
+                                        <option value="number:6" label="An Giang">An Giang</option>
+                                        <option value="number:7" label="Bà Rịa-Vũng Tàu">Bà Rịa-Vũng Tàu</option>
+                                        <option value="number:8" label="Bạc Liêu">Bạc Liêu</option>
+                                        <option value="number:9" label="Bắc Kạn">Bắc Kạn</option>
+                                        <option value="number:10" label="Bắc Giang">Bắc Giang</option>
+                                        <option value="number:11" label="Bắc Ninh">Bắc Ninh</option>
+                                        <option value="number:12" label="Bến Tre">Bến Tre</option>
+                                        <option value="number:13" label="Bình Dương">Bình Dương</option>
+                                        <option value="number:14" label="Bình Định">Bình Định</option>
+                                        <option value="number:15" label="Bình Phước">Bình Phước</option>
+                                        <option value="number:16" label="Bình Thuận">Bình Thuận</option>
+                                        <option value="number:17" label="Cà Mau">Cà Mau</option>
+                                        <option value="number:18" label="Cao Bằng">Cao Bằng</option>
+                                        <option value="number:19" label="Đắk Lắk">Đắk Lắk</option>
+                                        <option value="number:20" label="Đắk Nông">Đắk Nông</option>
+                                        <option value="number:21" label="Điện Biên">Điện Biên</option>
+                                        <option value="number:22" label="Đồng Nai">Đồng Nai</option>
+                                        <option value="number:23" label="Đồng Tháp">Đồng Tháp</option>
+                                        <option value="number:24" label="Gia Lai">Gia Lai</option>
+                                        <option value="number:25" label="Hà Giang">Hà Giang</option>
+                                        <option value="number:26" label="Hà Nam">Hà Nam</option>
+                                        <option value="number:27" label="Hà Tây">Hà Tây</option>
+                                        <option value="number:28" label="Hà Tĩnh">Hà Tĩnh</option>
+                                        <option value="number:29" label="Hải Dương">Hải Dương</option>
+                                        <option value="number:30" label="Hải Phòng">Hải Phòng</option>
+                                        <option value="number:31" label="Hòa Bình">Hòa Bình</option>
+                                        <option value="number:32" label="Hậu Giang">Hậu Giang</option>
+                                        <option value="number:33" label="Hưng Yên">Hưng Yên</option>
+                                        <option value="number:34" label="Khánh Hòa">Khánh Hòa</option>
+                                        <option value="number:35" label="Kiên Giang">Kiên Giang</option>
+                                        <option value="number:36" label="Kon Tum">Kon Tum</option>
+                                        <option value="number:37" label="Lai Châu">Lai Châu</option>
+                                        <option value="number:38" label="Lào Cai">Lào Cai</option>
+                                        <option value="number:39" label="Lạng Sơn">Lạng Sơn</option>
+                                        <option value="number:40" label="Lâm Đồng">Lâm Đồng</option>
+                                        <option value="number:41" label="Long An">Long An</option>
+                                        <option value="number:42" label="Nam Định">Nam Định</option>
+                                        <option value="number:43" label="Nghệ An">Nghệ An</option>
+                                        <option value="number:44" label="Ninh Bình">Ninh Bình</option>
+                                        <option value="number:45" label="Ninh Thuận">Ninh Thuận</option>
+                                        <option value="number:46" label="Phú Thọ">Phú Thọ</option>
+                                        <option value="number:47" label="Phú Yên">Phú Yên</option>
+                                        <option value="number:48" label="Quảng Bình">Quảng Bình</option>
+                                        <option value="number:49" label="Quảng Nam">Quảng Nam</option>
+                                        <option value="number:50" label="Quảng Ngãi">Quảng Ngãi</option>
+                                        <option value="number:51" label="Quảng Ninh">Quảng Ninh</option>
+                                        <option value="number:52" label="Quảng Trị">Quảng Trị</option>
+                                        <option value="number:53" label="Sóc Trăng">Sóc Trăng</option>
+                                        <option value="number:54" label="Sơn La">Sơn La</option>
+                                        <option value="number:55" label="Tây Ninh">Tây Ninh</option>
+                                        <option value="number:56" label="Thái Bình">Thái Bình</option>
+                                        <option value="number:57" label="Thái Nguyên">Thái Nguyên</option>
+                                        <option value="number:58" label="Thanh Hóa">Thanh Hóa</option>
+                                        <option value="number:59" label="Thừa Thiên - Huế">Thừa Thiên - Huế</option>
+                                        <option value="number:60" label="Tiền Giang">Tiền Giang</option>
+                                        <option value="number:61" label="Trà Vinh">Trà Vinh</option>
+                                        <option value="number:62" label="Tuyên Quang">Tuyên Quang</option>
+                                        <option value="number:63" label="Vĩnh Long">Vĩnh Long</option>
+                                        <option value="number:64" label="Vĩnh Phúc">Vĩnh Phúc</option>
+                                        <option value="number:65" label="Yên Bái">Yên Bái</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Địa chỉ chi tiết</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control ng-pristine ng-untouched ng-valid"
+                                        ng-model="Address">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Điện thoại</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control ng-pristine ng-untouched ng-valid"
+                                        ng-model="Phone">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="createAt" class="col-md-3 control-label">Ngày tạo</label>
+                                <div id="createAt" class="col-md-8">
+                                    <p style="margin: 7px 0px 0px 0px;">20/10/2020</p>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Ngưng dùng</label>
+                                <div class="col-md-8">
+                                    <input type="checkbox" name="checkbox" ng-model="Inactive"
+                                        class="ng-pristine ng-untouched ng-valid">
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button type="button" class="btn btn-primary" data-title="save"
+                                            ng-click="create()"><i class="fa fa-save"></i> Lưu</button>
+                                        <button type="button" class="btn btn-primary" data-title="save"
+                                            ng-click="createBack()"><i class="fa fa-plus"></i> Lưu &amp; Quay
+                                            lại</button>
+                                        <a href="member.html" class="btn btn-default">Trở về</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END MAIN CONTENT -->
+        </div>
+    </div>
+
+    <!-- END MAIN PANEL -->
+
+
+    <!-- PAGE FOOTER -->
+    <div class="page-footer">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <span class="txt-color-white">RUNTIME 2.0 <span class="hidden-xs"> - Web Application Framework</span> ©
+                    2014-2015 - edited by Zoe</span>
+            </div>
+        </div>
+    </div>
+    <!-- END PAGE FOOTER -->
+
+    <script src="Scripts/jQuery/jquery-2.1.4.min.js" type="text/javascript"></script>
+    <script src="Scripts/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>
