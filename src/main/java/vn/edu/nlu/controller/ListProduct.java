@@ -1,6 +1,10 @@
 package vn.edu.nlu.controller;
 
+import vn.edu.nlu.beans.ProductTest;
+import vn.edu.nlu.profile.ProductTestEntity;
+
 import java.io.IOException;
+import java.util.Collection;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,6 +18,10 @@ public class ListProduct extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ProductTestEntity pe= new ProductTestEntity();
+        Collection<ProductTest> values= pe.getAllProduct();
 
+        request.setAttribute("list", values);
+        request.getRequestDispatcher("index.jsp").forward(request,response);
     }
 }

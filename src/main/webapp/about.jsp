@@ -14,7 +14,7 @@
 
 <head>
     <title>Giới thiệu</title>
-    <jsp:include page="header1.jsp"/>
+    <jsp:include page="head.jsp"/>
 </head>
 
 <body class="about">
@@ -527,11 +527,11 @@
 <!-- skill-area-end -->
 
 <!-- footer-area-start -->
-<jsp:include page="footer1.jsp"/>
+<jsp:include page="footer.jsp"/>
 <!-- footer-area-end -->
 
 <%--js--%>
-<jsp:include page="footer2.jsp"/>
+<jsp:include page="script.jsp"/>
 
 </body>
 

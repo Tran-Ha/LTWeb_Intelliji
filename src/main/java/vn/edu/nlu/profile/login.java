@@ -17,7 +17,7 @@ import vn.edu.nlu.Model.User;
 /**
  * Servlet implementation class login
  */
-@WebServlet("/login")
+@WebServlet(name = "Login", urlPatterns = "/Login")
 public class login extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
