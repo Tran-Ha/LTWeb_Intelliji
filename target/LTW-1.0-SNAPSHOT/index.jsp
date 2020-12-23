@@ -1,20 +1,14 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: THU HA
-  Date: 09/12/2020
-  Time: 1:53 PM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType= "text/html;charset=UTF-8" language="java"%>
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix ="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix = "fn" uri = "http://java.sun.com/jsp/jstl/functions" %>
+
 <!doctype html>
 <html class="no-js" lang="en">
 
 <head>
     <title>Zoe Book Shop</title>
-
-
+    <jsp:include page="head.jsp"/>
 </head>
 
 <body>
@@ -46,7 +40,7 @@
 
                 <div class="col-lg-3 col-md-5 col-12 ">
                     <div class="logo-area text-center logo-xs-mrg">
-                        <a href="index.html">
+                        <a href="home.html">
                             <div class="logo-web">Zoe</div>
                             <span class="slogan">A book - A life</span>
                         </a>
@@ -120,7 +114,7 @@
                     <div class="menu-area">
                         <nav>
                             <ul>
-                                <li class="active"><a href="index.html">Trang chủ</a>
+                                <li class="active"><a href="home.html">Trang chủ</a>
                                 </li>
                                 <li><a href="shop-list.html">Sách Tiếng Việt<i class="fa fa-angle-down"></i></a>
                                     <div class="mega-menu">
@@ -267,7 +261,7 @@
                     <div class="mobile-menu">
                         <nav id="mobile-menu-active">
                             <ul id="nav">
-                                <li><a href="index.html">Home</a>
+                                <li><a href="home.html">Home</a>
                                 </li>
                                 <li><a href="product-details.html">Sách Tiếng Việt</a>
                                     <ul>
@@ -400,6 +394,7 @@
 <!-- banner-area-end -->
 <!-- slider-area-end -->
 <!-- product-area-start -->
+
 <div class="product-are mt-16 xs-mb">
     <div class="container">
         <div class="row">
@@ -426,308 +421,66 @@
         <!-- tab-area-start -->
         <div class="tab-content">
             <div class="tab-pane fade show active" id="newbooks">
+
                 <div class="tab-active owl-carousel">
                     <!-- single-product-start -->
-                    <div class="product-wrapper">
-                        <div class="product-img">
-                            <a href="product-details.html">
-                                <img src="img/product/1.jpg" alt="book" class="primary" />
-                            </a>
-                            <div class="quick-view">
-                                <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
-                                   title="Xem nhanh">
-                                    <i class="fa fa-search-plus"></i>
+                    <c:forEach items="${list}" var="p">
+                        <div class="product-wrapper">
+
+
+                            <div class="product-img">
+                                <a href="product-details.html">
+                                    <img src="${p.img}" alt="book" class="primary" />
                                 </a>
+                                <div class="quick-view">
+                                    <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
+                                       title="Xem nhanh">
+                                        <i class="fa fa-search-plus"></i>
+                                    </a>
+                                </div>
+                                <div class="product-flag">
+                                    <ul>
+                                        <li><span class="sale">mới</span> <br></li>
+                                        <li><span class="discount-percentage">-5%</span></li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="product-flag">
-                                <ul>
-                                    <li><span class="sale">mới</span></li>
-                                    <li><span class="discount-percentage">-5%</span></li>
-                                </ul>
+                            <div class="product-details text-center">
+                                <div class="product-rating">
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    </ul>
+                                </div>
+                                <h4><a href="#">${p.name}</a></h4>
+                                <div class="product-price">
+                                    <ul>
+                                        <li>${p.price}</li>
+                                        <li class="old-price">${p.salePrice}</li>
+                                    </ul>
+                                </div>
                             </div>
+                            <div class="product-link">
+                                <div class="product-button">
+                                    <a href="#" title="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i>Thêm vào
+                                        giỏ hàng</a>
+                                </div>
+                                <div class="add-to-link">
+                                    <ul>
+                                        <li><a href="product-details.html" title="Chi tiết"><i
+                                                class="fas fa-external-link-alt"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
                         </div>
-                        <div class="product-details text-center">
-                            <div class="product-rating">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                </ul>
-                            </div>
-                            <h4><a href="#">Nhân số học</a></h4>
-                            <div class="product-price">
-                                <ul>
-                                    <li>60.000đ</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-link">
-                            <div class="product-button">
-                                <a href="#" title="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i>Thêm vào
-                                    giỏ hàng</a>
-                            </div>
-                            <div class="add-to-link">
-                                <ul>
-                                    <li><a href="product-details.html" title="Chi tiết"><i
-                                            class="fas fa-external-link-alt"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- single-product-end -->
-                    <!-- single-product-start -->
-                    <div class="product-wrapper">
-                        <div class="product-img">
-                            <a href="product-details.html">
-                                <img src="img/product/3.jpg" alt="book" class="primary" />
-                            </a>
-                            <div class="quick-view">
-                                <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
-                                   title="Xem nhanh">
-                                    <i class="fa fa-search-plus"></i>
-                                </a>
-                            </div>
-                            <div class="product-flag">
-                                <ul>
-                                    <li><span class="sale">mới</span> <br></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-details text-center">
-                            <div class="product-rating">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                </ul>
-                            </div>
-                            <h4><a href="#">Tô Bình Yên</a></h4>
-                            <div class="product-price">
-                                <ul>
-                                    <li>52.000đ</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-link">
-                            <div class="product-button">
-                                <a href="#" title="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i>Thêm vào
-                                    giỏ hàng</a>
-                            </div>
-                            <div class="add-to-link">
-                                <ul>
-                                    <li><a href="product-details.html" title="Chi tiết"><i
-                                            class="fas fa-external-link-alt"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- single-product-end -->
-                    <!-- single-product-start -->
-                    <div class="product-wrapper">
-                        <div class="product-img">
-                            <a href="product-details.html">
-                                <img src="img/product/5.jpg" alt="book" class="primary" />
-                            </a>
-                            <div class="quick-view">
-                                <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
-                                   title="Xem nhanh">
-                                    <i class="fa fa-search-plus"></i>
-                                </a>
-                            </div>
-                            <div class="product-flag">
-                                <ul>
-                                    <li><span class="sale">mới</span> <br></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-details text-center">
-                            <div class="product-rating">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                </ul>
-                            </div>
-                            <h4><a href="#">Con chim xanh biếc bay về (tập 1)</a></h4>
-                            <div class="product-price">
-                                <ul>
-                                    <li>34.000đ</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-link">
-                            <div class="product-button">
-                                <a href="#" title="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i>Thêm vào
-                                    giỏ hàng</a>
-                            </div>
-                            <div class="add-to-link">
-                                <ul>
-                                    <li><a href="product-details.html" title="Chi tiết"><i
-                                            class="fas fa-external-link-alt"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- single-product-end -->
-                    <!-- single-product-start -->
-                    <div class="product-wrapper">
-                        <div class="product-img">
-                            <a href="product-details.html">
-                                <img src="img/product/7.jpg" alt="book" class="primary" />
-                            </a>
-                            <div class="quick-view">
-                                <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
-                                   title="Xem nhanh">
-                                    <i class="fa fa-search-plus"></i>
-                                </a>
-                            </div>
-                            <div class="product-flag">
-                                <ul>
-                                    <li><span class="sale">mới</span> <br></li>
-                                    <li><span class="discount-percentage">-5%</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-details text-center">
-                            <div class="product-rating">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                </ul>
-                            </div>
-                            <h4><a href="#">Biên sử nước</a></h4>
-                            <div class="product-price">
-                                <ul>
-                                    <li>30.000đ</li>
-                                    <li class="old-price">32.000đ</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-link">
-                            <div class="product-button">
-                                <a href="#" title="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i>Thêm vào
-                                    giỏ hàng</a>
-                            </div>
-                            <div class="add-to-link">
-                                <ul>
-                                    <li><a href="product-details.html" title="Chi tiết"><i
-                                            class="fas fa-external-link-alt"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- single-product-end -->
-                    <!-- single-product-start -->
-                    <div class="product-wrapper">
-                        <div class="product-img">
-                            <a href="product-details.html">
-                                <img src="img/product/9.jpg" alt="book" class="primary" />
-                            </a>
-                            <div class="quick-view">
-                                <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
-                                   title="Xem nhanh">
-                                    <i class="fa fa-search-plus"></i>
-                                </a>
-                            </div>
-                            <div class="product-flag">
-                                <ul>
-                                    <li><span class="discount-percentage">-5%</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-details text-center">
-                            <div class="product-rating">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                </ul>
-                            </div>
-                            <h4><a href="#">Từ tốt đến vĩ đại</a></h4>
-                            <div class="product-price">
-                                <ul>
-                                    <li>35.000đ</li>
-                                    <li class="old-price">40.000đ</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-link">
-                            <div class="product-button">
-                                <a href="#" title="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i>Thêm vào
-                                    giỏ hàng</a>
-                            </div>
-                            <div class="add-to-link">
-                                <ul>
-                                    <li><a href="product-details.html" title="Chi tiết"><i
-                                            class="fas fa-external-link-alt"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- single-product-end -->
-                    <!-- single-product-start -->
-                    <div class="product-wrapper">
-                        <div class="product-img">
-                            <a href="#">
-                                <img src="img/product/11.jpg" alt="book" class="primary" />
-                            </a>
-                            <div class="quick-view">
-                                <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
-                                   title="Xem nhanh">
-                                    <i class="fa fa-search-plus"></i>
-                                </a>
-                            </div>
-                            <div class="product-flag">
-                                <ul>
-                                    <li><span class="sale">mới</span> <br></li>
-                                    <li><span class="discount-percentage">-5%</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-details text-center">
-                            <div class="product-rating">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                </ul>
-                            </div>
-                            <h4><a href="#">Con chim xanh biếc bay về (tập 2)</a></h4>
-                            <div class="product-price">
-                                <ul>
-                                    <li>74.000đ</li>
-                                    <li class="old-price">78.000đ</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-link">
-                            <div class="product-button">
-                                <a href="#" title="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i>Thêm vào
-                                    giỏ hàng</a>
-                            </div>
-                            <div class="add-to-link">
-                                <ul>
-                                    <li><a href="product-details.html" title="Chi tiết"><i
-                                            class="fas fa-external-link-alt"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                    </c:forEach>
                     <!-- single-product-end -->
                 </div>
+
             </div>
             <div class="tab-pane fade show" id="hotbooks">
                 <div class="tab-active owl-carousel">
@@ -1644,6 +1397,7 @@
         <!-- tab-area-end -->
     </div>
 </div>
+
 <!-- product-area-end -->
 <!-- banner-area-start -->
 <!-- <div class="banner-area-5 mtb-95">
@@ -1662,158 +1416,7 @@
         </div>
     </div> -->
 <!-- banner-area-end -->
-<!-- bestseller-area-start -->
-<div class="bestseller-area mtb-20">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-md-12 col-12">
-                <div class="bestseller-content">
-                    <h1>Tác giả nổi bật</h1>
-                    <h2>Stephen R.<br />Covey</h2>
-                    <p class="categories">Thể loại:<a href="#">Sách tâm lí</a> , <a href="#">Lãnh đạo</a></p>
-                    <p>Stephen R. Covey(1932 - 2012) là một trong 25 người có ảnh hưởng nhất nước Mỹ do tạp chí Time
-                        bình chọn sau thành công của cuốn sách
-                        “7 thói quen của người thành đạt”. Đây là cuốn sách bán chạy nhất trong suốt 20 năm qua với
-                        gần 20 triệu bản được bán ra trên toàn thế giới và được phiên dịch ra hơn 38 thứ tiếng.</p>
-                    <div class="social-author">
-                        <ul>
-                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="banner-img-2">
-                    <a href="#"><img src="img/banner/6.jpg" alt="banner" /></a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-12 col-12">
-                <div class="bestseller-active owl-carousel">
-                    <div class="bestseller-total">
-                        <div class="single-bestseller mb-25">
-                            <div class="bestseller-img">
-                                <a href="#"><img src="img/product/51.jpg" alt="book" /></a>
-                                <div class="product-flag">
-                                    <ul>
-                                        <li><span class="sale">mới</span></li>
-                                        <li><span class="discount-percentage">-5%</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="bestseller-text text-center">
-                                <h3> <a href="#">7 thói quen bạn trẻ thành đạt</a></h3>
-                                <div class="price">
-                                    <ul>
-                                        <li><span class="mới-price">40.000đ</span></li>
-                                        <li><span class="old-price">45.000đ</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single-bestseller">
-                            <div class="bestseller-img">
-                                <a href="#"><img src="img/product/52.jpg" alt="book" /></a>
-                                <div class="product-flag">
-                                    <ul>
-                                        <li><span class="sale">mới</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="bestseller-text text-center">
-                                <h3> <a href="#">Nghệ thuật lãnh đạo theo nguyên tắc</a></h3>
-                                <div class="price">
-                                    <ul>
-                                        <li><span class="mới-price">70.000đ</span></li>
-                                        <li><span class="old-price">74.000đ</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bestseller-total">
-                        <div class="single-bestseller mb-25">
-                            <div class="bestseller-img">
-                                <a href="#"><img src="img/product/53.jpg" alt="book" /></a>
-                                <div class="product-flag">
-                                    <ul>
-                                        <li><span class="sale">mới</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="bestseller-text text-center">
-                                <h3> <a href="#">The 8th habit</a></h3>
-                                <div class="price">
-                                    <ul>
-                                        <li><span class="mới-price">80.000đ</span></li>
-                                        <li><span class="old-price">92.000đ</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single-bestseller">
-                            <div class="bestseller-img">
-                                <a href="#"><img src="img/product/20.jpg" alt="book" /></a>
-                                <div class="product-flag">
-                                    <ul>
-                                        <li><span class="sale">mới</span></li>
-                                        <li><span class="discount-percentage">-5%</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="bestseller-text text-center">
-                                <h3> <a href="#">Deep Learning</a></h3>
-                                <div class="price">
-                                    <ul>
-                                        <li><span class="mới-price">32.000đ</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bestseller-total">
-                        <div class="single-bestseller mb-25">
-                            <div class="bestseller-img">
-                                <a href="#"><img src="img/product/1.jpg" alt="book" /></a>
-                                <div class="product-flag">
-                                    <ul>
-                                        <li><span class="sale">mới</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="bestseller-text text-center">
-                                <h3> <a href="#">Nhân Số Học</a></h3>
-                                <div class="price">
-                                    <ul>
-                                        <li><span class="mới-price">59.000đ</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single-bestseller">
-                            <div class="bestseller-img">
-                                <a href="#"><img src="img/product/14.jpg" alt="book" /></a>
-                                <div class="product-flag">
-                                    <ul>
-                                        <li><span class="sale">mới</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="bestseller-text text-center">
-                                <h3> <a href="#">Trấn Hưng Trấn</a></h3>
-                                <div class="price">
-                                    <ul>
-                                        <li><span class="mới-price">70.000đ</span></li>
-                                        <li><span class="old-price">74.000đ</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- bestseller-area-end -->
+
 <!-- new-book-area-start -->
 <div class="new-book-area">
     <div class="container">
@@ -2443,22 +2046,7 @@
 </div>
 <!-- new-book-area-start -->
 <!-- banner-static-area-start -->
-<div class="container">
-    <div class="banner-static-area bg ptb-10 mt-16">
-        <div class="row">
-            <div class="col-lg-6 col-md-6 col-12">
-                <div class="banner-shadow-hover xs-mb">
-                    <a href="#"><img src="img/banner/8.jpg" alt="banner" /></a>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-12">
-                <div class="banner-shadow-hover">
-                    <a href="#"><img src="img/banner/9.jpg" alt="banner" /></a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
 <div class="new-book-area">
     <div class="container">
         <div class="row">
@@ -3086,614 +2674,7 @@
     </div>
 </div>
 <!-- banner-static-area-end -->
-<!-- most-product-area-start -->
-<!-- <div class="most-product-area pt-90 pb-100">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-4 col-12">
-                    <div class="section-title-2 mb-30">
-                        <h3>Tuyển chọn</h3>
-                    </div>
-                    <div class="product-active-2 owl-carousel">
-                        <div class="product-total-2">
-                            <div class="single-most-product bd mb-18">
-                                <div class="most-product-img">
-                                    <a href="product-details.html"><img src="img/product/20.jpg" alt="book" /></a>
-                                </div>
-                                <div class="most-product-content">
-                                    <div class="product-rating">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <h4><a href="product-details.html">Endeavor Daytrip</a></h4>
-                                    <div class="product-price">
-                                        <ul>
-                                            <li>30.000đ</li>
-                                            <li class="old-price">33.000đ</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-most-product bd mb-18">
-                                <div class="most-product-img">
-                                    <a href="product-details.html"><img src="img/product/21.jpg" alt="book" /></a>
-                                </div>
-                                <div class="most-product-content">
-                                    <div class="product-rating">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <h4><a href="product-details.html">Bị theo dõi</a></h4>
-                                    <div class="product-price">
-                                        <ul>
-                                            <li>30.000đ</li>
-                                            <li class="old-price">35.000đ</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-most-product">
-                                <div class="most-product-img">
-                                    <a href="product-details.html"><img src="img/product/22.jpg" alt="book" /></a>
-                                </div>
-                                <div class="most-product-content">
-                                    <div class="product-rating">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <h4><a href="product-details.html">Hơi thở hóa tinh không</a></h4>
-                                    <div class="product-price">
-                                        <ul>
-                                            <li>35.000đ</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-total-2">
-                            <div class="single-most-product bd mb-18">
-                                <div class="most-product-img">
-                                    <a href="product-details.html"><img src="img/product/23.jpg" alt="book" /></a>
-                                </div>
-                                <div class="most-product-content">
-                                    <div class="product-rating">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <h4><a href="product-details.html">Bag blood</a></h4>
-                                    <div class="product-price">
-                                        <ul>
-                                            <li>30.000đ</li>
-                                            <li class="old-price">33.000đ</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-most-product bd mb-18">
-                                <div class="most-product-img">
-                                    <a href="product-details.html"><img src="img/product/24.jpg" alt="book" /></a>
-                                </div>
-                                <div class="most-product-content">
-                                    <div class="product-rating">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <h4><a href="#">Tàn nhẫn yêu thương</a></h4>
-                                    <div class="product-price">
-                                        <ul>
-                                            <li>70.000đ</li>
-                                            <li class="old-price">74.000đ</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-most-product">
-                                <div class="most-product-img">
-                                    <a href="product-details.html"><img src="img/product/22.jpg" alt="book" /></a>
-                                </div>
-                                <div class="most-product-content">
-                                    <div class="product-rating">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <h4><a href="product-details.html">Science</a></h4>
-                                    <div class="product-price">
-                                        <ul>
-                                            <li>59.000đ</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-12">
-                    <div class="section-title-2 mb-30">
-                        <h3>Bán chạy</h3>
-                    </div>
-                    <div class="product-active-2 owl-carousel">
-                        <div class="product-total-2">
-                            <div class="single-most-product bd mb-18">
-                                <div class="most-product-img">
-                                    <a href="product-details.html"><img src="img/product/23.jpg" alt="book" /></a>
-                                </div>
-                                <div class="most-product-content">
-                                    <div class="product-rating">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <h4><a href="#">Bag blood</a></h4>
-                                    <div class="product-price">
-                                        <ul>
-                                            <li>30.000đ</li>
-                                            <li class="old-price">33.000đ</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-most-product bd mb-18">
-                                <div class="most-product-img">
-                                    <a href="product-details.html"><img src="img/product/18.jpg" alt="book" /></a>
-                                </div>
-                                <div class="most-product-content">
-                                    <div class="product-rating">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <h4><a href="product-details.html">Đắc Nhân Tâm</a></h4>
-                                    <div class="product-price">
-                                        <ul>
-                                            <li>70.000đ</li>
-                                            <li class="old-price">74.000đ</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-most-product">
-                                <div class="most-product-img">
-                                    <a href="product-details.html"><img src="img/product/1.jpg" alt="book" /></a>
-                                </div>
-                                <div class="most-product-content">
-                                    <div class="product-rating">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <h4><a href="product-details.html">Nhân số học</a></h4>
-                                    <div class="product-price">
-                                        <ul>
-                                            <li>40.000đ</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-total-2">
-                            <div class="single-most-product bd mb-18">
-                                <div class="most-product-img">
-                                    <a href="product-details.html"><img src="img/product/8.jpg" alt="book" /></a>
-                                </div>
-                                <div class="most-product-content">
-                                    <div class="product-rating">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <h4><a href="#">Sapiens</a></h4>
-                                    <div class="product-price">
-                                        <ul>
-                                            <li>30.000đ</li>
-                                            <li class="old-price">33.000đ</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-most-product bd mb-18">
-                                <div class="most-product-img">
-                                    <a href="product-details.html"><img src="img/product/10.jpg" alt="book" /></a>
-                                </div>
-                                <div class="most-product-content">
-                                    <div class="product-rating">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <h4><a href="#">Rich Habits</a></h4>
-                                    <div class="product-price">
-                                        <ul>
-                                            <li>30.000đ</li>
-                                            <li class="old-price">35.000đ</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-most-product">
-                                <div class="most-product-img">
-                                    <a href="product-details.html"><img src="img/product/33.jpg" alt="book" /></a>
-                                </div>
-                                <div class="most-product-content">
-                                    <div class="product-rating">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <h4><a href="#">Bác Hồ</a></h4>
-                                    <div class="product-price">
-                                        <ul>
-                                            <li>35.000đ</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-12">
-                    <div class="section-title-2 mb-30">
-                        <h3>Kinh điển</h3>
-                    </div>
-                    <div class="product-active-2 owl-carousel">
-                        <div class="product-total-2">
-                            <div class="single-most-product bd mb-18">
-                                <div class="most-product-img">
-                                    <a href="product-details.html"><img src="img/product/26.jpg" alt="book" /></a>
-                                </div>
-                                <div class="most-product-content">
-                                    <div class="product-rating">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <h4><a href="#">Human body</a></h4>
-                                    <div class="product-price">
-                                        <ul>
-                                            <li>36.000đ</li>
-                                            <li class="old-price">38.000đ</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-most-product bd mb-18">
-                                <div class="most-product-img">
-                                    <a href="product-details.html"><img src="img/product/9.jpg" alt="book" /></a>
-                                </div>
-                                <div class="most-product-content">
-                                    <div class="product-rating">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <h4><a href="#">Từ tốt đến vĩ đại</a></h4>
-                                    <div class="product-price">
-                                        <ul>
-                                            <li>34.000đ</li>
-                                            <li class="old-price">36.000đ</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-most-product">
-                                <div class="most-product-img">
-                                    <a href="product-details.html"><img src="img/product/11.jpg" alt="book" /></a>
-                                </div>
-                                <div class="most-product-content">
-                                    <div class="product-rating">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <h4><a href="#">Con chim màu xanh bay về</a></h4>
-                                    <div class="product-price">
-                                        <ul>
-                                            <li>30.000đ</li>
-                                            <li class="old-price">33.000đ</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-total-2">
-                            <div class="single-most-product bd mb-18">
-                                <div class="most-product-img">
-                                    <a href="#"><img src="img/product/23.jpg" alt="book" /></a>
-                                </div>
-                                <div class="most-product-content">
-                                    <div class="product-rating">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <h4><a href="#">Bag Blood</a></h4>
-                                    <div class="product-price">
-                                        <ul>
-                                            <li>30.000đ</li>
-                                            <li class="old-price">33.000đ</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-most-product bd mb-18">
-                                <div class="most-product-img">
-                                    <a href="product-details.html"><img src="img/product/24.jpg" alt="book" /></a>
-                                </div>
-                                <div class="most-product-content">
-                                    <div class="product-rating">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <h4><a href="#">Tàn Nhẫn Yêu Thương</a></h4>
-                                    <div class="product-price">
-                                        <ul>
-                                            <li>70.000đ</li>
-                                            <li class="old-price">74.000đ</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-most-product">
-                                <div class="most-product-img">
-                                    <a href="product-details.html"><img src="img/product/22.jpg" alt="book" /></a>
-                                </div>
-                                <div class="most-product-content">
-                                    <div class="product-rating">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <h4><a href="#">Hơi thở hóa tinh không</a></h4>
-                                    <div class="product-price">
-                                        <ul>
-                                            <li>59.000đ</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-12">
-                    <div class="section-title-2 mb-30">
-                        <h3>Dành cho bạn</h3>
-                    </div>
-                    <div class="product-active-2 owl-carousel">
-                        <div class="product-total-2">
-                            <div class="single-most-product bd mb-18">
-                                <div class="most-product-img">
-                                    <a href="product-details.html"><img src="img/product/2.jpg" alt="book" /></a>
-                                </div>
-                                <div class="most-product-content">
-                                    <div class="product-rating">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <h4><a href="#">Spy Family</a></h4>
-                                    <div class="product-price">
-                                        <ul>
-                                            <li>36.000đ</li>
-                                            <li class="old-price">38.000đ</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-most-product bd mb-18">
-                                <div class="most-product-img">
-                                    <a href="product-details.html"><img src="img/product/3.jpg" alt="book" /></a>
-                                </div>
-                                <div class="most-product-content">
-                                    <div class="product-rating">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <h4><a href="#">Tô Bình yên</a></h4>
-                                    <div class="product-price">
-                                        <ul>
-                                            <li>34.000đ</li>
-                                            <li class="old-price">36.000đ</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-most-product">
-                                <div class="most-product-img">
-                                    <a href="#"><img src="img/product/8.jpg" alt="book" /></a>
-                                </div>
-                                <div class="most-product-content">
-                                    <div class="product-rating">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <h4><a href="#">Sapiens</a></h4>
-                                    <div class="product-price">
-                                        <ul>
-                                            <li>30.000đ</li>
-                                            <li class="old-price">33.000đ</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-total-2">
-                            <div class="single-most-product bd mb-18">
-                                <div class="most-product-img">
-                                    <a href="#"><img src="img/product/23.jpg" alt="book" /></a>
-                                </div>
-                                <div class="most-product-content">
-                                    <div class="product-rating">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <h4><a href="#">Bag Blood</a></h4>
-                                    <div class="product-price">
-                                        <ul>
-                                            <li>30.000đ</li>
-                                            <li class="old-price">33.000đ</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-most-product bd mb-18">
-                                <div class="most-product-img">
-                                    <a href="product-details.html"><img src="img/product/20.jpg" alt="book" /></a>
-                                </div>
-                                <div class="most-product-content">
-                                    <div class="product-rating">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <h4><a href="#">Deep learning</a></h4>
-                                    <div class="product-price">
-                                        <ul>
-                                            <li>70.000đ</li>
-                                            <li class="old-price">74.000đ</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-most-product">
-                                <div class="most-product-img">
-                                    <a href="product-details.html"><img src="img/product/22.jpg" alt="book" /></a>
-                                </div>
-                                <div class="most-product-content">
-                                    <div class="product-rating">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <h4><a href="#">Hơi Thở hóa tinh không</a></h4>
-                                    <div class="product-price">
-                                        <ul>
-                                            <li>59.000đ</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- <div class="col-lg-3 col-md-12 col-12">
-                    <div class="block-mớisletter">
-                        <h2>Sign up for send mớisletter</h2>
-                        <p>You can be always up to date with our company mới!</p>
-                        <form action="#">
-                            <input type="text" placeholder="Enter your email address" />
-                        </form>
-                        <a href="#">Send Email</a>
-                    </div>
-                </div> -->
-</div>
-</div>
-</div> -->
-<!-- most-product-area-end -->
+
 <!-- testimonial-area-start -->
 <div class="testimonial-area bg">
     <div class="container">
@@ -3810,27 +2791,8 @@
     </div>
 </div>
 <!-- recent-post-area-end -->
-<!-- social-group-area-start -->
-<!-- <div class="social-group-area ptb-60">
-        <div class="container" style="text-align: center;">
-            <div class="section-title-3">
-                <h3>Mạng xã hội</h3>
-            </div>
-            <div class="link-follow">
-                <ul>
-                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                </ul>
-            </div>
-        </div>
-    </div> -->
-<!-- social-group-area-end -->
-<!-- footer-area-start -->
-<jsp:include page="footer1.jsp"/>
-<!-- footer-area-end -->
+
+
 <!-- Modal -->
 <div class="modal fade" id="productModal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
@@ -3907,7 +2869,15 @@
     </div>
 </div>
 <!-- Modal end -->
-<jsp:include page="footer2.jsp"/>
+
+
+<!-- footer-area-start -->
+<jsp:include page="footer.jsp"/>
+<!-- footer-area-end -->
+
+<%--js--%>
+<jsp:include page="script.jsp"/>
+
 </body>
 
 </html>

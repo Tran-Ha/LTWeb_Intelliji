@@ -7,8 +7,8 @@ public class Product implements Serializable {
     private int id;
     private String name;
     private String type;
-    private double startPrice;
-    private double salePrice;
+    private long startPrice;
+    private long salePrice;
     private String description;
     private String information;
     private String publisher;
@@ -18,7 +18,7 @@ public class Product implements Serializable {
 
     public Product(){
     }
-    public Product(int id, String name, double startPrice, double salePrice, String publisher, String description,
+    public Product(int id, String name, long startPrice, long salePrice, String publisher, String description,
                 String information, List<String> imageLinks, List<String> authors) {
         this.id = id;
         this.name = name;
@@ -77,28 +77,28 @@ public class Product implements Serializable {
     /**
      * @return the startPrice
      */
-    public double getStartPrice() {
+    public long getStartPrice() {
         return startPrice;
     }
 
     /**
      * @param startPrice the startPrice to set
      */
-    public void setStartPrice(double startPrice) {
+    public void setStartPrice(long startPrice) {
         this.startPrice = startPrice;
     }
 
     /**
      * @return the salePrice
      */
-    public double getSalePrice() {
+    public long getSalePrice() {
         return salePrice;
     }
 
     /**
      * @param salePrice the salePrice to set
      */
-    public void setSalePrice(double salePrice) {
+    public void setSalePrice(long salePrice) {
         this.salePrice = salePrice;
     }
 
@@ -171,5 +171,7 @@ public class Product implements Serializable {
     public void setAuthors(List<String> authors) {
         this.authors = authors;
     }
+
+
 }
 
