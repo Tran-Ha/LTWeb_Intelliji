@@ -11,22 +11,22 @@ import java.util.List;
 public class ConnectionDB {
     static Connection con;
 
-    public static Statement connect() throws ClassNotFoundException, SQLException {
+    public static PreparedStatement connect(String sql) throws ClassNotFoundException, SQLException {
         if(con==null||con.isClosed()) {
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/"
                     + "test1?useUnicode=true&characterEncoding=utf-8", "root", "");
-            return con.createStatement();
+            return con.prepareStatement(sql);
         }
         else{
-            return con.createStatement();
+            return con.prepareStatement(sql);
         }
     }
     public static void main(String[] args ) throws Exception{
-        ProductTestEntity pe= new ProductTestEntity();
-        List<ProductTest> pt=new LinkedList<>();
-        pt.addAll(Data.data.values());
-        pe.insertProducts(pt);
+//        ProductTestEntity pe= new ProductTestEntity();
+//        List<ProductTest> pt=new LinkedList<>();
+//        pt.addAll(Data.data.values());
+//        pe.insertProducts(pt);
 
 //        Statement s= ConnectionDB.connect();
 //        ResultSet rs= s.executeQuery("select * from user");

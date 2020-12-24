@@ -76,7 +76,7 @@
                                 </div>
                                 <div class="footer-mid-menu">
                                     <ul>
-                                        <li><a href="contact.html">Địa chỉ</a></li>
+                                        <li><a href="html/contact.html">Địa chỉ</a></li>
                                         <li><a href="#">Thanh toán</a></li>
                                         <li><a href="#">Hóa đơn</a></li>
                                         <li><a href="#">Thông tin cá nhân</a></li>
