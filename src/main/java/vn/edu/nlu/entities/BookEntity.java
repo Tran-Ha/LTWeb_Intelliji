@@ -153,6 +153,8 @@ public class BookEntity {
         return list;
     }
     public static void main(String[] args) {
+
         BookEntity be= new BookEntity();
+        System.out.println(be.getCategories().size());
     }
 }
