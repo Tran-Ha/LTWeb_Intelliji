@@ -9,6 +9,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
+import vn.edu.nlu.beans.Book;
+import vn.edu.nlu.database.ConnectionDB;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 
 public class BookEntity {
     //load list language book
@@ -152,7 +162,150 @@ public class BookEntity {
         }
         return list;
     }
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         BookEntity be= new BookEntity();
+    }*/
+
+    // Tan code start
+    public List<Book> getNewBook(){
+        Statement statement = null;
+        List<Book> list = new ArrayList<>();
+        String sql = "select b.id, name, price, pricesale, description, information, link from book b join image i on b.id = i.id_book where new = 1 order by b.id;";
+        try {
+            statement = ConnectionDB.connect(sql);
+            ResultSet rs = statement.executeQuery(sql);
+
+            int current = -1;
+            int previous  = -1;
+            while (rs.next()) {
+                current = rs.getInt(1);
+                if(current != previous){
+                    Book book = new Book();
+                    book.setId(rs.getInt(1));
+                    book.setName(rs.getString(2));
+                    book.setPrice(rs.getLong(3));
+                    book.setPriceSale(rs.getLong(4));
+                    book.setDescription(rs.getString(5));
+                    book.setInformation(rs.getString(6));
+                    book.getImgs().add(rs.getString(7));
+                    list.add(book);
+                    previous = current;
+                } else {
+                    list.get(list.size() - 1).getImgs().add(rs.getString(7));
+                    previous = current;
+                }
+            }
+            return list;
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+            return new LinkedList<>();
+        }
     }
+
+    public List<Book> getHotBook(){
+        Statement statement = null;
+        List<Book> list = new ArrayList<>();
+        String sql = "select b.id, name, price, pricesale, description, information, link from book b join image i on b.id = i.id_book where hot = 1 order by b.id;";
+        try {
+            statement = ConnectionDB.connect(sql);
+            ResultSet rs = statement.executeQuery(sql);
+
+            int current = -1;
+            int previous  = -1;
+            while (rs.next()) {
+                current = rs.getInt(1);
+                if(current != previous){
+                    Book book = new Book();
+                    book.setId(rs.getInt(1));
+                    book.setName(rs.getString(2));
+                    book.setPrice(rs.getLong(3));
+                    book.setPriceSale(rs.getLong(4));
+                    book.setDescription(rs.getString(5));
+                    book.setInformation(rs.getString(6));
+                    book.getImgs().add(rs.getString(7));
+                    list.add(book);
+                    previous = current;
+                } else {
+                    list.get(list.size() - 1).getImgs().add(rs.getString(7));
+                    previous = current;
+                }
+            }
+            return list;
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+            return new LinkedList<>();
+        }
+    }
+
+    public List<Book> getPromotionBook(){
+        Statement statement = null;
+        List<Book> list = new ArrayList<>();
+        String sql = "select b.id, name, price, pricesale, description, information, link from book b join image i on b.id = i.id_book where promotion = 1 order by b.id;";
+        try {
+            statement = ConnectionDB.connect(sql);
+            ResultSet rs = statement.executeQuery(sql);
+
+            int current = -1;
+            int previous  = -1;
+            while (rs.next()) {
+                current = rs.getInt(1);
+                if(current != previous){
+                    Book book = new Book();
+                    book.setId(rs.getInt(1));
+                    book.setName(rs.getString(2));
+                    book.setPrice(rs.getLong(3));
+                    book.setPriceSale(rs.getLong(4));
+                    book.setDescription(rs.getString(5));
+                    book.setInformation(rs.getString(6));
+                    book.getImgs().add(rs.getString(7));
+                    list.add(book);
+                    previous = current;
+                } else {
+                    list.get(list.size() - 1).getImgs().add(rs.getString(7));
+                    previous = current;
+                }
+            }
+            return list;
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+            return new LinkedList<>();
+        }
+    }
+
+    public List<Book> getBestSellerBook(){
+        Statement statement = null;
+        List<Book> list = new ArrayList<>();
+        String sql = "select b.id, name, price, pricesale, description, information, link from book b join image i on b.id = i.id_book where bestseller = 1 order by b.id;";
+        try {
+            statement = ConnectionDB.connect(sql);
+            ResultSet rs = statement.executeQuery(sql);
+
+            int current = -1;
+            int previous  = -1;
+            while (rs.next()) {
+                current = rs.getInt(1);
+                if(current != previous){
+                    Book book = new Book();
+                    book.setId(rs.getInt(1));
+                    book.setName(rs.getString(2));
+                    book.setPrice(rs.getLong(3));
+                    book.setPriceSale(rs.getLong(4));
+                    book.setDescription(rs.getString(5));
+                    book.setInformation(rs.getString(6));
+                    book.getImgs().add(rs.getString(7));
+                    list.add(book);
+                    previous = current;
+                } else {
+                    list.get(list.size() - 1).getImgs().add(rs.getString(7));
+                    previous = current;
+                }
+            }
+            return list;
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+            return new LinkedList<>();
+        }
+    }
+
+    // Tan's code end
 }

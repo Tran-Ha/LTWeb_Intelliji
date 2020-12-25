@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import vn.edu.nlu.beans.User;
+import vn.edu.nlu.database.ConnectionDB;
 
 @WebServlet(name = "Login", urlPatterns = "/Login")
 public class Login extends HttpServlet {
@@ -26,7 +28,7 @@ public class Login extends HttpServlet {
         ResultSet rs = null;
     //    ID, NAME, EMAIL, PHONE, PASSWORD, ADDRESS, CITY, IMG, BIRTHDAY, ACTIVE, ISADMIN, ID_CART
         try {
-            Statement statement = ConnectionDB.connect();
+            Statement statement = ConnectionDB.connect(sql);
             rs = statement.executeQuery(sql);
             rs.last();
             int i = rs.getRow();

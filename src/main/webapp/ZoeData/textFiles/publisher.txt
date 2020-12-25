@@ -1,0 +1,263 @@
+0	Windmill Books
+1	Harpercollins
+2	SAGE Publications Ltd
+3	HarperCollins s
+4	Nhà Xuất Bản Thế Giới
+5	Hachette Book Group USA
+6	Brown Watson
+7	Việt Nam
+8	NXB Tông
+9	DK Children
+10	Văn Học
+11	National Geographic Kids
+12	Crown Publishing Group (NY)
+13	Kodansha Amer Inc
+14	Dân Trí
+15	Knopf
+16	Simon & Schuster Export
+17	Lao Động
+18	NXB Văn hóa - Văn nghệ
+19	Grand Central Publishing
+20	PublicAffairs
+21	NXB Đại Học Quốc Gia TP.HCM
+22	Penguin Random House US
+23	Crown Business
+24	Arrow
+25	NXB Văn Hóa - Văn Nghệ
+26	Little, Brown and Company
+27	NXB Tổng hợp TP.HCM
+28	Penguin Books UK
+29	Learning Matters
+30	Plata Publishing
+31	Pan Books
+32	Cengage Learning
+33	Hachette Children's Group
+34	Autumn Publishing
+35	Bounty
+36	Miles Kelly Publishing
+37	NXB Phu Nữ
+38	Bis Publishers
+39	Little Tiger Press Group
+40	Văn Hóa Văn Nghệ
+41	Thorsons
+42	Dorling Kindersley
+43	Vintage
+44	NXB Đại Học Sư Phạm
+45	Viking
+46	Counterpoint
+47	Make Believe Ideas
+48	Kogan Page
+49	Langenscheidt; Auflage: Vollständig überarbeitete Auflage
+50	John Wiley
+51	NXB Hà Nội
+52	Transworld Publishers Ltd
+53	Hachette Books
+54	HARPER COLLINS
+55	NXB Phụ Nữ Việt Nam
+56	Ebury Publishing
+57	Definitions
+58	Thương Hiệu Đức
+59	Penguin Group
+60	NXB Văn Hóa Thông Tin
+61	Harper
+62	Sage Publications Ltd
+63	William Morrow
+64	Heinemann Educational Publishers
+65	NXB Tư Pháp
+66	DK Publishing
+67	Pan
+68	Nxb Đại học quốc gia Hà Nội
+69	Pamela Dorman Books
+70	Parragon
+71	NXB Thanh Niên
+72	Kids Can Press
+73	DK
+74	Bìa Mềm
+75	Hội Nhà Văn
+76	HarperCollins Publishers Inc
+77	NXB Đại Học Kinh Tế Quốc Dân
+78	Lake Press
+79	Cambridge University Press
+80	RANDOM HOUSE
+81	HODDER EDUCATION
+82	Harper Paperbacks
+83	Ballantine Books Inc.
+84	Trung Quốc
+85	NXB Kinh tế TP.Hồ Chí Minh
+86	NXB Kim Đồng
+87	Macmillan Education
+88	Văn Hoá Thông Tin
+89	LONGMAN
+90	NBX Văn Hóa - Văn Nghệ
+91	Puffin
+92	Penguin Classics
+93	NXB Văn Hoá Sài Gòn
+94	Collins
+95	Shambhala
+96	NXB Tri Thức
+97	NXB Thông Tấn
+98	Transworld s Ltd
+99	Tarcherperigee
+100	Moon Travel
+101	Crown Publishing Group, Division of Random House Inc
+102	ALLEN LANE
+103	Featherstone
+104	Harper Perennial
+105	Random House
+106	NXB Hồng Đức
+107	NXB Đại Học Quốc gia TP.HCM
+108	Andrew Brodie Publications
+109	Macmillan
+110	Clé International
+111	Oxford University Press
+112	Culturimex
+113	NXB Giáo Dục Việt Nam
+114	MacMillan Education Australia
+115	NXB Tổng Hợp
+116	NXB Văn Học
+117	HarperCollins
+118	Three Rivers Press
+119	Rider
+120	NXB Thuận Hóa
+121	Macmillan; Main Market edition
+122	Victory Belt
+123	2018
+124	Crown Publishing Group
+125	Quercus
+126	Cambridge University
+127	Cengage Learning, Inc
+128	Gallup Press
+129	Black Swan
+130	NXB Đại học Sư phạm
+131	Blomsbury
+132	Miles Kelly Publishing Ltd
+133	Penguin Books Ltd (UK)
+134	NXB Chính Trị Quốc Gia Sự Thật
+135	Usborne Publishing
+136	NXB Từ Điển Bách Khoa
+137	NXB Đại học sư phạm
+138	NXB Thời Đại
+139	Random House Business
+140	APD ( Thames ) Singapore PTe Ltd
+141	Usborne Publishing Ltd
+142	NXB Dân trí
+143	Houghton Mifflin Harcourt
+144	Pearson
+145	NXB Hội Nhà Văn
+146	Pan; On Demand edition
+147	NXB Kinh tế TPHCM
+148	Vintage Publishing
+149	Thanh Niên
+150	Bantam Doubleday Dell Publishing Group Inc
+151	Simon & Schuster
+152	William Collins
+153	NXB Văn học
+154	NXB Thanh Hóa
+155	Penguin Putnam Inc
+156	Penguin LCC US
+157	NXB Tri thức
+158	Corgi
+159	Adams Media Corporation
+160	NXB Văn Hoá Thông Tin
+161	Bìa Cứng
+162	BIS Publishers
+163	Nhà cung cấp:
+164	NXB Dân Trí
+165	NXB Khoa Học Xã Hội
+166	TEN SPEED PRESS
+167	Bantam Books
+168	Ebury Press
+169	Dorling Kindersley Publishers Ltd
+170	HarperOne
+171	Harvard Business Review Press
+172	Vintage Classics
+173	NXB Lao Động Xã Hội
+174	Puffin Books
+175	NXB Văn Học
+176	Random House Inc
+177	Thương Hiệu Đài loan
+178	NXB Văn Hóa Sài Gòn
+179	Taylor and Francis Asia Pacific
+180	Adams Media
+181	Rough Guides
+182	NXB Kinh Tế TPHCM
+183	Anchor Books
+184	NXB Mỹ Thuật
+185	Spruce; 1 edition
+186	NXB Lao Động - Xã Hội
+187	NXB Thông Tin và Truyền Thông
+188	NXB Đồng Nai
+189	Little Brown and Company
+190	Penguin Random House
+191	Portfolio
+192	Văn Hóa Thông Tin
+193	Hachette USA
+194	Picador
+195	Houghton Mifflin
+196	Pan MacMillan
+197	NXB Tổng Hợp TPHCM
+198	NXB Trẻ
+199	NXB Đại Học Sư Phạm TPHCM
+200	ATLANTIC BOOKS
+201	Shambhala Publications Inc
+202	NXB Cambridge University
+203	NXB Công Thương
+204	Penguin Books Ltd
+205	Thương Hiệu Nhật
+206	NXB Thông Tin Và Truyền Thông
+207	Scholastic US
+208	CAMBRIDGE UNIVERSITY PRESS
+209	Báo Sinh Viên Việt Nam - Hoa Học Trò
+210	Penguin
+211	Prentice Hall Press
+212	PILI POP
+213	Simon Spotlight
+214	Priddy Books
+215	Springer International Publishing AG
+216	Parragon Book Service Ltd
+217	NXB Tổng Hợp TP.HCM
+218	Bloomsbury Publishing
+219	Random House LCC US
+220	William Morrow Cookbooks
+221	Wayland
+222	Nhà Xuất Bản Hồng Đức
+223	Michael Joseph
+224	MCGRAW-HILL Professional
+225	NXB Kinh Tế Quốc Dân
+226	Penguin Books
+227	Vermilion
+228	Harper Business
+229	Marshall Cavendish International (Asia) Pte Ltd
+230	Franklin Watts
+231	NXB Đại Học Quốc Gia Hà Nội
+232	McGraw-Hill Education
+233	Tổng Hợp TPHCM
+234	Dorling Kindersley Ltd
+235	Cornerstone
+236	HarperBusiness
+237	Hodder & Stoughton General Division
+238	Andrews McMeel Publishing
+239	SIMON & SCHUSTER
+240	NXB Phụ nữ
+241	Board Book
+242	Atria Books
+243	Trẻ
+244	HarperCollins Publishers
+245	Oxford
+246	PORTFOLIO
+247	Harper Collins
+248	Tuttle Publishing
+249	Penguin Group US
+250	Little, Brown & Company
+251	NXB Đà Nẵng
+252	William Morrow & Company
+253	Houghton Mifflin Harcourt USA
+254	cbj
+255	Warner Books Inc
+256	Harper Perennial Modern Classics
+257	NXB Thế Giới
+258	NXB Phụ Nữ
+259	Scribner Book Company
+260	NXB Lao Động
+261	Free Press
+262	Octopus Publishing Group

@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix ="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix = "fn" uri = "http://java.sun.com/jsp/jstl/functions" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!doctype html>
 <html class="no-js" lang="en">
@@ -76,7 +76,7 @@
                 <div class="col-lg-6 col-md-4 col-12">
                     <div class="header-search ptb-10">
                         <form action="search-result.html" method="GET">
-                            <input type="text" placeholder="Tìm sản phẩm, danh mục, thương hiệu,..." />
+                            <input type="text" placeholder="Tìm sản phẩm, danh mục, thương hiệu,..."/>
                             <a href="search-result.html"><i class="fa fa-search"></i></a>
                         </form>
                     </div>
@@ -92,7 +92,7 @@
                                         <div class="single-cart">
                                             <div class="cart-img">
                                                 <a href="product-details.html"><img src="img/product/1.jpg"
-                                                                                    alt="book" /></a>
+                                                                                    alt="book"/></a>
                                             </div>
                                             <div class="cart-info">
                                                 <h5><a href="#">Joust Duffle Bag</a></h5>
@@ -105,7 +105,7 @@
                                         <div class="single-cart">
                                             <div class="cart-img">
                                                 <a href="product-details.html"><img src="img/product/3.jpg"
-                                                                                    alt="book" /></a>
+                                                                                    alt="book"/></a>
                                             </div>
                                             <div class="cart-info">
                                                 <h5><a href="#">Chaz Kangeroo Hoodie</a></h5>
@@ -373,7 +373,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                 <div class="single-banner ptb-10">
                     <div class="banner-img">
-                        <a href="#"><img src="img/banner/1.png" alt="banner" /></a>
+                        <a href="#"><img src="img/banner/1.png" alt="banner"/></a>
                     </div>
                     <div class="banner-text">
                         <h4>Miễn phí giao hàng</h4>
@@ -384,7 +384,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                 <div class="single-banner ptb-10">
                     <div class="banner-img">
-                        <a href="#"><img src="img/banner/2.png" alt="banner" /></a>
+                        <a href="#"><img src="img/banner/2.png" alt="banner"/></a>
                     </div>
                     <div class="banner-text">
                         <h4>Đổi trả</h4>
@@ -395,7 +395,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                 <div class="single-banner ptb-10">
                     <div class="banner-img">
-                        <a href="#"><img src="img/banner/3.png" alt="banner" /></a>
+                        <a href="#"><img src="img/banner/3.png" alt="banner"/></a>
                     </div>
                     <div class="banner-text">
                         <h4>Thanh toán</h4>
@@ -406,7 +406,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                 <div class="single-banner ptb-10">
                     <div class="banner-img">
-                        <a href="#"><img src="img/banner/4.png" alt="banner" /></a>
+                        <a href="#"><img src="img/banner/4.png" alt="banner"/></a>
                     </div>
                     <div class="banner-text">
                         <h4>Hỗ trợ</h4>
@@ -448,56 +448,56 @@
             <div class="tab-pane fade show active" id="newbooks">
                 <div class="tab-active owl-carousel">
                     <!-- single-product-start -->
-                    <c:forEach items="${data}" var="d">
-                    <div class="product-wrapper">
-                        <div class="product-img">
-                            <a href="product-details.html">
-                                <img src="${d.img}" alt="book" class="primary" />
-                            </a>
-                            <div class="quick-view">
-                                <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
-                                   title="Xem nhanh">
-                                    <i class="fa fa-search-plus"></i>
+                    <c:forEach items="${newBooks}" var="book">
+                        <div class="product-wrapper">
+                            <div class="product-img">
+                                <a href="product-details.html">
+                                    <img src="${book.getMainImg()}" alt="book" class="primary"/>
                                 </a>
+                                <div class="quick-view">
+                                    <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
+                                       title="Xem nhanh">
+                                        <i class="fa fa-search-plus"></i>
+                                    </a>
+                                </div>
+                                <div class="product-flag">
+                                    <ul>
+                                        <li><span class="sale">mới</span> <br></li>
+                                        <li><span class="discount-percentage">-5%</span></li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="product-flag">
-                                <ul>
-                                    <li><span class="sale">mới</span> <br></li>
-                                    <li><span class="discount-percentage">-5%</span></li>
-                                </ul>
+                            <div class="product-details text-center">
+                                <div class="product-rating">
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    </ul>
+                                </div>
+                                <h4><a href="#">${book.name}</a></h4>
+                                <div class="product-price">
+                                    <ul>
+                                        <li>${book.getDecimalFormatPriceSale()} đ</li>
+                                        <li class="old-price">${book.getDecimalFormatPrice()} đ</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="product-link">
+                                <div class="product-button">
+                                    <a href="#" title="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i>Thêm vào
+                                        giỏ hàng</a>
+                                </div>
+                                <div class="add-to-link">
+                                    <ul>
+                                        <li><a href="product-details.html" title="Chi tiết"><i
+                                                class="fas fa-external-link-alt"></i></a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                        <div class="product-details text-center">
-                            <div class="product-rating">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                </ul>
-                            </div>
-                            <h4><a href="#">${d.title}</a></h4>
-                            <div class="product-price">
-                                <ul>
-                                    <li>${d.priceSale}đ</li>
-                                    <li class="old-price">${d.price}đ</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-link">
-                            <div class="product-button">
-                                <a href="#" title="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i>Thêm vào
-                                    giỏ hàng</a>
-                            </div>
-                            <div class="add-to-link">
-                                <ul>
-                                    <li><a href="product-details.html" title="Chi tiết"><i
-                                            class="fas fa-external-link-alt"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
                     </c:forEach>
                     <!-- single-product-end -->
                 </div>
@@ -505,912 +505,171 @@
             <div class="tab-pane fade show" id="hotbooks">
                 <div class="tab-active owl-carousel">
                     <!-- single-product-start -->
-                    <div class="product-wrapper">
-                        <div class="product-img">
-                            <a href="product-details.html">
-                                <img src="img/product/1.jpg" alt="book" class="primary" />
-                            </a>
-                            <div class="quick-view">
-                                <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
-                                   title="Xem nhanh">
-                                    <i class="fa fa-search-plus"></i>
+                    <c:forEach items="${hotBooks}" var="hotBook">
+                        <div class="product-wrapper">
+                            <div class="product-img">
+                                <a href="product-details.html">
+                                    <img src="${hotBook.getMainImg()}" alt="book" class="primary"/>
                                 </a>
+                                <div class="quick-view">
+                                    <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
+                                       title="Xem nhanh">
+                                        <i class="fa fa-search-plus"></i>
+                                    </a>
+                                </div>
+                                <div class="product-flag">
+                                    <ul>
+                                        <li><span class="sale">mới</span></li>
+                                        <li><span class="discount-percentage">-5%</span></li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="product-flag">
-                                <ul>
-                                    <li><span class="sale">mới</span></li>
-                                    <li><span class="discount-percentage">-5%</span></li>
-                                </ul>
+                            <div class="product-details text-center">
+                                <div class="product-rating">
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    </ul>
+                                </div>
+                                <h4><a href="#">${hotBook.name}</a></h4>
+                                <div class="product-price">
+                                    <ul>
+                                        <li>${hotBook.getDecimalFormatPriceSale()} đ</li>
+                                        <li class="old-price">${hotBook.getDecimalFormatPrice()} đ</li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-                        <div class="product-details text-center">
-                            <div class="product-rating">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                </ul>
-                            </div>
-                            <h4><a href="#">Nhân số học</a></h4>
-                            <div class="product-price">
-                                <ul>
-                                    <li>60.000đ</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-link">
-                            <div class="product-button">
-                                <a href="#" title="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i>Thêm vào
-                                    giỏ hàng</a>
-                            </div>
-                            <div class="add-to-link">
-                                <ul>
-                                    <li><a href="product-details.html" title="Chi tiết"><i
-                                            class="fas fa-external-link-alt"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- single-product-end -->
-                    <!-- single-product-start -->
-                    <div class="product-wrapper">
-                        <div class="product-img">
-                            <a href="product-details.html">
-                                <img src="img/product/3.jpg" alt="book" class="primary" />
-                            </a>
-                            <div class="quick-view">
-                                <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
-                                   title="Xem nhanh">
-                                    <i class="fa fa-search-plus"></i>
-                                </a>
-                            </div>
-                            <div class="product-flag">
-                                <ul>
-                                    <li><span class="sale">mới</span> <br></li>
-                                </ul>
+                            <div class="product-link">
+                                <div class="product-button">
+                                    <a href="#" title="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i>Thêm vào
+                                        giỏ hàng</a>
+                                </div>
+                                <div class="add-to-link">
+                                    <ul>
+                                        <li><a href="product-details.html" title="Chi tiết"><i
+                                                class="fas fa-external-link-alt"></i></a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                        <div class="product-details text-center">
-                            <div class="product-rating">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                </ul>
-                            </div>
-                            <h4><a href="#">Tô Bình Yên</a></h4>
-                            <div class="product-price">
-                                <ul>
-                                    <li>52.000đ</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-link">
-                            <div class="product-button">
-                                <a href="#" title="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i>Thêm vào
-                                    giỏ hàng</a>
-                            </div>
-                            <div class="add-to-link">
-                                <ul>
-                                    <li><a href="product-details.html" title="Chi tiết"><i
-                                            class="fas fa-external-link-alt"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- single-product-end -->
-                    <!-- single-product-start -->
-                    <div class="product-wrapper">
-                        <div class="product-img">
-                            <a href="product-details.html">
-                                <img src="img/product/5.jpg" alt="book" class="primary" />
-                            </a>
-                            <div class="quick-view">
-                                <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
-                                   title="Xem nhanh">
-                                    <i class="fa fa-search-plus"></i>
-                                </a>
-                            </div>
-                            <div class="product-flag">
-                                <ul>
-                                    <li><span class="sale">mới</span> <br></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-details text-center">
-                            <div class="product-rating">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                </ul>
-                            </div>
-                            <h4><a href="#">Con chim xanh biếc bay về</a></h4>
-                            <div class="product-price">
-                                <ul>
-                                    <li>34.000đ</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-link">
-                            <div class="product-button">
-                                <a href="#" title="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i>Thêm vào
-                                    giỏ hàng</a>
-                            </div>
-                            <div class="add-to-link">
-                                <ul>
-                                    <li><a href="product-details.html" title="Chi tiết"><i
-                                            class="fas fa-external-link-alt"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- single-product-end -->
-                    <!-- single-product-start -->
-                    <div class="product-wrapper">
-                        <div class="product-img">
-                            <a href="product-details.html">
-                                <img src="img/product/7.jpg" alt="book" class="primary" />
-                            </a>
-                            <div class="quick-view">
-                                <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
-                                   title="Xem nhanh">
-                                    <i class="fa fa-search-plus"></i>
-                                </a>
-                            </div>
-                            <div class="product-flag">
-                                <ul>
-                                    <li><span class="sale">mới</span> <br></li>
-                                    <li><span class="discount-percentage">-5%</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-details text-center">
-                            <div class="product-rating">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                </ul>
-                            </div>
-                            <h4><a href="#">Biên sử nước</a></h4>
-                            <div class="product-price">
-                                <ul>
-                                    <li>30.000đ</li>
-                                    <li class="old-price">32.000đ</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-link">
-                            <div class="product-button">
-                                <a href="#" title="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i>Thêm vào
-                                    giỏ hàng</a>
-                            </div>
-                            <div class="add-to-link">
-                                <ul>
-                                    <li><a href="product-details.html" title="Chi tiết"><i
-                                            class="fas fa-external-link-alt"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- single-product-end -->
-                    <!-- single-product-start -->
-                    <div class="product-wrapper">
-                        <div class="product-img">
-                            <a href="product-details.html">
-                                <img src="img/product/9.jpg" alt="book" class="primary" />
-                            </a>
-                            <div class="quick-view">
-                                <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
-                                   title="Xem nhanh">
-                                    <i class="fa fa-search-plus"></i>
-                                </a>
-                            </div>
-                            <div class="product-flag">
-                                <ul>
-                                    <li><span class="discount-percentage">-5%</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-details text-center">
-                            <div class="product-rating">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                </ul>
-                            </div>
-                            <h4><a href="#">Từ tốt đến vĩ đại</a></h4>
-                            <div class="product-price">
-                                <ul>
-                                    <li>35.000đ</li>
-                                    <li class="old-price">40.000đ</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-link">
-                            <div class="product-button">
-                                <a href="#" title="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i>Thêm vào
-                                    giỏ hàng</a>
-                            </div>
-                            <div class="add-to-link">
-                                <ul>
-                                    <li><a href="product-details.html" title="Chi tiết"><i
-                                            class="fas fa-external-link-alt"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- single-product-end -->
-                    <!-- single-product-start -->
-                    <div class="product-wrapper">
-                        <div class="product-img">
-                            <a href="#">
-                                <img src="img/product/11.jpg" alt="book" class="primary" />
-                            </a>
-                            <div class="quick-view">
-                                <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
-                                   title="Xem nhanh">
-                                    <i class="fa fa-search-plus"></i>
-                                </a>
-                            </div>
-                            <div class="product-flag">
-                                <ul>
-                                    <li><span class="sale">mới</span> <br></li>
-                                    <li><span class="discount-percentage">-5%</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-details text-center">
-                            <div class="product-rating">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                </ul>
-                            </div>
-                            <h4><a href="#">Con chim xanh biếc bay về (tập 2)</a></h4>
-                            <div class="product-price">
-                                <ul>
-                                    <li>74.000đ</li>
-                                    <li class="old-price">78.000đ</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-link">
-                            <div class="product-button">
-                                <a href="#" title="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i>Thêm vào
-                                    giỏ hàng</a>
-                            </div>
-                            <div class="add-to-link">
-                                <ul>
-                                    <li><a href="product-details.html" title="Chi tiết"><i
-                                            class="fas fa-external-link-alt"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                    </c:forEach>
                     <!-- single-product-end -->
                 </div>
             </div>
-            <div class="tab-pane fade" id="bestsellers">
+            <div class="tab-pane fade show" id="bestsellers">
                 <div class="tab-active owl-carousel">
                     <!-- single-product-start -->
-                    <div class="product-wrapper">
-                        <div class="product-img">
-                            <a href="#">
-                                <img src="img/product/2.jpg" alt="book" class="primary" />
-                            </a>
-                            <div class="quick-view">
-                                <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
-                                   title="Xem nhanh">
-                                    <i class="fa fa-search-plus"></i>
+                    <c:forEach items="${bestSellerBooks}" var="bestSellerBook">
+                        <div class="product-wrapper">
+                            <div class="product-img">
+                                <a href="product-details.html">
+                                    <img src="${bestSellerBook.getMainImg()}" alt="book" class="primary"/>
                                 </a>
+                                <div class="quick-view">
+                                    <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
+                                       title="Xem nhanh">
+                                        <i class="fa fa-search-plus"></i>
+                                    </a>
+                                </div>
+                                <div class="product-flag">
+                                    <ul>
+
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="product-flag">
-                                <ul>
-                                    <li><span class="sale">mới</span></li>
-                                </ul>
+                            <div class="product-details text-center">
+                                <div class="product-rating">
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    </ul>
+                                </div>
+                                <h4><a href="#">${bestSellerBook.name}</a></h4>
+                                <div class="product-price">
+                                    <ul>
+                                        <li>${bestSellerBook.getDecimalFormatPriceSale()} đ</li>
+                                        <li class="old-price">${bestSellerBook.getDecimalFormatPrice()} đ</li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-                        <div class="product-details text-center">
-                            <div class="product-rating">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                </ul>
-                            </div>
-                            <h4><a href="#">Spy Family</a></h4>
-                            <div class="product-price">
-                                <ul>
-                                    <li>30.000đ</li>
-                                    <li class="old-price">32.000đ</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-link">
-                            <div class="product-button">
-                                <a href="#" title="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i>Thêm vào
-                                    giỏ hàng</a>
-                            </div>
-                            <div class="add-to-link">
-                                <ul>
-                                    <li><a href="product-details.html" title="Chi tiết"><i
-                                            class="fas fa-external-link-alt"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- single-product-end -->
-                    <!-- single-product-start -->
-                    <div class="product-wrapper">
-                        <div class="product-img">
-                            <a href="#">
-                                <img src="img/product/4.jpg" alt="book" class="primary" />
-                            </a>
-                            <div class="quick-view">
-                                <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
-                                   title="Xem nhanh">
-                                    <i class="fa fa-search-plus"></i>
-                                </a>
-                            </div>
-                            <div class="product-flag">
-                                <ul>
-                                    <li><span class="sale">mới</span></li>
-                                </ul>
+                            <div class="product-link">
+                                <div class="product-button">
+                                    <a href="#" title="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i>Thêm vào
+                                        giỏ hàng</a>
+                                </div>
+                                <div class="add-to-link">
+                                    <ul>
+                                        <li><a href="product-details.html" title="Chi tiết"><i
+                                                class="fas fa-external-link-alt"></i></a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                        <div class="product-details text-center">
-                            <div class="product-rating">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                </ul>
-                            </div>
-                            <h4><a href="#">Jin</a></h4>
-                            <div class="product-price">
-                                <ul>
-                                    <li>30.000đ</li>
-                                    <li class="old-price">32.000đ</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-link">
-                            <div class="product-button">
-                                <a href="#" title="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i>Thêm vào
-                                    giỏ hàng</a>
-                            </div>
-                            <div class="add-to-link">
-                                <ul>
-                                    <li><a href="product-details.html" title="Chi tiết"><i
-                                            class="fas fa-external-link-alt"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- single-product-end -->
-                    <!-- single-product-start -->
-                    <div class="product-wrapper">
-                        <div class="product-img">
-                            <a href="#">
-                                <img src="img/product/6.jpg" alt="book" class="primary" />
-                            </a>
-                            <div class="quick-view">
-                                <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
-                                   title="Xem nhanh">
-                                    <i class="fa fa-search-plus"></i>
-                                </a>
-                            </div>
-                            <div class="product-flag">
-                                <ul>
-                                    <li><span class="sale">mới</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-details text-center">
-                            <div class="product-rating">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                </ul>
-                            </div>
-                            <h4><a href="#">Nhà giả kim</a></h4>
-                            <div class="product-price">
-                                <ul>
-                                    <li>60.000đ</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-link">
-                            <div class="product-button">
-                                <a href="#" title="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i>Thêm vào
-                                    giỏ hàng</a>
-                            </div>
-                            <div class="add-to-link">
-                                <ul>
-                                    <li><a href="product-details.html" title="Chi tiết"><i
-                                            class="fas fa-external-link-alt"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- single-product-end -->
-                    <!-- single-product-start -->
-                    <div class="product-wrapper">
-                        <div class="product-img">
-                            <a href="#">
-                                <img src="img/product/8.jpg" alt="book" class="primary" />
-                            </a>
-                            <div class="quick-view">
-                                <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
-                                   title="Xem nhanh">
-                                    <i class="fa fa-search-plus"></i>
-                                </a>
-                            </div>
-                            <div class="product-flag">
-                                <ul>
-                                    <li><span class="sale">mới</span> <br></li>
-                                    <li><span class="discount-percentage">-5%</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-details text-center">
-                            <div class="product-rating">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                </ul>
-                            </div>
-                            <h4><a href="#">Lược sử loài người</a></h4>
-                            <div class="product-price">
-                                <ul>
-                                    <li>52.000đ</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-link">
-                            <div class="product-button">
-                                <a href="#" title="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i>Thêm vào
-                                    giỏ hàng</a>
-                            </div>
-                            <div class="add-to-link">
-                                <ul>
-                                    <li><a href="product-details.html" title="Chi tiết"><i
-                                            class="fas fa-external-link-alt"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- single-product-end -->
-                    <!-- single-product-start -->
-                    <div class="product-wrapper">
-                        <div class="product-img">
-                            <a href="#">
-                                <img src="img/product/10.jpg" alt="book" class="primary" />
-                            </a>
-                            <div class="quick-view">
-                                <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
-                                   title="Xem nhanh">
-                                    <i class="fa fa-search-plus"></i>
-                                </a>
-                            </div>
-                            <div class="product-flag">
-                                <ul>
-                                    <li><span class="sale">mới</span> <br></li>
-                                    <li><span class="discount-percentage">-5%</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-details text-center">
-                            <div class="product-rating">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                </ul>
-                            </div>
-                            <h4><a href="#">Rich habits</a></h4>
-                            <div class="product-price">
-                                <ul>
-                                    <li>35.000đ</li>
-                                    <li class="old-price">40.000đ</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-link">
-                            <div class="product-button">
-                                <a href="#" title="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i>Thêm vào
-                                    giỏ hàng</a>
-                            </div>
-                            <div class="add-to-link">
-                                <ul>
-                                    <li><a href="product-details.html" title="Chi tiết"><i
-                                            class="fas fa-external-link-alt"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- single-product-end -->
-                    <!-- single-product-start -->
-                    <div class="product-wrapper">
-                        <div class="product-img">
-                            <a href="#">
-                                <img src="img/product/12.jpg" alt="book" class="primary" />
-                            </a>
-                            <div class="quick-view">
-                                <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
-                                   title="Xem nhanh">
-                                    <i class="fa fa-search-plus"></i>
-                                </a>
-                            </div>
-                            <div class="product-flag">
-                                <ul>
-                                    <li><span class="discount-percentage">-5%</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-details text-center">
-                            <div class="product-rating">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                </ul>
-                            </div>
-                            <h4><a href="#">45 đời tổng thống Hoa Kì</a></h4>
-                            <div class="product-price">
-                                <ul>
-                                    <li>74.000đ</li>
-                                    <li class="old-price">78.000đ</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-link">
-                            <div class="product-button">
-                                <a href="#" title="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i>Thêm vào
-                                    giỏ hàng</a>
-                            </div>
-                            <div class="add-to-link">
-                                <ul>
-                                    <li><a href="product-details.html" title="Chi tiết"><i
-                                            class="fas fa-external-link-alt"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                    </c:forEach>
                     <!-- single-product-end -->
                 </div>
             </div>
             <div class="tab-pane fade" id="discountbooks">
                 <div class="tab-active owl-carousel">
                     <!-- single-product-start -->
-                    <div class="product-wrapper">
-                        <div class="product-img">
-                            <a href="#">
-                                <img src="img/product/14.jpg" alt="book" class="primary" />
-                            </a>
-                            <div class="quick-view">
-                                <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
-                                   title="Xem nhanh">
-                                    <i class="fa fa-search-plus"></i>
+                    <c:forEach items="${promotionBooks}" var="promotionBook">
+                        <div class="product-wrapper">
+                            <div class="product-img">
+                                <a href="#">
+                                    <img src="${promotionBook.getMainImg()}" alt="book" class="primary"/>
                                 </a>
+                                <div class="quick-view">
+                                    <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
+                                       title="Xem nhanh">
+                                        <i class="fa fa-search-plus"></i>
+                                    </a>
+                                </div>
+                                <div class="product-flag">
+                                    <ul>
+                                        <li><span class="discount-percentage">-5%</span></li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="product-flag">
-                                <ul>
-                                    <li><span class="sale">mới</span> <br></li>
-                                    <li><span class="discount-percentage">-5%</span></li>
-                                </ul>
+                            <div class="product-details text-center">
+                                <div class="product-rating">
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    </ul>
+                                </div>
+                                <h4><a href="#">${promotionBook.name}</a></h4>
+                                <div class="product-price">
+                                    <ul>
+                                        <li>${promotionBook.getDecimalFormatPriceSale()} đ</li>
+                                        <li class="old-price">${promotionBook.getDecimalFormatPrice()} đ</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="product-link">
+                                <div class="product-button">
+                                    <a href="#" title="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i>Thêm vào
+                                        giỏ hàng</a>
+                                </div>
+                                <div class="add-to-link">
+                                    <ul>
+                                        <li><a href="product-details.html" title="Chi tiết"><i
+                                                class="fas fa-external-link-alt"></i></a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                        <div class="product-details text-center">
-                            <div class="product-rating">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                </ul>
-                            </div>
-                            <h4><a href="#">Thiên quân Tứ Phúc</a></h4>
-                            <div class="product-price">
-                                <ul>
-                                    <li>35.000đ</li>
-                                    <li class="old-price">40.000đ</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-link">
-                            <div class="product-button">
-                                <a href="#" title="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i>Thêm vào
-                                    giỏ hàng</a>
-                            </div>
-                            <div class="add-to-link">
-                                <ul>
-                                    <li><a href="product-details.html" title="Chi tiết"><i
-                                            class="fas fa-external-link-alt"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                    </c:forEach>
                     <!-- single-product-end -->
-                    <!-- single-product-start -->
-                    <div class="product-wrapper">
-                        <div class="product-img">
-                            <a href="#">
-                                <img src="img/product/16.jpg" alt="book" class="primary" />
-                            </a>
-                            <div class="quick-view">
-                                <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
-                                   title="Xem nhanh">
-                                    <i class="fa fa-search-plus"></i>
-                                </a>
-                            </div>
-                            <div class="product-flag">
-                                <ul>
-                                    <li><span class="sale">mới</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-details text-center">
-                            <div class="product-rating">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                </ul>
-                            </div>
-                            <h4><a href="#">Ngày người thương thương một người khác</a></h4>
-                            <div class="product-price">
-                                <ul>
-                                    <li>74.000đ</li>
-                                    <li class="old-price">78.000đ</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-link">
-                            <div class="product-button">
-                                <a href="#" title="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i>Thêm vào
-                                    giỏ hàng</a>
-                            </div>
-                            <div class="add-to-link">
-                                <ul>
-                                    <li><a href="product-details.html" title="Chi tiết"><i
-                                            class="fas fa-external-link-alt"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- single-product-end -->
-                    <!-- single-product-start -->
-                    <div class="product-wrapper">
-                        <div class="product-img">
-                            <a href="#">
-                                <img src="img/product/18.jpg" alt="book" class="primary" />
-                            </a>
-                            <div class="quick-view">
-                                <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
-                                   title="Xem nhanh">
-                                    <i class="fa fa-search-plus"></i>
-                                </a>
-                            </div>
-                            <div class="product-flag">
-                                <ul>
-                                    <li><span class="sale">mới</span> <br></li>
-                                    <li><span class="discount-percentage">-5%</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-details text-center">
-                            <div class="product-rating">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                </ul>
-                            </div>
-                            <h4><a href="#">Đắc Nhân Tâm</a></h4>
-                            <div class="product-price">
-                                <ul>
-                                    <li>60.000đ</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-link">
-                            <div class="product-button">
-                                <a href="#" title="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i>Thêm vào
-                                    giỏ hàng</a>
-                            </div>
-                            <div class="add-to-link">
-                                <ul>
-                                    <li><a href="product-details.html" title="Chi tiết"><i
-                                            class="fas fa-external-link-alt"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- single-product-end -->
-                    <!-- single-product-start -->
-                    <div class="product-wrapper">
-                        <div class="product-img">
-                            <a href="#">
-                                <img src="img/product/19.jpg" alt="book" class="primary" />
-                            </a>
-                            <div class="quick-view">
-                                <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
-                                   title="Xem nhanh">
-                                    <i class="fa fa-search-plus"></i>
-                                </a>
-                            </div>
-                            <div class="product-flag">
-                                <ul>
-                                    <li><span class="sale">mới</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-details text-center">
-                            <div class="product-rating">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                </ul>
-                            </div>
-                            <h4><a href="#">This is marketing </a></h4>
-                            <div class="product-price">
-                                <ul>
-                                    <li>422.000đ0đ</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-link">
-                            <div class="product-button">
-                                <a href="#" title="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i>Thêm vào
-                                    giỏ hàng</a>
-                            </div>
-                            <div class="add-to-link">
-                                <ul>
-                                    <li><a href="product-details.html" title="Chi tiết"><i
-                                            class="fas fa-external-link-alt"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- single-product-end -->
-                    <!-- single-product-start -->
-                    <div class="product-wrapper">
-                        <div class="product-img">
-                            <a href="#">
-                                <img src="img/product/17.jpg" alt="book" class="primary" />
-                            </a>
-                            <div class="quick-view">
-                                <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
-                                   title="Xem nhanh">
-                                    <i class="fa fa-search-plus"></i>
-                                </a>
-                            </div>
-                            <div class="product-flag">
-                                <ul>
-                                    <li><span class="sale">mới</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-details text-center">
-                            <div class="product-rating">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                </ul>
-                            </div>
-                            <h4><a href="#">Trillion Dolar Coach</a></h4>
-                            <div class="product-price">
-                                <ul>
-                                    <li>346.500đ</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-link">
-                            <div class="product-button">
-                                <a href="#" title="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i>Thêm vào
-                                    giỏ hàng</a>
-                            </div>
-                            <div class="add-to-link">
-                                <ul>
-                                    <li><a href="product-details.html" title="Chi tiết"><i
-                                            class="fas fa-external-link-alt"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- single-product-end -->
-                    <!-- single-product-start -->
-                    <div class="product-wrapper">
-                        <div class="product-img">
-                            <a href="#">
-                                <img src="img/product/13.jpg" alt="book" class="primary" />
-                            </a>
-                            <div class="quick-view">
-                                <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
-                                   title="Xem nhanh">
-                                    <i class="fa fa-search-plus"></i>
-                                </a>
-                            </div>
-                            <div class="product-flag">
-                                <ul>
-                                    <li><span class="discount-percentage">-5%</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-details text-center">
-                            <div class="product-rating">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                </ul>
-                            </div>
-                            <h4><a href="#">Từ điển tiếng em</a></h4>
-                            <div class="product-price">
-                                <ul>
-                                    <li>80.000đ</li>
-                                    <li class="old-price">122.000đ</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-link">
-                            <div class="product-button">
-                                <a href="#" title="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i>Thêm vào
-                                    giỏ hàng</a>
-                            </div>
-                            <div class="add-to-link">
-                                <ul>
-                                    <li><a href="product-details.html" title="Chi tiết"><i
-                                            class="fas fa-external-link-alt"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- single-product-end -->
+
                 </div>
             </div>
         </div>
@@ -1418,23 +677,6 @@
     </div>
 </div>
 <!-- product-area-end -->
-<!-- banner-area-start -->
-<!-- <div class="banner-area-5 mtb-95">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="banner-img-2">
-                        <a href="#"><img src="img/banner/5.jpg" alt="banner" /></a>
-                        <div class="banner-text">
-                            <h3>G. Meyer Books & Spiritual Traveler Press</h3>
-                            <h2>Giảm đến 30%</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-<!-- banner-area-end -->
 <!-- bestseller-area-start -->
 <div class="bestseller-area mtb-20">
     <div class="container">
@@ -1442,7 +684,7 @@
             <div class="col-lg-8 col-md-12 col-12">
                 <div class="bestseller-content">
                     <h1>Tác giả nổi bật</h1>
-                    <h2>Stephen R.<br />Covey</h2>
+                    <h2>Stephen R.<br>Covey</h2>
                     <p class="categories">Thể loại:<a href="#">Sách tâm lí</a> , <a href="#">Lãnh đạo</a></p>
                     <p>Stephen R. Covey(1932 - 2012) là một trong 25 người có ảnh hưởng nhất nước Mỹ do tạp chí Time
                         bình chọn sau thành công của cuốn sách
@@ -1456,131 +698,319 @@
                     </div>
                 </div>
                 <div class="banner-img-2">
-                    <a href="#"><img src="img/banner/6.jpg" alt="banner" /></a>
+                    <a href="#"><img src="img/banner/6.jpg" alt="banner"></a>
                 </div>
             </div>
             <div class="col-lg-4 col-md-12 col-12">
-                <div class="bestseller-active owl-carousel">
-                    <div class="bestseller-total">
-                        <div class="single-bestseller mb-25">
-                            <div class="bestseller-img">
-                                <a href="#"><img src="img/product/51.jpg" alt="book" /></a>
-                                <div class="product-flag">
-                                    <ul>
-                                        <li><span class="sale">mới</span></li>
-                                        <li><span class="discount-percentage">-5%</span></li>
-                                    </ul>
+                <div class="bestseller-active owl-carousel owl-loaded owl-drag">
+
+
+                    <div class="owl-stage-outer">
+                        <div class="owl-stage"
+                             style="transform: translate3d(-373px, 0px, 0px); transition: all 0s ease 0s; width: 1306px;">
+                            <div class="owl-item cloned" style="width: 166.5px; margin-right: 20px;">
+                                <div class="bestseller-total">
+                                    <div class="single-bestseller mb-25">
+                                        <div class="bestseller-img">
+                                            <a href="#"><img src="img/product/53.jpg" alt="book"></a>
+                                            <div class="product-flag">
+                                                <ul>
+                                                    <li><span class="sale">mới</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="bestseller-text text-center">
+                                            <h3><a href="#">The 8th habit</a></h3>
+                                            <div class="price">
+                                                <ul>
+                                                    <li><span class="mới-price">80.000đ</span></li>
+                                                    <li><span class="old-price">92.000đ</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="single-bestseller">
+                                        <div class="bestseller-img">
+                                            <a href="#"><img src="img/product/20.jpg" alt="book"></a>
+                                            <div class="product-flag">
+                                                <ul>
+                                                    <li><span class="sale">mới</span></li>
+                                                    <li><span class="discount-percentage">-5%</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="bestseller-text text-center">
+                                            <h3><a href="#">Deep Learning</a></h3>
+                                            <div class="price">
+                                                <ul>
+                                                    <li><span class="mới-price">32.000đ</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="bestseller-text text-center">
-                                <h3> <a href="#">7 thói quen bạn trẻ thành đạt</a></h3>
-                                <div class="price">
-                                    <ul>
-                                        <li><span class="mới-price">40.000đ</span></li>
-                                        <li><span class="old-price">45.000đ</span></li>
-                                    </ul>
+                            <div class="owl-item cloned" style="width: 166.5px; margin-right: 20px;">
+                                <div class="bestseller-total">
+                                    <div class="single-bestseller mb-25">
+                                        <div class="bestseller-img">
+                                            <a href="#"><img src="img/product/1.jpg" alt="book"></a>
+                                            <div class="product-flag">
+                                                <ul>
+                                                    <li><span class="sale">mới</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="bestseller-text text-center">
+                                            <h3><a href="#">Nhân Số Học</a></h3>
+                                            <div class="price">
+                                                <ul>
+                                                    <li><span class="mới-price">59.000đ</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="single-bestseller">
+                                        <div class="bestseller-img">
+                                            <a href="#"><img src="img/product/14.jpg" alt="book"></a>
+                                            <div class="product-flag">
+                                                <ul>
+                                                    <li><span class="sale">mới</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="bestseller-text text-center">
+                                            <h3><a href="#">Trấn Hưng Trấn</a></h3>
+                                            <div class="price">
+                                                <ul>
+                                                    <li><span class="mới-price">70.000đ</span></li>
+                                                    <li><span class="old-price">74.000đ</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="single-bestseller">
-                            <div class="bestseller-img">
-                                <a href="#"><img src="img/product/52.jpg" alt="book" /></a>
-                                <div class="product-flag">
-                                    <ul>
-                                        <li><span class="sale">mới</span></li>
-                                    </ul>
+                            <div class="owl-item active" style="width: 166.5px; margin-right: 20px;">
+                                <div class="bestseller-total">
+                                    <div class="single-bestseller mb-25">
+                                        <div class="bestseller-img">
+                                            <a href="#"><img src="img/product/51.jpg" alt="book"></a>
+                                            <div class="product-flag">
+                                                <ul>
+                                                    <li><span class="sale">mới</span></li>
+                                                    <li><span class="discount-percentage">-5%</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="bestseller-text text-center">
+                                            <h3><a href="#">7 thói quen bạn trẻ thành đạt</a></h3>
+                                            <div class="price">
+                                                <ul>
+                                                    <li><span class="mới-price">40.000đ</span></li>
+                                                    <li><span class="old-price">45.000đ</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="single-bestseller">
+                                        <div class="bestseller-img">
+                                            <a href="#"><img src="img/product/52.jpg" alt="book"></a>
+                                            <div class="product-flag">
+                                                <ul>
+                                                    <li><span class="sale">mới</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="bestseller-text text-center">
+                                            <h3><a href="#">Nghệ thuật lãnh đạo theo nguyên tắc</a></h3>
+                                            <div class="price">
+                                                <ul>
+                                                    <li><span class="mới-price">70.000đ</span></li>
+                                                    <li><span class="old-price">74.000đ</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="bestseller-text text-center">
-                                <h3> <a href="#">Nghệ thuật lãnh đạo theo nguyên tắc</a></h3>
-                                <div class="price">
-                                    <ul>
-                                        <li><span class="mới-price">70.000đ</span></li>
-                                        <li><span class="old-price">74.000đ</span></li>
-                                    </ul>
+                            <div class="owl-item active" style="width: 166.5px; margin-right: 20px;">
+                                <div class="bestseller-total">
+                                    <div class="single-bestseller mb-25">
+                                        <div class="bestseller-img">
+                                            <a href="#"><img src="img/product/53.jpg" alt="book"></a>
+                                            <div class="product-flag">
+                                                <ul>
+                                                    <li><span class="sale">mới</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="bestseller-text text-center">
+                                            <h3><a href="#">The 8th habit</a></h3>
+                                            <div class="price">
+                                                <ul>
+                                                    <li><span class="mới-price">80.000đ</span></li>
+                                                    <li><span class="old-price">92.000đ</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="single-bestseller">
+                                        <div class="bestseller-img">
+                                            <a href="#"><img src="img/product/20.jpg" alt="book"></a>
+                                            <div class="product-flag">
+                                                <ul>
+                                                    <li><span class="sale">mới</span></li>
+                                                    <li><span class="discount-percentage">-5%</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="bestseller-text text-center">
+                                            <h3><a href="#">Deep Learning</a></h3>
+                                            <div class="price">
+                                                <ul>
+                                                    <li><span class="mới-price">32.000đ</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="owl-item" style="width: 166.5px; margin-right: 20px;">
+                                <div class="bestseller-total">
+                                    <div class="single-bestseller mb-25">
+                                        <div class="bestseller-img">
+                                            <a href="#"><img src="img/product/1.jpg" alt="book"></a>
+                                            <div class="product-flag">
+                                                <ul>
+                                                    <li><span class="sale">mới</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="bestseller-text text-center">
+                                            <h3><a href="#">Nhân Số Học</a></h3>
+                                            <div class="price">
+                                                <ul>
+                                                    <li><span class="mới-price">59.000đ</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="single-bestseller">
+                                        <div class="bestseller-img">
+                                            <a href="#"><img src="img/product/14.jpg" alt="book"></a>
+                                            <div class="product-flag">
+                                                <ul>
+                                                    <li><span class="sale">mới</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="bestseller-text text-center">
+                                            <h3><a href="#">Trấn Hưng Trấn</a></h3>
+                                            <div class="price">
+                                                <ul>
+                                                    <li><span class="mới-price">70.000đ</span></li>
+                                                    <li><span class="old-price">74.000đ</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="owl-item cloned" style="width: 166.5px; margin-right: 20px;">
+                                <div class="bestseller-total">
+                                    <div class="single-bestseller mb-25">
+                                        <div class="bestseller-img">
+                                            <a href="#"><img src="img/product/51.jpg" alt="book"></a>
+                                            <div class="product-flag">
+                                                <ul>
+                                                    <li><span class="sale">mới</span></li>
+                                                    <li><span class="discount-percentage">-5%</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="bestseller-text text-center">
+                                            <h3><a href="#">7 thói quen bạn trẻ thành đạt</a></h3>
+                                            <div class="price">
+                                                <ul>
+                                                    <li><span class="mới-price">40.000đ</span></li>
+                                                    <li><span class="old-price">45.000đ</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="single-bestseller">
+                                        <div class="bestseller-img">
+                                            <a href="#"><img src="img/product/52.jpg" alt="book"></a>
+                                            <div class="product-flag">
+                                                <ul>
+                                                    <li><span class="sale">mới</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="bestseller-text text-center">
+                                            <h3><a href="#">Nghệ thuật lãnh đạo theo nguyên tắc</a></h3>
+                                            <div class="price">
+                                                <ul>
+                                                    <li><span class="mới-price">70.000đ</span></li>
+                                                    <li><span class="old-price">74.000đ</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="owl-item cloned" style="width: 166.5px; margin-right: 20px;">
+                                <div class="bestseller-total">
+                                    <div class="single-bestseller mb-25">
+                                        <div class="bestseller-img">
+                                            <a href="#"><img src="img/product/53.jpg" alt="book"></a>
+                                            <div class="product-flag">
+                                                <ul>
+                                                    <li><span class="sale">mới</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="bestseller-text text-center">
+                                            <h3><a href="#">The 8th habit</a></h3>
+                                            <div class="price">
+                                                <ul>
+                                                    <li><span class="mới-price">80.000đ</span></li>
+                                                    <li><span class="old-price">92.000đ</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="single-bestseller">
+                                        <div class="bestseller-img">
+                                            <a href="#"><img src="img/product/20.jpg" alt="book"></a>
+                                            <div class="product-flag">
+                                                <ul>
+                                                    <li><span class="sale">mới</span></li>
+                                                    <li><span class="discount-percentage">-5%</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="bestseller-text text-center">
+                                            <h3><a href="#">Deep Learning</a></h3>
+                                            <div class="price">
+                                                <ul>
+                                                    <li><span class="mới-price">32.000đ</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="bestseller-total">
-                        <div class="single-bestseller mb-25">
-                            <div class="bestseller-img">
-                                <a href="#"><img src="img/product/53.jpg" alt="book" /></a>
-                                <div class="product-flag">
-                                    <ul>
-                                        <li><span class="sale">mới</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="bestseller-text text-center">
-                                <h3> <a href="#">The 8th habit</a></h3>
-                                <div class="price">
-                                    <ul>
-                                        <li><span class="mới-price">80.000đ</span></li>
-                                        <li><span class="old-price">92.000đ</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single-bestseller">
-                            <div class="bestseller-img">
-                                <a href="#"><img src="img/product/20.jpg" alt="book" /></a>
-                                <div class="product-flag">
-                                    <ul>
-                                        <li><span class="sale">mới</span></li>
-                                        <li><span class="discount-percentage">-5%</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="bestseller-text text-center">
-                                <h3> <a href="#">Deep Learning</a></h3>
-                                <div class="price">
-                                    <ul>
-                                        <li><span class="mới-price">32.000đ</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="owl-nav">
+                        <button type="button" role="presentation" class="owl-prev"><i class="fa fa-angle-left"></i>
+                        </button>
+                        <button type="button" role="presentation" class="owl-next"><i class="fa fa-angle-right"></i>
+                        </button>
                     </div>
-                    <div class="bestseller-total">
-                        <div class="single-bestseller mb-25">
-                            <div class="bestseller-img">
-                                <a href="#"><img src="img/product/1.jpg" alt="book" /></a>
-                                <div class="product-flag">
-                                    <ul>
-                                        <li><span class="sale">mới</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="bestseller-text text-center">
-                                <h3> <a href="#">Nhân Số Học</a></h3>
-                                <div class="price">
-                                    <ul>
-                                        <li><span class="mới-price">59.000đ</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single-bestseller">
-                            <div class="bestseller-img">
-                                <a href="#"><img src="img/product/14.jpg" alt="book" /></a>
-                                <div class="product-flag">
-                                    <ul>
-                                        <li><span class="sale">mới</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="bestseller-text text-center">
-                                <h3> <a href="#">Trấn Hưng Trấn</a></h3>
-                                <div class="price">
-                                    <ul>
-                                        <li><span class="mới-price">70.000đ</span></li>
-                                        <li><span class="old-price">74.000đ</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="owl-dots disabled"></div>
                 </div>
             </div>
         </div>
@@ -1604,7 +1034,7 @@
                 <div class="product-wrapper mb-15">
                     <div class="product-img">
                         <a href="#">
-                            <img src="img/product/50.jpg" alt="book" class="primary" />
+                            <img src="img/product/50.jpg" alt="book" class="primary"/>
                         </a>
                         <div class="quick-view">
                             <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
@@ -1614,7 +1044,7 @@
                         </div>
                         <div class="product-flag">
                             <ul>
-                                <li><span class="sale">mới</span> </li>
+                                <li><span class="sale">mới</span></li>
                                 <li><span class="discount-percentage">-5%</span></li>
                             </ul>
                         </div>
@@ -1654,7 +1084,7 @@
                 <div class="product-wrapper">
                     <div class="product-img">
                         <a href="#">
-                            <img src="img/product/49.jpg" alt="book" class="primary" />
+                            <img src="img/product/49.jpg" alt="book" class="primary"/>
                         </a>
                         <div class="quick-view">
                             <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
@@ -1706,7 +1136,7 @@
                 <div class="product-wrapper mb-15">
                     <div class="product-img">
                         <a href="#">
-                            <img src="img/product/49.jpg" alt="book" class="primary" />
+                            <img src="img/product/49.jpg" alt="book" class="primary"/>
                         </a>
                         <div class="quick-view">
                             <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
@@ -1755,7 +1185,7 @@
                 <div class="product-wrapper">
                     <div class="product-img">
                         <a href="#">
-                            <img src="img/product/47.jpg" alt="book" class="primary" />
+                            <img src="img/product/47.jpg" alt="book" class="primary"/>
                         </a>
                         <div class="quick-view">
                             <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
@@ -1765,7 +1195,7 @@
                         </div>
                         <div class="product-flag">
                             <ul>
-                                <li><span class="sale">mới</span> </li>
+                                <li><span class="sale">mới</span></li>
                                 <li><span class="discount-percentage">-5%</span></li>
                             </ul>
                         </div>
@@ -1807,7 +1237,7 @@
                 <div class="product-wrapper mb-15">
                     <div class="product-img">
                         <a href="#">
-                            <img src="img/product/41.jpg" alt="book" class="primary" />
+                            <img src="img/product/41.jpg" alt="book" class="primary"/>
                         </a>
                         <div class="quick-view">
                             <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
@@ -1817,7 +1247,7 @@
                         </div>
                         <div class="product-flag">
                             <ul>
-                                <li><span class="sale">mới</span> </li>
+                                <li><span class="sale">mới</span></li>
                                 <li><span class="discount-percentage">-5%</span></li>
                             </ul>
                         </div>
@@ -1857,7 +1287,7 @@
                 <div class="product-wrapper">
                     <div class="product-img">
                         <a href="#">
-                            <img src="img/product/33.jpg" alt="book" class="primary" />
+                            <img src="img/product/33.jpg" alt="book" class="primary"/>
                         </a>
                         <div class="quick-view">
                             <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
@@ -1867,7 +1297,7 @@
                         </div>
                         <div class="product-flag">
                             <ul>
-                                <li><span class="sale">mới</span> </li>
+                                <li><span class="sale">mới</span></li>
                             </ul>
                         </div>
                     </div>
@@ -1908,7 +1338,7 @@
                 <div class="product-wrapper mb-15">
                     <div class="product-img">
                         <a href="#">
-                            <img src="img/product/32.jpg" alt="book" class="primary" />
+                            <img src="img/product/32.jpg" alt="book" class="primary"/>
                         </a>
                         <div class="quick-view">
                             <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
@@ -1958,7 +1388,7 @@
                 <div class="product-wrapper">
                     <div class="product-img">
                         <a href="#">
-                            <img src="img/product/20.jpg" alt="book" class="primary" />
+                            <img src="img/product/20.jpg" alt="book" class="primary"/>
                         </a>
                         <div class="quick-view">
                             <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
@@ -1968,7 +1398,7 @@
                         </div>
                         <div class="product-flag">
                             <ul>
-                                <li><span class="sale">mới</span> </li>
+                                <li><span class="sale">mới</span></li>
                                 <li><span class="discount-percentage">-5%</span></li>
                             </ul>
                         </div>
@@ -2010,7 +1440,7 @@
                 <div class="product-wrapper mb-15">
                     <div class="product-img">
                         <a href="#">
-                            <img src="img/product/22.jpg" alt="book" class="primary" />
+                            <img src="img/product/22.jpg" alt="book" class="primary"/>
                         </a>
                         <div class="quick-view">
                             <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
@@ -2060,7 +1490,7 @@
                 <div class="product-wrapper">
                     <div class="product-img">
                         <a href="#">
-                            <img src="img/product/23.jpg" alt="book" class="primary" />
+                            <img src="img/product/23.jpg" alt="book" class="primary"/>
                         </a>
                         <div class="quick-view">
                             <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
@@ -2070,7 +1500,7 @@
                         </div>
                         <div class="product-flag">
                             <ul>
-                                <li><span class="sale">mới</span> </li>
+                                <li><span class="sale">mới</span></li>
                                 <li><span class="discount-percentage">-5%</span></li>
                             </ul>
                         </div>
@@ -2113,7 +1543,7 @@
                 <div class="product-wrapper mb-15">
                     <div class="product-img">
                         <a href="#">
-                            <img src="img/product/24.jpg" alt="book" class="primary" />
+                            <img src="img/product/24.jpg" alt="book" class="primary"/>
                         </a>
                         <div class="quick-view">
                             <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
@@ -2163,7 +1593,7 @@
                 <div class="product-wrapper">
                     <div class="product-img">
                         <a href="#">
-                            <img src="img/product/3.jpg" alt="book" class="primary" />
+                            <img src="img/product/3.jpg" alt="book" class="primary"/>
                         </a>
                         <div class="quick-view">
                             <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
@@ -2173,7 +1603,7 @@
                         </div>
                         <div class="product-flag">
                             <ul>
-                                <li><span class="sale">mới</span> </li>
+                                <li><span class="sale">mới</span></li>
                                 <li><span class="discount-percentage">-5%</span></li>
                             </ul>
                         </div>
@@ -2221,12 +1651,12 @@
         <div class="row">
             <div class="col-lg-6 col-md-6 col-12">
                 <div class="banner-shadow-hover xs-mb">
-                    <a href="#"><img src="img/banner/8.jpg" alt="banner" /></a>
+                    <a href="#"><img src="img/banner/8.jpg" alt="banner"/></a>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-12">
                 <div class="banner-shadow-hover">
-                    <a href="#"><img src="img/banner/9.jpg" alt="banner" /></a>
+                    <a href="#"><img src="img/banner/9.jpg" alt="banner"/></a>
                 </div>
             </div>
         </div>
@@ -2248,7 +1678,7 @@
                 <div class="product-wrapper mb-15">
                     <div class="product-img">
                         <a href="#">
-                            <img src="img/product/50.jpg" alt="book" class="primary" />
+                            <img src="img/product/50.jpg" alt="book" class="primary"/>
                         </a>
                         <div class="quick-view">
                             <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
@@ -2258,7 +1688,7 @@
                         </div>
                         <div class="product-flag">
                             <ul>
-                                <li><span class="sale">mới</span> </li>
+                                <li><span class="sale">mới</span></li>
                                 <li><span class="discount-percentage">-5%</span></li>
                             </ul>
                         </div>
@@ -2298,7 +1728,7 @@
                 <div class="product-wrapper">
                     <div class="product-img">
                         <a href="#">
-                            <img src="img/product/49.jpg" alt="book" class="primary" />
+                            <img src="img/product/49.jpg" alt="book" class="primary"/>
                         </a>
                         <div class="quick-view">
                             <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
@@ -2350,7 +1780,7 @@
                 <div class="product-wrapper mb-15">
                     <div class="product-img">
                         <a href="#">
-                            <img src="img/product/49.jpg" alt="book" class="primary" />
+                            <img src="img/product/49.jpg" alt="book" class="primary"/>
                         </a>
                         <div class="quick-view">
                             <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
@@ -2399,7 +1829,7 @@
                 <div class="product-wrapper">
                     <div class="product-img">
                         <a href="#">
-                            <img src="img/product/47.jpg" alt="book" class="primary" />
+                            <img src="img/product/47.jpg" alt="book" class="primary"/>
                         </a>
                         <div class="quick-view">
                             <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
@@ -2409,7 +1839,7 @@
                         </div>
                         <div class="product-flag">
                             <ul>
-                                <li><span class="sale">mới</span> </li>
+                                <li><span class="sale">mới</span></li>
                                 <li><span class="discount-percentage">-5%</span></li>
                             </ul>
                         </div>
@@ -2451,7 +1881,7 @@
                 <div class="product-wrapper mb-15">
                     <div class="product-img">
                         <a href="#">
-                            <img src="img/product/41.jpg" alt="book" class="primary" />
+                            <img src="img/product/41.jpg" alt="book" class="primary"/>
                         </a>
                         <div class="quick-view">
                             <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
@@ -2461,7 +1891,7 @@
                         </div>
                         <div class="product-flag">
                             <ul>
-                                <li><span class="sale">mới</span> </li>
+                                <li><span class="sale">mới</span></li>
                                 <li><span class="discount-percentage">-5%</span></li>
                             </ul>
                         </div>
@@ -2501,7 +1931,7 @@
                 <div class="product-wrapper">
                     <div class="product-img">
                         <a href="#">
-                            <img src="img/product/33.jpg" alt="book" class="primary" />
+                            <img src="img/product/33.jpg" alt="book" class="primary"/>
                         </a>
                         <div class="quick-view">
                             <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
@@ -2511,7 +1941,7 @@
                         </div>
                         <div class="product-flag">
                             <ul>
-                                <li><span class="sale">mới</span> </li>
+                                <li><span class="sale">mới</span></li>
                             </ul>
                         </div>
                     </div>
@@ -2552,7 +1982,7 @@
                 <div class="product-wrapper mb-15">
                     <div class="product-img">
                         <a href="#">
-                            <img src="img/product/32.jpg" alt="book" class="primary" />
+                            <img src="img/product/32.jpg" alt="book" class="primary"/>
                         </a>
                         <div class="quick-view">
                             <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
@@ -2602,7 +2032,7 @@
                 <div class="product-wrapper">
                     <div class="product-img">
                         <a href="#">
-                            <img src="img/product/20.jpg" alt="book" class="primary" />
+                            <img src="img/product/20.jpg" alt="book" class="primary"/>
                         </a>
                         <div class="quick-view">
                             <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
@@ -2612,7 +2042,7 @@
                         </div>
                         <div class="product-flag">
                             <ul>
-                                <li><span class="sale">mới</span> </li>
+                                <li><span class="sale">mới</span></li>
                                 <li><span class="discount-percentage">-5%</span></li>
                             </ul>
                         </div>
@@ -2654,7 +2084,7 @@
                 <div class="product-wrapper mb-15">
                     <div class="product-img">
                         <a href="#">
-                            <img src="img/product/22.jpg" alt="book" class="primary" />
+                            <img src="img/product/22.jpg" alt="book" class="primary"/>
                         </a>
                         <div class="quick-view">
                             <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
@@ -2704,7 +2134,7 @@
                 <div class="product-wrapper">
                     <div class="product-img">
                         <a href="#">
-                            <img src="img/product/23.jpg" alt="book" class="primary" />
+                            <img src="img/product/23.jpg" alt="book" class="primary"/>
                         </a>
                         <div class="quick-view">
                             <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
@@ -2714,7 +2144,7 @@
                         </div>
                         <div class="product-flag">
                             <ul>
-                                <li><span class="sale">mới</span> </li>
+                                <li><span class="sale">mới</span></li>
                                 <li><span class="discount-percentage">-5%</span></li>
                             </ul>
                         </div>
@@ -2757,7 +2187,7 @@
                 <div class="product-wrapper mb-15">
                     <div class="product-img">
                         <a href="#">
-                            <img src="img/product/24.jpg" alt="book" class="primary" />
+                            <img src="img/product/24.jpg" alt="book" class="primary"/>
                         </a>
                         <div class="quick-view">
                             <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
@@ -2807,7 +2237,7 @@
                 <div class="product-wrapper">
                     <div class="product-img">
                         <a href="#">
-                            <img src="img/product/3.jpg" alt="book" class="primary" />
+                            <img src="img/product/3.jpg" alt="book" class="primary"/>
                         </a>
                         <div class="quick-view">
                             <a class="action-view" href="#" data-target="#productModal" data-toggle="modal"
@@ -2817,7 +2247,7 @@
                         </div>
                         <div class="product-flag">
                             <ul>
-                                <li><span class="sale">mới</span> </li>
+                                <li><span class="sale">mới</span></li>
                                 <li><span class="discount-percentage">-5%</span></li>
                             </ul>
                         </div>
@@ -3512,7 +2942,7 @@
                 <div class="col-lg-12">
                     <div class="single-post">
                         <div class="post-img">
-                            <a href="#"><img src="img/post/1.jpg" alt="post" /></a>
+                            <a href="#"><img src="img/post/1.jpg" alt="post"/></a>
                             <div class="blog-date-time">
                                 <span class="day-time">06</span>
                                 <span class="moth-time">Dec</span>
@@ -3529,7 +2959,7 @@
                 <div class="col-lg-12">
                     <div class="single-post">
                         <div class="post-img">
-                            <a href="blog-details.html"><img src="img/post/2.jpg" alt="post" /></a>
+                            <a href="blog-details.html"><img src="img/post/2.jpg" alt="post"/></a>
                             <div class="blog-date-time">
                                 <span class="day-time">06</span>
                                 <span class="moth-time">Dec</span>
@@ -3546,7 +2976,7 @@
                 <div class="col-lg-12">
                     <div class="single-post">
                         <div class="post-img">
-                            <a href="blog-details.html"><img src="img/post/3.jpg" alt="post" /></a>
+                            <a href="blog-details.html"><img src="img/post/3.jpg" alt="post"/></a>
                             <div class="blog-date-time">
                                 <span class="day-time">07</span>
                                 <span class="moth-time">Dec</span>
@@ -3563,7 +2993,7 @@
                 <div class="col-lg-12">
                     <div class="single-post">
                         <div class="post-img">
-                            <a href="blog-details.html"><img src="img/post/4.jpg" alt="post" /></a>
+                            <a href="blog-details.html"><img src="img/post/4.jpg" alt="post"/></a>
                             <div class="blog-date-time">
                                 <span class="day-time">08</span>
                                 <span class="moth-time">Dec</span>
@@ -3710,7 +3140,7 @@
                 </div>
                 <div class="col-lg-6 col-md-6 col-12">
                     <div class="payment-img text-right">
-                        <a href="#"><img src="img/1.png" alt="payment" /></a>
+                        <a href="#"><img src="img/1.png" alt="payment"/></a>
                     </div>
                 </div>
             </div>
@@ -3733,23 +3163,23 @@
                         <div class="modal-tab">
                             <div class="product-details-large tab-content">
                                 <div class="tab-pane active" id="image-1">
-                                    <img src="img/product/quickview-l1.jpg" alt="" />
+                                    <img src="img/product/quickview-l1.jpg" alt=""/>
                                 </div>
                                 <div class="tab-pane" id="image-2">
-                                    <img src="img/product/quickview-l2.jpg" alt="" />
+                                    <img src="img/product/quickview-l2.jpg" alt=""/>
                                 </div>
                                 <div class="tab-pane" id="image-3">
-                                    <img src="img/product/quickview-l1.jpg" alt="" />
+                                    <img src="img/product/quickview-l1.jpg" alt=""/>
                                 </div>
                                 <div class="tab-pane" id="image-4">
-                                    <img src="img/product/quickview-l2.jpg" alt="" />
+                                    <img src="img/product/quickview-l2.jpg" alt=""/>
                                 </div>
                             </div>
                             <div class="product-details-small quickview-active owl-carousel">
-                                <a class="active" href="#image-1"><img src="img/product/quickview-s1.jpg" alt="" /></a>
-                                <a href="#image-2"><img src="img/product/quickview-s2.jpg" alt="" /></a>
-                                <a href="#image-3"><img src="img/product/quickview-s1.jpg" alt="" /></a>
-                                <a href="#image-4"><img src="img/product/quickview-s2.jpg" alt="" /></a>
+                                <a class="active" href="#image-1"><img src="img/product/quickview-s1.jpg" alt=""/></a>
+                                <a href="#image-2"><img src="img/product/quickview-s2.jpg" alt=""/></a>
+                                <a href="#image-3"><img src="img/product/quickview-s1.jpg" alt=""/></a>
+                                <a href="#image-4"><img src="img/product/quickview-s2.jpg" alt=""/></a>
                             </div>
                         </div>
                     </div>
@@ -3759,8 +3189,10 @@
                             <div class="price">
                                 <span>249.000đ</span>
                             </div>
-                            <p>Cuốn sách Thay đổi cuộc sống với Nhân số học là tác phẩm được chị Lê Đỗ Quỳnh Hương phát triển từ tác phẩm gốc
-                                “The Complete Book of Numerology” của tiến sỹ David A. Phillips, khiến bộ môn Nhân số học khởi nguồn từ nhà toán học Pythagoras
+                            <p>Cuốn sách Thay đổi cuộc sống với Nhân số học là tác phẩm được chị Lê Đỗ Quỳnh Hương phát
+                                triển từ tác phẩm gốc
+                                “The Complete Book of Numerology” của tiến sỹ David A. Phillips, khiến bộ môn Nhân số
+                                học khởi nguồn từ nhà toán học Pythagoras
                                 trở nên gần gũi, dễ hiểu hơn với độc giả Việt Nam.</p>
                             <div class="quick-view-select">
                                 <div class="select-option-part">
@@ -3783,7 +3215,7 @@
                             </div>
                             <form action="#">
                                 <label>Số lượng</label>
-                                <input type="number" value="1" />
+                                <input type="number" value="1"/>
                                 <button>Thêm vào giỏ hàng</button>
                             </form>
                             <span><i class="fa fa-check"></i>Còn hàng</span>

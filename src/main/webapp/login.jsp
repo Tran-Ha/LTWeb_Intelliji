@@ -378,7 +378,7 @@
 
                 </ul>
 
-                <form method="post" action="#" id="login" style="display: block;" >
+                <form method="post" action="/Login" id="login" style="display: block;" >
                     <div class="form-group">
                         <input type="username" name="username" id="username" class=" form-control"
                                placeholder="Nhập email">

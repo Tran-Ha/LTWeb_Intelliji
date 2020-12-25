@@ -2,6 +2,9 @@ package vn.edu.nlu.beans;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 public class Book implements Serializable {
     private int id;
@@ -17,6 +20,9 @@ public class Book implements Serializable {
     private int quatity;
     private String description;
     private String information;
+    // Tan code
+    private ArrayList<String> imgs = new ArrayList<>();
+    // end
 
     public Book(){
     }
@@ -144,4 +150,42 @@ public class Book implements Serializable {
         this.information = information;
     }
 
+    public ArrayList<String> getImgs() {
+        return imgs;
+    }
+
+    public void setImgs(ArrayList<String> imgs) {
+        this.imgs = imgs;
+    }
+
+    // Tan code
+    public String getMainImg(){
+        for (String img: imgs) {
+            if( img.endsWith("0.jpg"))
+                return img;
+        }
+        return imgs.get(0);
+    }
+
+    public String getDecimalFormatPrice() {
+        DecimalFormat f = new DecimalFormat();
+        return  f.format(price);
+    }
+
+    public String getDecimalFormatPriceSale() {
+        DecimalFormat f = new DecimalFormat();
+        return  f.format(priceSale);
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", name='" + name +
+                ", price=" + price +
+                ", priceSale=" + priceSale +
+                ", imgs=" + imgs +
+                '}';
+    }
+    // end
 }
