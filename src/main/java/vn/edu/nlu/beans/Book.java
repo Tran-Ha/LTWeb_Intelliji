@@ -17,21 +17,13 @@ public class Book implements Serializable {
     private int quatity;
     private String description;
     private String information;
-    private int id_publication;
-    private int id_category;
 
     public Book(){
     }
-    public Book(int id, String name,long price, long priceSale, int quatity){
-        this.id=id;
-        this.name=name;
-        this.price=price;
-        this.quatity=quatity;
-    }
+
     public Book(int id, String name,long price, long priceSale,
                 boolean isNew, boolean isHot, boolean isPromotion, boolean isBestseller, boolean isActive,
-                Date date_created, int quatity, String description, String information,
-                int id_publication, int id_category){
+                Date date_created, int quatity, String description, String information){
         this.id=id;
         this.name=name;
         this.price=price;
@@ -45,8 +37,6 @@ public class Book implements Serializable {
         this.quatity=quatity;
         this.description=description;
         this.information=information;
-        this.id_publication=id_publication;
-        this.id_category=id_category;
 
     }
 
@@ -154,19 +144,4 @@ public class Book implements Serializable {
         this.information = information;
     }
 
-    public int getId_publication() {
-        return id_publication;
-    }
-
-    public void setId_publication(int id_publication) {
-        this.id_publication = id_publication;
-    }
-
-    public int getId_category() {
-        return id_category;
-    }
-
-    public void setId_category(int id_category) {
-        this.id_category = id_category;
-    }
 }
