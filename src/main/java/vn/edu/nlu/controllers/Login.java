@@ -1,6 +1,7 @@
 package vn.edu.nlu.controllers;
 
 import vn.edu.nlu.beans.User;
+import vn.edu.nlu.database.ConnectionDB;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -28,8 +30,8 @@ public class Login extends HttpServlet {
         ResultSet rs = null;
     //    ID, NAME, EMAIL, PHONE, PASSWORD, ADDRESS, CITY, IMG, BIRTHDAY, ACTIVE, ISADMIN, ID_CART
         try {
-            Statement statement = ConnectionDB.connect(sql);
-            rs = statement.executeQuery(sql);
+            PreparedStatement statement = ConnectionDB.connect(sql);
+            rs = statement.executeQuery();
             rs.last();
             int i = rs.getRow();
             if(rs != null && i==1) {
@@ -47,6 +49,7 @@ public class Login extends HttpServlet {
                 user.setActive(rs.getBoolean(10));
                 user.setAdmin(rs.getBoolean(11));
 
+                System.out.println("run");
             //    HttpSession session = request.getSession();
             //    session.setAttribute("user", user);
                 if (user.isAdmin()){
@@ -55,6 +58,7 @@ public class Login extends HttpServlet {
                     response.sendRedirect("home.jsp");
                 }
             } else {
+                System.out.println("run !!!");
                 request.setAttribute("err", "Sai user name hoac password");
                 request.getRequestDispatcher("login.jsp").forward(request,response);
             }
