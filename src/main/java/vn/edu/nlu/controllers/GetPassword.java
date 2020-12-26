@@ -18,13 +18,11 @@ public class GetPassword extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String randomKey = request.getParameter("key");
-        System.out.println("randomKey: " + randomKey);
         int id = UserEntity.getIdByKey(randomKey);
-        System.out.println("id: " + id);
         if (UserEntity.checkTimeById(id, 30*60*1000)) {
             HttpSession session = request.getSession();
             session.setAttribute("user", UserEntity.getUserById(id));
-            request.getRequestDispatcher("/my-account.jsp").forward(request, response);
+            request.getRequestDispatcher("my-account.jsp").forward(request, response);
         } else {
             response.sendRedirect("login_signup.jsp");
         }

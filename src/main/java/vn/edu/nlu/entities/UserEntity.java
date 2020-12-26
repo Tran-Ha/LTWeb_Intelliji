@@ -145,6 +145,6 @@ public class UserEntity {
 //        System.out.println(UserEntity.checkTimeById(1, 120 * 60 * 1000));
 //        System.out.println(UserEntity.createRandomString(120));
 //        System.out.println(UserEntity.setKeyById(1, "this is random key!!! huhu"));
-        System.out.println(UserEntity.getIdByEmail("letanphat857@gmail.com"));
+//        System.out.println(UserEntity.getIdByEmail("letanphat857@gmail.com"));
     }
 }

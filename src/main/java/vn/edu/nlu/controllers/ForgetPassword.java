@@ -3,16 +3,12 @@ package vn.edu.nlu.controllers;
 import vn.edu.nlu.beans.MailSender;
 import vn.edu.nlu.entities.UserEntity;
 
-import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Properties;
 
 @WebServlet(name = "ForgetPassword", urlPatterns = "/forgetPassword")
 public class ForgetPassword extends HttpServlet {
@@ -22,12 +18,12 @@ public class ForgetPassword extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String userEmail = request.getParameter("email");
-        System.out.println("email: " + userEmail);
         int idUser = UserEntity.getIdByEmail(userEmail);
 
-        if (idUser == -1) {
-            request.setAttribute("error", "Email không tồn tại!");
-            request.getRequestDispatcher("/forgetPassword.jsp").forward(request, response);
+        if (UserEntity.checkTimeById(idUser, 30 * 60 * 1000)) {
+            request.setAttribute("notification", "Vui lòng truy cập vào email của bạn để lấy lại mật khẩu!");
+        } else if (idUser == -1) {
+            request.setAttribute("notification", "Email không đúng! Vui lòng kiểm tra lại Email!");
         } else {
             // thêm thời gian vào user
             UserEntity.setCurrentTimeById(idUser);
@@ -40,7 +36,10 @@ public class ForgetPassword extends HttpServlet {
             // gửi mail
             MailSender.sendForgetPasswordMail(userEmail, link);
             // thông báo
-            response.getWriter().println("<h2>Okay, We send mail!!!</h2>");
+            request.setAttribute("notification", "Vui lòng truy cập vào email của bạn để lấy lại mật khẩu!");
         }
+
+        request.setAttribute("email", userEmail);
+        request.getRequestDispatcher("forgetPassword.jsp").forward(request, response);
     }
 }
