@@ -112,8 +112,36 @@ public class UserEntity {
                 String img = resultSet.getString("IMG");
                 Date birthday = resultSet.getDate("BIRTHDAY");
                 boolean active = resultSet.getBoolean("ACTIVE");
-                boolean isAdmin = resultSet.getBoolean("ISADMIN");
-                user = new User(id, name, email, phone, password, address, city, img, birthday, active, isAdmin);
+                int idRole = resultSet.getInt("ID_ROLE");
+                user = new User(id, name, email, phone, password, address, city, img, birthday, active, idRole);
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        return user;
+    }
+
+
+    public static User getUserByEmailAndPassword(String email, String password) {
+        User user = null;
+        String query = "select * from USER where EMAIL = ? and PASSWORD = ?";
+        try {
+            PreparedStatement preparedStatement = ConnectionDB.connect(query);
+            preparedStatement.setString(1, email);
+            preparedStatement.setString(2, password);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                int id = resultSet.getInt("ID");
+                String name = resultSet.getString("NAME");
+                String phone = resultSet.getString("PHONE");
+                String address = resultSet.getString("ADDRESS");
+                String city = resultSet.getString("CITY");
+                String img = resultSet.getString("IMG");
+                Date birthday = resultSet.getDate("BIRTHDAY");
+                boolean active = resultSet.getBoolean("ACTIVE");
+                int idRole = resultSet.getInt("ID_ROLE");
+                user = new User(id, name, email, phone, password, address, city, img, birthday, active, idRole);
             }
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();

@@ -1,8 +1,11 @@
 package vn.edu.nlu.controllers;
 
 import vn.edu.nlu.beans.Cart;
+import vn.edu.nlu.beans.Role;
 import vn.edu.nlu.beans.User;
 import vn.edu.nlu.database.ConnectionDB;
+import vn.edu.nlu.entities.RoleEntity;
+import vn.edu.nlu.entities.UserEntity;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,59 +18,26 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-@WebServlet(name = "Login", urlPatterns = "/Login")
+@WebServlet(name = "Login", urlPatterns = "/login")
 public class Login extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String email = request.getParameter("username");
+        String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        String sql = "select * from USER where EMAIL = '" + email + "' and PASSWORD ='" + password + "' and ACTIVE = 1";
-        ResultSet rs = null;
-        //    ID, NAME, EMAIL, PHONE, PASSWORD, ADDRESS, CITY, IMG, BIRTHDAY, ACTIVE, ISADMIN, ID_CART
-        try {
-            PreparedStatement statement = ConnectionDB.connect(sql);
-            rs = statement.executeQuery();
-            rs.last();
-            int i = rs.getRow();
-            if (rs != null && i == 1) {
-                rs.first();
-                User user = new User();
-                user.setId(rs.getInt(1));
-                user.setName(rs.getString(2));
-                user.setEmail(rs.getString(3));
-                user.setPhone(rs.getString(4));
-                user.setPassword(rs.getString(5));
-                user.setAddress(rs.getString(6));
-                user.setCity(rs.getString(7));
-                user.setImg(rs.getString(8));
-                user.setBirthday(rs.getDate(9));
-                user.setActive(rs.getBoolean(10));
-                user.setAdmin(rs.getBoolean(11));
-
-                System.out.println("run");
-
-                if (user.isAdmin()) {
-                    response.sendRedirect("adminJSP/home.jsp");
-                } else {
-                    HttpSession session = request.getSession(true);
-                    session.setAttribute("user", user);
-                    session.setAttribute("cart", new Cart());
-                    response.sendRedirect("home.jsp");
-                }
-            } else {
-                System.out.println("run !!!");
-                request.setAttribute("err", "Sai user name hoac password");
-                request.getRequestDispatcher("login.jsp").forward(request, response);
-            }
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-            System.out.println("Loi ket noi CSDL!");
-            request.setAttribute("err", "Sai user name hoac password");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+        User user = UserEntity.getUserByEmailAndPassword(email, password);
+        if (user == null) {
+            request.setAttribute("notification", "Sai thông tin đăng nhập! Vui lòng nhập lại!");
+            request.getRequestDispatcher("login_signup.jsp").forward(request, response);
+        } else {
+            HttpSession session = request.getSession(true);
+            session.setAttribute("user", user);
+            session.setAttribute("cart", new Cart());
+            session.setAttribute("role", RoleEntity.getRoleByUser(user));
+            response.sendRedirect("home.jsp");
         }
     }
 }

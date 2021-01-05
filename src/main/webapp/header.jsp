@@ -1,11 +1,13 @@
-<%@ page import="vn.edu.nlu.beans.Cart" %>
-<%@ page import="java.util.Set" %>
-<%@ page import="vn.edu.nlu.beans.Book" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="vn.edu.nlu.utils.Menu" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!-- header-top-area-start -->
+<script>
+    onload = function () {
+        document.getElementById("searchButton").onclick = function () {document.getElementById("searchBox").submit()};
+    }
+</script>
 <div class="header-top-area">
     <div class="container">
         <div class="row">
@@ -51,10 +53,9 @@
             <%--search--%>
             <div class="col-lg-6 col-md-4 col-12">
                 <div class="header-search ptb-10">
-                    <form id="search" action="abc" method="GET">
-                        <input type="text" placeholder="Tìm sản phẩm, danh mục, thương hiệu,..."/>
-                        <a onclick="function submit() {var search = document.getElementById('search')}"><i class="fa fa-search"></i></a>
-                        }
+                    <form id="searchBox" action="Login" method="GET">
+                        <input type="text" name="key" placeholder="Tìm sản phẩm, danh mục, thương hiệu,..."/>
+                        <a id="searchButton" style="color: white"><i class="fa fa-search"></i></a>
                     </form>
                 </div>
             </div>
@@ -85,7 +86,7 @@
                                             </c:forEach>
                                         </c:when>
                                         <c:otherwise>
-                                            <c:out value="Bạn chưa có sản phẩm trong giỏ hàng!"/>
+                                            <c:out value="<p style='align:center'>Bạn chưa có sản phẩm trong giỏ hàng!</p>"/>
                                         </c:otherwise>
                                     </c:choose>
                                 </div>

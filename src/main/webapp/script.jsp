@@ -34,3 +34,12 @@
 <script src="js/plugins.js"></script>
 <!-- main js -->
 <script src="js/main.js"></script>
+
+<%-- login_sigup page --%>
+<!-- jquery  -->
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery2.min.js"></script>
+<!-- validate js -->
+<script src="js/jquery.validate.min.js"></script>
+
+

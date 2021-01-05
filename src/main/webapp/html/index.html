@@ -31,6 +31,12 @@
     <link rel="stylesheet" href="../css/responsive.css">
     <!-- modernizr css -->
     <script src="../js/vendor/modernizr-2.8.3.min.js"></script>
+
+    <script>
+        onload = function () {
+            document.getElementById("searchButton").onclick = function () {document.getElementById("searchBox").submit()};
+        }
+    </script>
 </head>
 
 <body>
@@ -71,9 +77,9 @@
 
                     <div class="col-lg-6 col-md-4 col-12">
                         <div class="header-search ptb-10">
-                            <form action="search-result.html" method="GET">
+                            <form  id="searchBox" action="login_signup.html" method="GET">
                                 <input type="text" placeholder="Tìm sản phẩm, danh mục, thương hiệu,..." />
-                                <a href="search-result.html"><i class="fa fa-search"></i></a>
+                                <a id="searchButton" style="color: white"><i class="fa fa-search"></i></a>
                             </form>
                         </div>
                     </div>

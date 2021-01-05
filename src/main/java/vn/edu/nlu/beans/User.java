@@ -13,11 +13,11 @@ public class User {
     private String img;
     private Date birthday;
     private boolean active;
-    private boolean isAdmin;
+    private int role;
 
     public User(){}
 
-    public User(int id, String name, String email, String phone, String password, String address, String city, String img, Date birthday, boolean active, boolean isAdmin) {
+    public User(int id, String name, String email, String phone, String password, String address, String city, String img, Date birthday, boolean active, int role) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -28,7 +28,7 @@ public class User {
         this.img = img;
         this.birthday = birthday;
         this.active = active;
-        this.isAdmin = isAdmin;
+        this.role = role;
     }
 
     public boolean isActive() {
@@ -111,12 +111,12 @@ public class User {
         this.birthday = birthday;
     }
 
-    public boolean isAdmin() {
-        return isAdmin;
+    public int getRole() {
+        return role;
     }
 
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
+    public void setRole(int role) {
+        this.role = role;
     }
 
     @Override
@@ -132,7 +132,7 @@ public class User {
                 ", img='" + img + '\'' +
                 ", birthday=" + birthday +
                 ", active=" + active +
-                ", isAdmin=" + isAdmin +
+                ", role=" + role +
                 '}';
     }
 }

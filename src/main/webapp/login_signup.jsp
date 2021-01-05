@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix ="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix = "fn" uri = "http://java.sun.com/jsp/jstl/functions" %>
 <!doctype html>
@@ -10,307 +10,13 @@
 </head>
 
 <body class="login">
-<!--[if lt IE 8]>
-<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-<![endif]-->
-
 <!-- Add your site or application content here -->
 <!-- header-area-start -->
 <header>
-    <!-- header-top-area-start -->
-    <div class="header-top-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-12">
-                </div>
-                <div class="col-lg-6 col-md-6 col-12">
-                    <div class="account-area text-right">
-                        <ul>
-                            <li><a href="html/my-account.html">Tài khoản</a></li>
-                            <li><a href="html/checkout.html">Thanh toán</a></li>
-                            <li><a href="login.html">Đăng nhập</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- header-top-area-end -->
-    <!-- header-mid-area-start -->
-    <div class="header-mid-area ptb-20">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-lg-3 col-md-5 col-12 ">
-                    <div class="logo-area text-center logo-xs-mrg">
-                        <a href="html/index.html">
-                            <div class="logo-web">Zoe</div>
-                            <span class="slogan">A book - A life</span>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-lg-6 col-md-4 col-12">
-                    <div class="header-search ptb-10">
-                        <form action="#" method="GET">
-                            <input type="text" placeholder="Tìm sản phẩm, danh mục, thương hiệu,..." />
-                            <a href="#"><i class="fa fa-search"></i></a>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-3 col-12">
-                    <div class="my-cart ptb-10">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i>Giỏ hàng</a>
-                                <span>2</span>
-                                <div class="mini-cart-sub">
-                                    <div class="cart-product">
-                                        <div class="single-cart">
-                                            <div class="cart-img">
-                                                <a href="html/product-details.html"><img src="img/product/1.jpg"
-                                                                                         alt="book" /></a>
-                                            </div>
-                                            <div class="cart-info">
-                                                <h5><a href="#">Joust Duffle Bag</a></h5>
-                                                <p>1 x £60.00</p>
-                                            </div>
-                                            <div class="cart-icon">
-                                                <a href="#"><i class="fa fa-remove"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="single-cart">
-                                            <div class="cart-img">
-                                                <a href="html/product-details.html"><img src="img/product/3.jpg"
-                                                                                         alt="book" /></a>
-                                            </div>
-                                            <div class="cart-info">
-                                                <h5><a href="#">Chaz Kangeroo Hoodie</a></h5>
-                                                <p>1 x £52.00</p>
-                                            </div>
-                                            <div class="cart-icon">
-                                                <a href="#"><i class="fa fa-remove"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="cart-totals">
-                                        <h5>Thành tiền <span>£12.00</span></h5>
-                                    </div>
-                                    <div class="cart-bottom">
-                                        <a class="view-cart" href="html/cart.html">Xem giỏ hàng</a>
-                                        <a href="html/checkout.html">Thanh toán</a>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- header-mid-area-end -->
-    <!-- main-menu-area-start -->
-    <div class="main-menu-area d-md-none d-none d-lg-block sticky-header-1" id="header-sticky">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="menu-area">
-                        <nav>
-                            <ul>
-                                <li class="active"><a href="html/index.html">Trang chủ</a>
-                                </li>
-                                <li><a href="html/shop-list.html">Sách Tiếng Việt<i class="fa fa-angle-down"></i></a>
-                                    <div class="mega-menu">
-                                            <span>
-                                                <a href="html/shop.html" class="title">Sách mới<i
-                                                        class="fas fa-book-open"></i></a>
-                                            </span>
-                                        <span>
-                                                <a href="html/shop.html" class="title">bán chạy<i class="fas fa-heart"></i>
-                                                </a>
-                                            </span>
-                                        <span>
-                                                <a href="html/shop.html" class="title">Tuyển chọn<i
-                                                        class="fas fa-bookmark"></i></a>
-                                            </span>
-                                        <span>
-                                                <a href="html/shop.html" class="title">Giảm giá<i
-                                                        class="fas fa-tags"></i></a>
-                                            </span>
-                                        <span>
-                                                <a href="html/shop-list.html" class="title">văn học</a>
-                                                <a href="html/shop.html">Tiểu thuyết</a>
-                                                <a href="html/shop.html">Truyện ngắn</a>
-                                                <a href="html/shop.html">Kinh điển</a>
-                                                <a href="html/shop-list.html" class="more">Xem thêm...</a>
-                                            </span>
-                                        <span>
-                                                <a href="html/shop-list.html" class="title">kinh tế</a>
-                                                <a href="html/shop.html">Kinh doanh</a>
-                                                <a href="html/shop.html">Quản trị</a>
-                                                <a href="html/shop.html">Marketing</a>
-                                                <a href="html/shop-list.html" class="more">Xem thêm...</a>
-                                            </span>
-                                        <span>
-                                                <a href="html/shop-list.html" class="title">kĩ năng</a>
-                                                <a href="html/shop.html">Kỹ năng sống</a>
-                                                <a href="html/shop.html">Tâm lí</a>
-                                                <a href="html/shop.html">Sống đẹp</a>
-                                                <a href="html/shop-list.html" class="more">Xem thêm...</a>
-                                            </span>
-                                        <span>
-                                                <a href="html/shop-list.html" class="title">thiếu nhi</a>
-                                                <a href="html/shop.html">Cổ tích</a>
-                                                <a href="html/shop.html">Truyện tranh</a>
-                                                <a href="html/shop.html">Luyện chữ</a>
-                                                <a href="html/shop-list.html" class="more">Xem thêm...</a>
-                                            </span>
-                                        <span>
-                                                <a href="html/shop-list.html" class="title">Thường thức</a>
-                                                <a href="html/shop.html">Giáo khoa</a>
-                                                <a href="html/shop.html">Mẹ và bé</a>
-                                                <a href="html/shop.html">Gia đình</a>
-                                                <a href="html/shop-list.html" class="more">Xem thêm...</a>
-                                            </span>
-                                        <span>
-                                                <a href="html/shop-list.html" class="title">học ngoại ngữ</a>
-                                                <a href="html/shop.html">Tiếng Anh</a>
-                                                <a href="html/shop.html">Tiếng Nhật</a>
-                                                <a href="html/shop.html">Từ điển</a>
-                                                <a href="html/shop-list.html" class="more">Xem thêm...</a>
-                                            </span>
-                                        <span>
-                                                <a href="html/shop-list.html" class="title">tổng hợp</a>
-                                                <a href="html/shop.html">Âm nhạc - Hội họa</a>
-                                                <a href="html/shop.html">Chính trị - Pháp lý</a>
-                                                <a href="html/shop.html">Nông - Lâm - Ngư nghiệp</a>
-                                                <a href="html/shop-list.html" class="more">Xem thêm...</a>
-                                            </span>
-
-                                    </div>
-                                </li>
-                                <li><a href="html/shop-list.html">English books<i class="fa fa-angle-down"></i></a>
-                                    <div class="mega-menu">
-                                            <span>
-                                                <a href="html/shop-list.html" class="title">Business - Economics</a>
-                                                <a href="html/shop.html">Economics</a>
-                                                <a href="html/shop.html">Finance </a>
-                                                <a href="html/shop.html">Investment</a>
-                                                <a href="html/shop-list.html" class="more">See more</a>
-                                            </span>
-                                        <span>
-                                                <a href="html/shop-list.html" class="title">How-to Self help</a>
-                                                <a href="html/shop.html">Communication</a>
-                                                <a href="html/shop.html">Creativity</a>
-                                                <a href="html/shop.html">Emotions</a>
-                                                <a href="html/shop-list.html" class="more">See more</a>
-                                            </span>
-                                        <span>
-                                                <a href="html/shop-list.html" class="title">Science - Technology</a>
-                                                <a href="html/shop.html">Astronomy</a>
-                                                <a href="html/shop.html">Internet - Computer</a>
-                                                <a href="html/shop.html">Ecology</a>
-                                                <a href="html/shop-list.html" class="more">See more</a>
-                                            </span>
-                                        <span>
-                                                <a href="html/shop-list.html" class="title">Travel - Holiday</a>
-                                                <a href="html/shop.html">American</a>
-                                                <a href="html/shop.html">Asia</a>
-                                                <a href="html/shop.html">Discovery</a>
-                                                <a href="html/shop-list.html" class="more">See more</a>
-                                            </span>
-                                        <span>
-                                                <a href="html/shop-list.html" class="title">Magazines</a>
-                                                <a href="html/shop.html">Fashion</a>
-                                                <a href="html/shop.html">Science</a>
-                                                <a href="html/shop.html">Economics</a>
-                                                <a href="html/shop-list.html" class="more">See more</a>
-                                            </span>
-                                        <span>
-                                                <a href="html/shop-list.html" class="title">Education - Teaching</a>
-                                                <a href="html/shop.html">ELTs</a>
-                                                <a href="html/shop.html">Grammar</a>
-                                                <a href="html/shop.html">Teaching</a>
-                                                <a href="html/shop-list.html" class="more">See more</a>
-                                            </span>
-                                    </div>
-                                </li>
-                                <li><a href="#">Blog<i class="fa fa-angle-down"></i></a>
-                                    <div class="sub-menu sub-menu-2">
-                                        <ul>
-                                            <li><a href="html/about.html">Giới thiệu</a></li>
-                                            <li><a href="html/blog-details.html">Hội sách tháng 10/2020</a></li>
-                                            <li><a href="html/blog-details.html">Hội sách tháng 11/2020</a></li>
-                                            <li><a href="html/blog-details.html">Hội sách tháng 12/2020</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li><a href="html/contact.html">Liên hệ</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- main-menu-area-end -->
-    <!-- mobile-menu-area-start -->
-    <div class="mobile-menu-area d-lg-none d-block fix">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="mobile-menu">
-                        <nav id="mobile-menu-active">
-                            <ul id="nav">
-                                <li><a href="html/index.html">Trang chủ</a>
-                                </li>
-                                <li><a href="html/product-details.html">Sách Tiếng Việt</a>
-                                    <ul>
-                                        <li><a href="html/shop.html">Sách mới <i class="fas fa-book-open"></i></a></li>
-                                        <li><a href="html/shop.html">Bán chạy <i class="fas fa-heart"></i></a></li>
-                                        <li><a href="html/shop.html">Tuyển chọn <i class="fas fa-bookmark"></i></a></li>
-                                        <li><a href="html/shop.html">Giảm giá <i class="fas fa-tags"></i></a></li>
-                                        <li><a href="html/shop.html">Văn học</a></li>
-                                        <li><a href="html/shop.html">Kinh tế</a></li>
-                                        <li><a href="html/shop.html">Kỹ năng</a></li>
-                                        <li><a href="html/shop.html">Thiếu nhi</a></li>
-                                        <li><a href="html/shop.html">Thường thức</a></li>
-                                        <li><a href="html/shop.html">Học ngoại ngữ</a></li>
-                                        <li><a href="html/shop.html">Tổng hợp</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="html/product-details.html">English books</a>
-                                    <ul>
-                                        <li><a href="html/shop.html">Business - Economics</a></li>
-                                        <li><a href="html/shop.html">How-to Self help</a></li>
-                                        <li><a href="html/shop.html">Science - Technology</a></li>
-                                        <li><a href="html/shop.html">Travel - Holiday</a></li>
-                                        <li><a href="html/shop.html">Magazines</a></li>
-                                        <li><a href="html/shop.html">Education - Teaching</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Blog</a>
-                                    <ul>
-                                        <li><a href="html/blog.html">Giới thiệu</a></li>
-                                        <li><a href="html/blog-details.html">Hội sách tháng 10/2020</a></li>
-                                        <li><a href="html/blog-details.html">Hội sách tháng 11/2020</a></li>
-                                        <li><a href="html/blog-details.html">Hội sách tháng 12/2020</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="html/product-details.html">Liên hệ</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- mobile-menu-area-end -->
+    <%@ include file="header.jsp"%>
 </header>
 <!-- header-area-end -->
+
 <!-- breadcrumbs-area-start -->
 <div class="breadcrumbs-area mb-70">
     <div class="container">
@@ -327,6 +33,7 @@
     </div>
 </div>
 <!-- breadcrumbs-area-end -->
+
 <!-- user-login-area-start -->
 <div class="user-login-area mb-70">
     <div class="container">
@@ -345,9 +52,18 @@
 
                 </ul>
 
-                <form method="post" action="#" id="login" style="display: block;" >
+                <form method="post" action="login" id="login" style="display: block;" >
+                    <%
+                        String notification = (String) request.getAttribute("notification");
+                        if (notification == null) {
+                            notification = "";
+                        } else {
+                            notification = "<p style='text-align: center; color:red'>* " + notification +"</p>";
+                        }
+                    %>
                     <div class="form-group">
-                        <input type="mail" name="username" id="username" class=" form-control"
+                        <%= notification %>
+                        <input type="mail" name="email" id="username" class=" form-control"
                                placeholder="Nhập email">
                         <p id="username-error"></p>
                     </div>
@@ -368,7 +84,7 @@
                                 Đăng nhập </button>
                         </div>
                         <div class="mb-15 ">
-                            <a href="html/forget-password.html" class="clearfix" rel="nofollow" style="text-decoration: underline;">
+                            <a href="forgetPassword.jsp" class="clearfix" rel="nofollow" style="text-decoration: underline;">
                                 <i class="fas fa-question-circle"></i>
                                 Quên mật khẩu
                             </a>
@@ -389,13 +105,13 @@
 
                 </form>
 
-                <form method="post" action="#" id="signup" style="display: none;">
+                <form method="post" action="signup" id="signup" style="display: none;">
                     <div class="form-group">
                         <input type="text" name="fullName" id="fullName"
                                class="form-control"
                                placeholder="Họ tên (*)"></div>
                     <div class="form-group">
-                        <input type="text" name="mobile" id="mobile"
+                        <input type="text" name="phone" id="mobile"
                                class="form-control" placeholder="Điện thoại (*)">
                     </div>
                     <div class="form-group">
@@ -406,7 +122,7 @@
                         <input type="email" name="email" id="email"
                                class="form-control" placeholder="Email (*)"></div>
                     <div class="form-group">
-                        <select id="cityId" name="cityId" class="form-control" style="color: #495057 !important;">
+                        <select id="cityId" name="city" class="form-control" style="color: #495057 !important;">
                             <option value="">Tỉnh/Thành phố *</option>
                             <option value="254">Hà Nội</option>
                             <option value="255">Hồ Chí Minh</option>
@@ -477,7 +193,7 @@
                                placeholder="Địa chỉ chi tiết  " class=" form-control input-sm">
                     </div>
                     <div class="form-group">
-                        <input type="password" name="pwd" id="pwd" class=" form-control"
+                        <input type="password" name="password" id="pwd" class=" form-control"
                                placeholder="Mật khẩu của bạn (*)">
                     </div>
                     <div class="form-group">
@@ -499,39 +215,12 @@
 </div>
 </body>
 <!-- user-login-area-end -->
+
 <!-- footer-area-start -->
 <jsp:include page="footer.jsp"/>
 <!-- footer-area-end -->
+
 <!-- all js here -->
-<!-- jquery  -->
-<script src="js/jquery.min.js"></script>
-<script src="js/jquery2.min.js"></script>
-<!-- popper js -->
-<script src="js/popper.min.js"></script>
-<!-- validate js -->
-<script src="js/jquery.validate.min.js"></script>
-<!-- bootstrap js -->
-<script src="js/bootstrap.min.js"></script>
-<!-- owl.carousel js -->
-<script src="js/owl.carousel.min.js"></script>
-<!-- meanmenu js -->
-<script src="js/jquery.meanmenu.js"></script>
-<!-- wow js -->
-<script src="js/wow.min.js"></script>
-<!-- jquery.parallax-1.1.3.js -->
-<script src="js/jquery.parallax-1.1.3.js"></script>
-<!-- jquery.countdown.min.js -->
-<script src="js/jquery.countdown.min.js"></script>
-<!-- jquery.flexslider.js -->
-<script src="js/jquery.flexslider.js"></script>
-<!-- chosen.jquery.min.js -->
-<script src="js/chosen.jquery.min.js"></script>
-<!-- jquery.counterup.min.js -->
-<script src="js/jquery.counterup.min.js"></script>
-<!-- waypoints.min.js -->
-<script src="js/waypoints.min.js"></script>
-<!-- plugins js -->
-<script src="js/plugins.js"></script>
-<!-- main js -->
-<script src="js/main.js"></script>
+<%@ include file="script.jsp"%>
+
 </html>
