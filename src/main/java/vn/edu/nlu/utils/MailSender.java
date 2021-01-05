@@ -1,4 +1,4 @@
-package vn.edu.nlu.beans;
+package vn.edu.nlu.utils;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
@@ -29,12 +29,22 @@ public class MailSender {
                 });
     }
 
-    public static boolean sendForgetPasswordMail(String userEmail, String link) {
+    public static Message createMessage(String userEmail) {
         try {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(email, name));
             message.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(userEmail));
+            return  message;
+        } catch (MessagingException | UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static boolean sendForgetPasswordMail(String userEmail, String link) {
+        try {
+            Message message = createMessage(userEmail);
             message.setSubject("[" + name + "]" + " Bạn muốn thay đổi mật khẩu?");
             message.setText("Chúng tôi nhận được thông tin rằng bạn đã đánh mất mật khẩu Zoe của bạn. Thật đáng tiếc!\n" +
                     "Nhưng đừng lo lắng! Bạn có thể sử dụng đường link bên dưới để lấy lại mật khẩu:\n" +
@@ -43,7 +53,7 @@ public class MailSender {
                     "Trân trọng,\n" +
                     "The Zoe Team");
             Transport.send(message);
-        } catch (MessagingException | UnsupportedEncodingException e) {
+        } catch (MessagingException | NullPointerException e) {
             e.printStackTrace();
             return false;
         }

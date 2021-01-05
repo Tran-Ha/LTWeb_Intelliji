@@ -1,6 +1,7 @@
 package vn.edu.nlu.beans;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class GroupBook implements Serializable {
     private int id;
@@ -8,6 +9,7 @@ public class GroupBook implements Serializable {
     private int id_language;
 
     public GroupBook(){
+
     }
 
     public GroupBook(int id,String name,int id_language){
@@ -45,5 +47,18 @@ public class GroupBook implements Serializable {
         return "id=" + id +
                 ", name='" + name + '\'' +
                 ", id_language=" + id_language ;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        GroupBook groupBook = (GroupBook) o;
+        return Objects.equals(name, groupBook.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, id_language);
     }
 }

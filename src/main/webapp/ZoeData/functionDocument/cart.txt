@@ -1,0 +1,68 @@
+Một request đăng nhập thành công tới server.
+Server sẽ tạo một session cho request.
+Server lưu session của request tương ứng với một session id.
+Server thêm thuộc tính user và cart cho session.
+Khi trả về response, server gửi kèm một session id.
+Browser sẽ lưu session id đó kèm với thông tin server.
+Sau đó, mỗi lần user request tới server, browser gửi kèm id đã lưu.
+Server nhận session id và so sánh với các session id đã lưu trong hệ thống.
+Như vậy, server biết user và cart của request này thông qua session đã lưu.
+
+Okay, tạm thời chấp nhận cách hiểu như thế này nhé!
+Trong quá trình thực hiện, nếu có sai sót sẽ bổ sung sau.
+
+Giờ là lúc mình giải quyết đối tượng giỏ hàng. Một giỏ hàng sẽ có gì và làm được gì?
+Một giỏ hàng hiển thị:
++) Danh sách sản phẩm, cụ thể là sách
++) Số lượng sản phẩm trong giỏ hàng (bao nhiêu cuốn sách trong giỏ hàng?)
++) Số lượng của mỗi sản phẩm trong giỏ hàng (mỗi đầu sách có bao nhiêu quyển?)
++) Ảnh của mỗi đầu sách?
++) Đơn giá của mỗi đầu sách?
++) Tổng tiền của giỏ hàng
+
+=> Mình sẽ dùng HashMap để lưu danh sách các cuốn sách với cấu trúc như sau:
++) key là đối tượng sách, đối tượng sách implement phương thức equals so sánh id
++) value là số lượng của đối tượng sách đó
+
+=> Tại sao mình dùng HashMap?
++) thứ nhất là tốc độ tìm kiếm nhanh, hash mà, đề cao tốc độ khi thêm xóa sửa giỏ hàng
++) thứ hai là giải quyết vấn đề số lượng,
+    mỗi quyển sách có một thuộc tính số lượng, số lượng này là số lượng sách tồn kho,
+    mình cần một nơi để lưu số lượng sách của cùng một đầu sách nữa
+    như vậy, dùng map là khá hợp lý
+
+==> ok, dùng HashMap để lưu danh sách sách
++) số lượng sản phẩm trong giỏ hàng là getKeys().size() của HashMap
++) số lượng của mỗi đầu sách là value = get(key);
++) ảnh lấy từ sách book.getImg()
++) đơn giá lấy từ sách book.getPrice()
++) tổng tiền, uhm, giỏ hàng có một phương thức tính tổng tiền
+
+Một giỏ hàng có các phương thức:
++) thêm một cuốn sách vào giỏ hàng
+    nếu cuốn sách đã có trong giỏ hàng thì tăng số lượng một đơn vị
+    nếu cuốn sách chưa có trong giỏ hàng thì tạo mới và thêm vào giỏ hàng
++) bỏ một cuốn sách ra khỏi giỏ hàng
+    nếu số lượng lớn hơn 1 thì giảm số lượng một đơn vị
+    nếu số lượng bằng 1 thì xóa khỏi giỏ hàng
++) cập nhật số lượng do người dùng nhập
+    nâng cao: tiền xử lý, dùng js bên client để bảo đảm người dùng nhập số lượng đúng chuẩn
+    nếu số lượng nhỏ hơn hoặc bằng không, xóa khỏi giỏ hàng
+    nếu số lượng lớn hơn một và nhỏ hơn số lượng sách tồn kho thì cập nhật lại là 32 hoặc số lượng tồn kho
+    nếu số lượng lớn hơn số lượng sách tồn kho thì cập nhật lại 32
+    lưu ý là chỉ được mua tối đa tổng cộng 32 mỗi giỏ hàng
++) tổng tiền của mỗi đầu sách: số lượng sách mỗi đầu sách * đơn giá của sách
++) tổng tiền của giỏ hàng: tổng tiền của tất cả các đầu sách
+
+=> làm sao thêm một cuốn sách vào giỏ hàng?
+step 1. => người dùng click "thêm vào giỏ hàng" => /addBook?id=321651565
+step 2. addBook nhận id của sách và
+        gọi BookEntity.getBookById(id) lấy đối tượng sách book đang active và số lượng lớn hơn 0
+        nếu book != null thì gọi cart.addBook(book)
+
+        giỏ hàng thêm sách như này nhé:
+        nếu book có trong giỏ hàng và số lượng book trong giỏ hàng nhỏ hơn số lượng book trong database thì tăng một
+        nếu book không có trong giỏ hàng thì thêm vào giỏ hàng với số lượng là 1
+
+
+=>

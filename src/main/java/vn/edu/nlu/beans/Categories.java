@@ -1,6 +1,7 @@
 package vn.edu.nlu.beans;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Categories implements Serializable {
     private int id;
@@ -10,6 +11,7 @@ public class Categories implements Serializable {
     public Categories(){
 
     }
+
     public Categories(int id,String name, int id_group){
          this.id=id;
          this.name=name;
@@ -45,5 +47,18 @@ public class Categories implements Serializable {
         return "id=" + id +
                 ", name='" + name + '\'' +
                 ", id_group=" + id_group ;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Categories that = (Categories) o;
+        return Objects.equals(name, that.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, id_group);
     }
 }

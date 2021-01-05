@@ -22,7 +22,7 @@ public class GetPassword extends HttpServlet {
         if (UserEntity.checkTimeById(id, 30*60*1000)) {
             HttpSession session = request.getSession();
             session.setAttribute("user", UserEntity.getUserById(id));
-            request.getRequestDispatcher("my-account.jsp").forward(request, response);
+            response.sendRedirect("my-account.jsp");
         } else {
             response.sendRedirect("login_signup.jsp");
         }

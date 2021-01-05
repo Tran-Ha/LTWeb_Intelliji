@@ -1,9 +1,8 @@
 package vn.edu.nlu.beans;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.*;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.Date;
 
 public class Book implements Serializable {
@@ -23,6 +22,7 @@ public class Book implements Serializable {
     // Tan code
     private ArrayList<String> imgs = new ArrayList<>();
     // end
+    private Set<String> authors = new HashSet<String>();
 
     public Book(){
     }
@@ -156,6 +156,14 @@ public class Book implements Serializable {
 
     public void setImgs(ArrayList<String> imgs) {
         this.imgs = imgs;
+    }
+
+    public Set<String> getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(Set<String> authors) {
+        this.authors = authors;
     }
 
     // Tan code

@@ -37,6 +37,13 @@ public class UserEntity {
         return result;
     }
 
+    public static boolean setCurrentTimeAndRandomKeyById(int id, String key) {
+        if (setCurrentTimeById(id) && setKeyById(id, key)) {
+            return true;
+        }
+        return false;
+    }
+
     public static boolean setCurrentTimeById(int id) {
         String update = "update USER set CREATED_TIME = current_timestamp() where ID = ?";
         try {
@@ -48,29 +55,6 @@ public class UserEntity {
             return false;
         }
         return true;
-    }
-
-    public static String createRandomString(int length) {
-        String result = "";
-        Random random = new Random();
-
-        int counter = 0;
-        while (counter < length) {
-            int randomNumber = 48 + random.nextInt(74);
-            if (48 <= randomNumber && randomNumber <= 57) {
-                result += randomNumber;
-                counter += 1;
-            }
-            if (65 <= randomNumber && randomNumber <= 90) {
-                result += (char) randomNumber;
-                counter += 1;
-            }
-            if (97 <= randomNumber && randomNumber <= 122) {
-                result += (char) randomNumber;
-                counter += 1;
-            }
-        }
-        return result;
     }
 
     public static boolean setKeyById(int id, String key) {
@@ -112,7 +96,7 @@ public class UserEntity {
 
     public static User getUserById(int id) {
         User user = null;
-        String query = "select ID from USER where ID = ?";
+        String query = "select * from USER where ID = ?";
         try {
             PreparedStatement preparedStatement = ConnectionDB.connect(query);
             preparedStatement.setInt(1, id);
@@ -120,15 +104,15 @@ public class UserEntity {
 
             if (resultSet.next()) {
                 String name = resultSet.getString("NAME");
-                String email = resultSet.getString("NAME");
-                String phone = resultSet.getString("NAME");
-                String password = resultSet.getString("NAME");
-                String address = resultSet.getString("NAME");
-                String city = resultSet.getString("NAME");
-                String img = resultSet.getString("NAME");
-                Date birthday = resultSet.getDate("NAME");
-                boolean active = resultSet.getBoolean("NAME");
-                boolean isAdmin = resultSet.getBoolean("NAME");
+                String email = resultSet.getString("EMAIL");
+                String phone = resultSet.getString("PHONE");
+                String password = resultSet.getString("PASSWORD");
+                String address = resultSet.getString("ADDRESS");
+                String city = resultSet.getString("CITY");
+                String img = resultSet.getString("IMG");
+                Date birthday = resultSet.getDate("BIRTHDAY");
+                boolean active = resultSet.getBoolean("ACTIVE");
+                boolean isAdmin = resultSet.getBoolean("ISADMIN");
                 user = new User(id, name, email, phone, password, address, city, img, birthday, active, isAdmin);
             }
         } catch (ClassNotFoundException | SQLException e) {
@@ -146,5 +130,6 @@ public class UserEntity {
 //        System.out.println(UserEntity.createRandomString(120));
 //        System.out.println(UserEntity.setKeyById(1, "this is random key!!! huhu"));
 //        System.out.println(UserEntity.getIdByEmail("letanphat857@gmail.com"));
+//        System.out.println(getUserById(5));
     }
 }

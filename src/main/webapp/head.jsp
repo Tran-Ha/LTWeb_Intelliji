@@ -32,6 +32,7 @@
 <link rel="stylesheet" href="css/chosen.min.css">
 <!-- style css -->
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="tiki.css">
 <!-- responsive css -->
 <link rel="stylesheet" href="css/responsive.css">
 <!-- modernizr css -->

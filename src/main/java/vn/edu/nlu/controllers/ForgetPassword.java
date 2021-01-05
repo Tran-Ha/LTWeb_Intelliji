@@ -1,7 +1,8 @@
 package vn.edu.nlu.controllers;
 
-import vn.edu.nlu.beans.MailSender;
+import vn.edu.nlu.utils.MailSender;
 import vn.edu.nlu.entities.UserEntity;
+import vn.edu.nlu.utils.Random;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,16 +26,20 @@ public class ForgetPassword extends HttpServlet {
         } else if (idUser == -1) {
             request.setAttribute("notification", "Email không đúng! Vui lòng kiểm tra lại Email!");
         } else {
-            // thêm thời gian vào user
-            UserEntity.setCurrentTimeById(idUser);
-            // tạo chuỗi ngẫu nhiên
-            String randomKey = UserEntity.createRandomString(120);
-            // thêm chuỗi ngẫu nhiên vào user
-            UserEntity.setKeyById(idUser, randomKey);
-            // tạo link
-            String link = "http://localhost:8080/Zoe/getPassword?key=" + randomKey;
-            // gửi mail
-            MailSender.sendForgetPasswordMail(userEmail, link);
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    // tạo chuỗi ngẫu nhiên
+                    String randomKey = Random.createRandomString(120);
+                    // thêm chuỗi ngẫu nhiên vào user
+                    UserEntity.setCurrentTimeAndRandomKeyById(idUser, randomKey);
+                    // tạo link
+                    String link = "http://localhost:8080/Zoe/getPassword?key=" + randomKey;
+                    // gửi mail
+                    MailSender.sendForgetPasswordMail(userEmail, link);
+                    System.out.println("send email: ok");
+                }
+            }).start();
             // thông báo
             request.setAttribute("notification", "Vui lòng truy cập vào email của bạn để lấy lại mật khẩu!");
         }
