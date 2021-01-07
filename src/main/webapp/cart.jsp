@@ -90,9 +90,9 @@
                                                     </div>
                                                     <div class="cart-products__details">
                                                         <div class="cart-products__pricess">
-                                                            <p class="cart-products__real-prices">${cart.convertToMoney(book.price)}</p>
+                                                            <p class="cart-products__real-prices">${cart.convertToMoney(book.price)}đ</p>
                                                             <p class="cart-products__discount-prices">
-                                                                <del>${cart.convertToMoney(book.priceSale)}</del>
+                                                                <del>${cart.convertToMoney(book.priceSale)}đ</del>
                                                                 <span class="cart-products__percent-prices">-${book.getDiscount()}%</span>
                                                             </p>
                                                         </div>
@@ -107,8 +107,17 @@
                                                                                 class="qty-decrease">-</span></a>
                                                                     </c:otherwise>
                                                                 </c:choose>
-                                                                <input type="tel" class="qty-input"
-                                                                       value="${cart.getQuantityOfBook(book)}">
+                                                                <form  id="updateForm" method="get" action="updateBookQuantity" style="margin: auto">
+                                                                    <input type="hidden" name="page" value="cart.jsp">
+                                                                    <input type="hidden"  name="id" value="${book.id}">
+                                                                    <input type="text" name="quantity" class="qty-input" value="${cart.getQuantityOfBook(book)}"
+                                                                           onkeypress="function handler(obj) {
+                                                                            if (obj.target.keyCode == onEnter) {
+                                                                                document.getElementById('updateForm').submit();
+                                                                            }
+                                                                        }"
+                                                                    >
+                                                                </form>
                                                                 <c:choose>
                                                                 <c:when test="${cart.getQuantityOfBook(book) == book.quantity}">
                                                                 <span class="qty-increase ">+</span></div>

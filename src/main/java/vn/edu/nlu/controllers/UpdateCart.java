@@ -27,6 +27,10 @@ public class UpdateCart extends HttpServlet {
             if (cart != null) {
                 for (Book book: cart.getBooks()) {
                     Book bookEntity = BookEntity.getBookById(book.getId());
+                    if (bookEntity == null) {
+                        cart.deleteBook(book);
+                    }
+
                     if (book.getQuantity() > bookEntity.getQuantity()) {
                         book.setQuantity(bookEntity.getQuantity());
                     }

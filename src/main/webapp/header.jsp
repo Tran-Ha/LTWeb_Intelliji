@@ -78,7 +78,7 @@
                                                     </div>
                                                     <div class="cart-info">
                                                         <h5><a href="bookDetail?id=${book.id}">${book.getName()}</a></h5>
-                                                        <p>${cart.getQuantityOfBook(book)} x ${book.getDecimalFormatPrice()}</p>
+                                                        <p>${cart.getQuantityOfBook(book)} x ${book.getDecimalFormatPrice()}đ</p>
                                                     </div>
                                                     <div class="cart-icon">
                                                         <a href="#"><i class="fa fa-remove"></i></a>

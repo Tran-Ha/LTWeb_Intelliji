@@ -23,6 +23,7 @@ public class UpdateBookQuantity extends HttpServlet {
         String page = request.getParameter("page");
         String id = request.getParameter("id");
         int quantity = Converter.convertStringToInt(request.getParameter("quantity"));
+        System.out.println("quantity: " + quantity);
         // get book from database
         Book book = BookEntity.getBookById(id);
         int quantityOnDB = book.getQuantity();
@@ -30,18 +31,29 @@ public class UpdateBookQuantity extends HttpServlet {
         Cart cart = (Cart) request.getSession().getAttribute("cart");
         // processing
         if (page != null) {
-            if (book != null && cart != null && quantity <= quantityOnDB) {
-                if (quantity <= 0) {
+            if (cart != null) {
+                if (quantity < 0) {
+                    request.getSession(true).setAttribute("cartNotification", "Số lượng sách là một số nguyên không âm! Vui lòng nhập lại!");
+                }
+
+                if (book == null || quantity == 0) {
                     cart.deleteBook(book);
-                } else {
+                    request.getSession(true).setAttribute("cartNotification", "Một đầu sách đã được loại bỏ khỏi giỏ hàng của bạn!");
+                }
+
+                if (0 < quantity && quantity <= quantityOnDB) {
                     cart.updateBook(book, quantity);
+                    request.getSession(true).setAttribute("cartNotification", "Giỏ hàng của bạn đã được cập nhật!");
+                }
+
+                if (quantity > quantityOnDB) {
+                    cart.updateBook(book, quantityOnDB);
+                    request.getSession(true).setAttribute("cartNotification", "Bạn đã chọn mua số lượng sách tối đa!");
                 }
             }
 
             if (cart == null) {
                 request.getSession(true).setAttribute("cartNotification", "Bạn chưa đăng nhập! Vui lòng đăng nhập hoặc đăng kí để mua hàng!");
-            } else {
-                request.getSession(true).setAttribute("cartNotification", "Giỏ hàng của bạn đã được cập nhật!");
             }
 
             response.sendRedirect(page);

@@ -9,7 +9,7 @@ public class Converter {
         try {
             return Integer.parseInt(string);
         } catch (Exception e){
-            return 0;
+            return -1;
         }
     }
 
