@@ -121,6 +121,33 @@ public class UserEntity {
         return user;
     }
 
+    public static User getUserByKey(String randomKey) {
+        User user = null;
+        String query = "select * from USER where RANDOM_KEY = ?";
+        try {
+            PreparedStatement preparedStatement = ConnectionDB.connect(query);
+            preparedStatement.setString(1, randomKey);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                int id = resultSet.getInt("ID");
+                String name = resultSet.getString("NAME");
+                String email = resultSet.getString("EMAIL");
+                String phone = resultSet.getString("PHONE");
+                String password = resultSet.getString("PASSWORD");
+                String address = resultSet.getString("ADDRESS");
+                String city = resultSet.getString("CITY");
+                String img = resultSet.getString("IMG");
+                Date birthday = resultSet.getDate("BIRTHDAY");
+                boolean active = resultSet.getBoolean("ACTIVE");
+                int idRole = resultSet.getInt("ID_ROLE");
+                user = new User(id, name, email, phone, password, address, city, img, birthday, active, idRole);
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        return user;
+    }
 
     public static User getUserByEmailAndPassword(String email, String password) {
         User user = null;

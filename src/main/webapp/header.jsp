@@ -1,11 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="vn.edu.nlu.utils.Menu" %>
+<%@ page import="vn.edu.nlu.beans.Menu" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!-- header-top-area-start -->
 <script>
     onload = function () {
-        document.getElementById("searchButton").onclick = function () {document.getElementById("searchBox").submit()};
+        document.getElementById("searchButton").onclick = function () {
+            document.getElementById("searchBox").submit()
+        };
     }
 </script>
 <div class="header-top-area">
@@ -64,20 +66,19 @@
                 <div class="my-cart ptb-10">
                     <ul>
                         <li><a href="#"><i class="fa fa-shopping-cart"></i>Giỏ hàng</a>
-                            <span>2</span>
+                            <span>${cart.getTotalQuantity() == null ? 0 : cart.getTotalQuantity()}</span>
                             <div class="mini-cart-sub">
                                 <div class="cart-product">
                                     <c:choose>
-                                        <c:when test="${cart != null}">
-                                            <c:forEach var="book" items="books">
+                                        <c:when test="${cart.getTotalQuantity() > 0}">
+                                            <c:forEach var="book" items="${cart.getBooks()}" begin="0" end="2">
                                                 <div class="single-cart">
                                                     <div class="cart-img">
-                                                        <a href="product-details.html"><img src="${book.getMainImg()}"
-                                                                                            alt="book"/></a>
+                                                        <a href="bookDetail?id=${book.id}"><img src="${book.getMainImg()}" alt="book"/></a>
                                                     </div>
                                                     <div class="cart-info">
-                                                        <h5><a href="#">"${book.getName}"</a></h5>
-                                                        <p>"${cart.getBookMap().get(book)}" x "${book.getPrice()}"</p>
+                                                        <h5><a href="bookDetail?id=${book.id}">${book.getName()}</a></h5>
+                                                        <p>${cart.getQuantityOfBook(book)} x ${book.getDecimalFormatPrice()}</p>
                                                     </div>
                                                     <div class="cart-icon">
                                                         <a href="#"><i class="fa fa-remove"></i></a>
@@ -86,16 +87,18 @@
                                             </c:forEach>
                                         </c:when>
                                         <c:otherwise>
-                                            <c:out value="<p style='align:center'>Bạn chưa có sản phẩm trong giỏ hàng!</p>"/>
+                                            <p style='text-align:center'>Bạn chưa có sản phẩm trong giỏ hàng!</p>
                                         </c:otherwise>
                                     </c:choose>
                                 </div>
-                                <div class="cart-totals">
-                                    <h5>Thành tiền <span><c:out value="0d"/></span></h5>
-                                </div>
+                                <c:if test="${cart.getTotalQuantity() > 0}">
+                                    <div class="cart-totals">
+                                        <h5>Thành tiền <span>${cart.convertToMoney(cart.getTotalPrice())}đ</span></h5>
+                                    </div>
+                                </c:if>
                                 <div class="cart-bottom">
-                                    <a class="view-cart" href="cart.html">Xem giỏ hàng</a>
-                                    <a href="checkout.html">Thanh toán</a>
+                                    <a class="view-cart" href="cart.jsp">Xem giỏ hàng</a>
+                                    <a href="checkout.jsp">Thanh toán</a>
                                 </div>
                             </div>
                         </li>
@@ -123,9 +126,9 @@
                             <li><a href="home.jsp">Trang chủ</a></li>
 
                             <c:forEach var="language" items="${menu.languages}">
-                            <li><a href="search?lang=">${language.name}<i class="fa fa-angle-down"></i></a>
-                                <div class="mega-menu">
-                                    <c:forEach var="group" items="${menu.getGroupsByLanguage(language)}">
+                                <li><a href="search?lang=">${language.name}<i class="fa fa-angle-down"></i></a>
+                                    <div class="mega-menu">
+                                        <c:forEach var="group" items="${menu.getGroupsByLanguage(language)}">
                                     <span>
                                         <a href="shop-list.html" class="title">${group.name}</a>
                                         <c:forEach var="category" items="${menu.getCategoriesByGroup(group)}" begin="0"
@@ -133,9 +136,9 @@
                                             <a href="shop.html">${category.name}</a>
                                         </c:forEach>
                                     </span>
-                                    </c:forEach>
-                                </div>
-                            </li>
+                                        </c:forEach>
+                                    </div>
+                                </li>
                             </c:forEach>
 
                             <li><a href="#">Blog<i class="fa fa-angle-down"></i></a>

@@ -1,9 +1,8 @@
 package vn.edu.nlu.beans;
 
 import java.io.Serializable;
-import java.util.*;
 import java.text.DecimalFormat;
-import java.util.Date;
+import java.util.*;
 
 public class Book implements Serializable {
     private int id;
@@ -16,33 +15,33 @@ public class Book implements Serializable {
     private boolean isBestseller;
     private boolean isActive;
     private Date date_created;
-    private int quatity;
+    private int quantity;
     private String description;
     private String information;
     // Tan code
     private ArrayList<String> imgs = new ArrayList<>();
     // end
-    private Set<String> authors = new HashSet<String>();
+    private Set<String> authors = new HashSet<>();
 
-    public Book(){
+    public Book() {
     }
 
-    public Book(int id, String name,long price, long priceSale,
+    public Book(int id, String name, long price, long priceSale,
                 boolean isNew, boolean isHot, boolean isPromotion, boolean isBestseller, boolean isActive,
-                Date date_created, int quatity, String description, String information){
-        this.id=id;
-        this.name=name;
-        this.price=price;
-        this.priceSale=priceSale;
-        this.isNew=isNew;
-        this.isHot=isHot;
-        this.isPromotion=isPromotion;
-        this.isBestseller=isBestseller;
-        this.isActive=isActive;
-        this.date_created=date_created;
-        this.quatity=quatity;
-        this.description=description;
-        this.information=information;
+                Date date_created, int quatity, String description, String information) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.priceSale = priceSale;
+        this.isNew = isNew;
+        this.isHot = isHot;
+        this.isPromotion = isPromotion;
+        this.isBestseller = isBestseller;
+        this.isActive = isActive;
+        this.date_created = date_created;
+        this.quantity = quatity;
+        this.description = description;
+        this.information = information;
 
     }
 
@@ -126,12 +125,12 @@ public class Book implements Serializable {
         this.date_created = date_created;
     }
 
-    public int getQuatity() {
-        return quatity;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setQuatity(int quatity) {
-        this.quatity = quatity;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public String getDescription() {
@@ -167,9 +166,9 @@ public class Book implements Serializable {
     }
 
     // Tan code
-    public String getMainImg(){
-        for (String img: imgs) {
-            if( img.endsWith("0.jpg"))
+    public String getMainImg() {
+        for (String img : imgs) {
+            if (img.endsWith("0.jpg"))
                 return img;
         }
         return imgs.get(0);
@@ -177,12 +176,16 @@ public class Book implements Serializable {
 
     public String getDecimalFormatPrice() {
         DecimalFormat f = new DecimalFormat();
-        return  f.format(price);
+        return f.format(price);
     }
 
     public String getDecimalFormatPriceSale() {
         DecimalFormat f = new DecimalFormat();
-        return  f.format(priceSale);
+        return f.format(priceSale);
+    }
+
+    public double getDiscount() {
+        return (price - priceSale)  * 100 / price;
     }
 
     @Override
@@ -196,4 +199,17 @@ public class Book implements Serializable {
                 '}';
     }
     // end
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return id == book.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }

@@ -1,9 +1,5 @@
-package vn.edu.nlu.utils;
+package vn.edu.nlu.beans;
 
-import vn.edu.nlu.beans.Blog;
-import vn.edu.nlu.beans.Categories;
-import vn.edu.nlu.beans.GroupBook;
-import vn.edu.nlu.beans.TypeLanguage;
 import vn.edu.nlu.entities.BlogEntity;
 import vn.edu.nlu.entities.CategoryEntity;
 import vn.edu.nlu.entities.GroupEntity;

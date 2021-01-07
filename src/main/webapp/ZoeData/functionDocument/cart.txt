@@ -62,7 +62,15 @@ step 2. addBook nhận id của sách và
 
         giỏ hàng thêm sách như này nhé:
         nếu book có trong giỏ hàng và số lượng book trong giỏ hàng nhỏ hơn số lượng book trong database thì tăng một
+        ?? nếu book có trong giỏ hàng và số lượng book trong giỏ hàng lớn hơn số lượng book trong database thì giảm về số lượng book trong database
         nếu book không có trong giỏ hàng thì thêm vào giỏ hàng với số lượng là 1
 
+?? tại sao phải gọi book dưới csdl lên => để kiểm tra số lượng tồn kho csdl
 
-=>
+--------------------------------------new think, new wolrd-----------------------------------------------------------
+==> sau một khoảng thời gian suy nghĩ ỉ ôi thì mình quyết định là giỏ hàng có các phương thức sau:
++) cập nhật số lượng: thêm, sửa, xóa số lượng đầu sách trong đơn hàng
++) tính tổng tiền cả đơn hàng
++) tính tổng tiền cả phí ship
++) tính tổng số sách trong giỏ hàng
++) cập nhật giỏ hàng: cập nhật số sách trong giỏ hàng cho phù hợp số lượng sách trong database
