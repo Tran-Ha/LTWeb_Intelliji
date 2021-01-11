@@ -1,10 +1,13 @@
 package vn.edu.nlu.beans;
 
+import vn.edu.nlu.utils.Converter;
+
 import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.*;
 
 public class Book implements Serializable {
+    // fields
     private int id;
     private String name;
     private long price;
@@ -18,11 +21,9 @@ public class Book implements Serializable {
     private int quantity;
     private String description;
     private String information;
-    // Tan code
     private ArrayList<String> imgs = new ArrayList<>();
-    // end
     private Set<String> authors = new HashSet<>();
-
+    // constructor
     public Book() {
     }
 
@@ -42,9 +43,9 @@ public class Book implements Serializable {
         this.quantity = quatity;
         this.description = description;
         this.information = information;
-
     }
 
+    // methods
     public int getId() {
         return id;
     }
@@ -141,8 +142,8 @@ public class Book implements Serializable {
         this.description = description;
     }
 
-    public String getInformation() {
-        return information;
+    public String[] getInformation() {
+        return information.split(";");
     }
 
     public void setInformation(String information) {
@@ -165,7 +166,6 @@ public class Book implements Serializable {
         this.authors = authors;
     }
 
-    // Tan code
     public String getMainImg() {
         for (String img : imgs) {
             if (img.endsWith("0.jpg"))
@@ -175,13 +175,11 @@ public class Book implements Serializable {
     }
 
     public String getDecimalFormatPrice() {
-        DecimalFormat f = new DecimalFormat();
-        return f.format(price);
+        return Converter.convertDoubleToMoneyString(price);
     }
 
     public String getDecimalFormatPriceSale() {
-        DecimalFormat f = new DecimalFormat();
-        return f.format(priceSale);
+        return Converter.convertDoubleToMoneyString(priceSale);
     }
 
     public double getDiscount() {
@@ -198,7 +196,6 @@ public class Book implements Serializable {
                 ", imgs=" + imgs +
                 '}';
     }
-    // end
 
     @Override
     public boolean equals(Object o) {

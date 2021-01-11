@@ -81,6 +81,9 @@ public class UserEntity {
             if (resultSet.next()) {
                 Date createdTime = resultSet.getTimestamp("CREATED_TIME");
                 Date currentTime = Calendar.getInstance().getTime();
+                if (createdTime == null) {
+                    return false;
+                }
                 if (currentTime.getTime() - createdTime.getTime() > time) {
                     return false;
                 }

@@ -25,7 +25,7 @@ public class UpdateCart extends HttpServlet {
         // processing
         if (page != null) {
             if (cart != null) {
-                for (Book book: cart.getBooks()) {
+                for (Book book : cart.getBooks()) {
                     Book bookEntity = BookEntity.getBookById(book.getId());
                     if (bookEntity == null) {
                         cart.deleteBook(book);
@@ -43,7 +43,7 @@ public class UpdateCart extends HttpServlet {
                 request.getSession(true).setAttribute("cartNotification", "Giỏ hàng của bạn đã được cập nhật!");
             }
 
-            response.sendRedirect(page);
+            response.sendRedirect("default?page=" + page);
         }
     }
 }

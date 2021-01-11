@@ -22,8 +22,10 @@ public class UpdateBookQuantity extends HttpServlet {
         // get parameter from request
         String page = request.getParameter("page");
         String id = request.getParameter("id");
-        int quantity = Converter.convertStringToInt(request.getParameter("quantity"));
-        System.out.println("quantity: " + quantity);
+        Integer quantity = (Integer) request.getAttribute("quantity");
+        if (quantity == null) {
+            quantity = Converter.convertStringToInt(request.getParameter("quantity"));
+        }
         // get book from database
         Book book = BookEntity.getBookById(id);
         int quantityOnDB = book.getQuantity();
@@ -56,7 +58,7 @@ public class UpdateBookQuantity extends HttpServlet {
                 request.getSession(true).setAttribute("cartNotification", "Bạn chưa đăng nhập! Vui lòng đăng nhập hoặc đăng kí để mua hàng!");
             }
 
-            response.sendRedirect(page);
+            response.sendRedirect("default?page=" + page);
         }
     }
 }

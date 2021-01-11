@@ -7,20 +7,14 @@
 <head>
     <title>Giỏ hàng</title>
     <%@ include file="head.jsp" %>
-
-    <%
-        String notification = (String) session.getAttribute("cartNotification");
-        request.setAttribute("cartNotification", notification);
-        session.removeAttribute("cartNotification");
-
-        System.out.println("notification: " + notification);
-    %>
-
-    <c:if test="${cartNotification != null}">
-        <script>
-            onload = setTimeout(function () { alert("${cartNotification}"); }, 0);
-        </script>
-    </c:if>
+    <script>
+        <c:if test="${cartNotification != null}">
+        onload = setTimeout(function () {
+            alert("${cartNotification}");
+        }, 0);
+        <c:remove var="cartNotification"/>
+        </c:if>
+    </script>
 </head>
 
 <body class="cart">
@@ -38,8 +32,8 @@
             <div class="col-lg-12">
                 <div class="breadcrumbs-menu">
                     <ul>
-                        <li><a href="home.jsp">Trang chủ</a></li>
-                        <li><a href="cart.jsp" class="active">Giỏ hàng</a></li>
+                        <li><a href="default?page=home">Trang chủ</a></li>
+                        <li><a href="default?page=cart" class="active">Giỏ hàng</a></li>
                     </ul>
                 </div>
             </div>
@@ -65,7 +59,7 @@
                                     <li class="cart-products__product">
                                         <div class="cart-products__inner" style="margin-bottom: 0px">
                                             <div class="cart-products__img">
-                                                <a href="bookDetail?id=${book.id}">
+                                                <a href="detailProduct?id=${book.id}">
                                                     <img src="${book.getMainImg()}" alt="${book.name}">
                                                 </a>
                                             </div>
@@ -73,7 +67,7 @@
                                                 <div class="cart-products__content--inner">
                                                     <div class="cart-products__desc">
                                                         <a class="cart-products__name"
-                                                           href="bookDetail?id=${book.id}">${book.name}</a>
+                                                           href="detailProduct?id=${book.id}">${book.name}</a>
                                                         <p class="cart-products__badge"></p>
                                                         <p class="cart-products__author">
                                                             <span>Tác giả: </span>
@@ -82,7 +76,7 @@
                                                             </c:forEach>
                                                         </p>
                                                         <p class="cart-products__actions">
-                                                            <a href="updateBookQuantity?page=cart.jsp&id=${book.id}&quantity=0">
+                                                            <a href="updateBookQuantity?page=cart&id=${book.id}&quantity=0">
                                                                 <span class="cart-products__del">Xóa</span>
                                                             </a>
                                                             <span class="cart-products__buy-later">Để dành mua sau</span>
@@ -103,27 +97,24 @@
                                                                         <span class="qty-decrease">-</span>
                                                                     </c:when>
                                                                     <c:otherwise>
-                                                                        <a href="updateBookQuantity?page=cart.jsp&id=${book.id}&quantity=${cart.getQuantityOfBook(book) - 1}"><span
+                                                                        <a href="updateBookQuantity?page=cart&id=${book.id}&quantity=${cart.getQuantityOfBook(book) - 1}"><span
                                                                                 class="qty-decrease">-</span></a>
                                                                     </c:otherwise>
                                                                 </c:choose>
-                                                                <form  id="updateForm" method="get" action="updateBookQuantity" style="margin: auto">
-                                                                    <input type="hidden" name="page" value="cart.jsp">
-                                                                    <input type="hidden"  name="id" value="${book.id}">
-                                                                    <input type="text" name="quantity" class="qty-input" value="${cart.getQuantityOfBook(book)}"
-                                                                           onkeypress="function handler(obj) {
-                                                                            if (obj.target.keyCode == onEnter) {
-                                                                                document.getElementById('updateForm').submit();
-                                                                            }
-                                                                        }"
-                                                                    >
+                                                                <form id="updateForm" method="get"
+                                                                      action="updateBookQuantity" style="margin: auto">
+                                                                    <input type="hidden" name="page" value="cart">
+                                                                    <input type="hidden" name="id" value="${book.id}">
+                                                                    <input type="text" name="quantity" class="qty-input"
+                                                                           maxlength="2"
+                                                                           value="${cart.getQuantityOfBook(book)}">
                                                                 </form>
                                                                 <c:choose>
                                                                 <c:when test="${cart.getQuantityOfBook(book) == book.quantity}">
                                                                 <span class="qty-increase ">+</span></div>
                                                             </c:when>
                                                             <c:otherwise>
-                                                            <a href="updateBookQuantity?page=cart.jsp&id=${book.id}&quantity=${cart.getQuantityOfBook(book) + 1}"><span
+                                                            <a href="updateBookQuantity?page=cart&id=${book.id}&quantity=${cart.getQuantityOfBook(book) + 1}"><span
                                                                     class="qty-increase ">+</span></a></div>
                                                         </c:otherwise>
                                                         </c:choose>
@@ -151,8 +142,8 @@
         <div class="col-lg-8 col-md-6 col-12">
             <div class="buttons-cart mb-30">
                 <ul>
-                    <li><a href="updateCart?page=cart.jsp">Cập nhật giỏ hàng</a></li>
-                    <li><a href="home.jsp">Tiếp tục mua hàng</a></li>
+                    <li><a href="updateCart?page=cart">Cập nhật giỏ hàng</a></li>
+                    <li><a href="default?page=home">Tiếp tục mua hàng</a></li>
                 </ul>
             </div>
         </div>
@@ -183,7 +174,7 @@
                         <th>Tổng đơn hàng</th>
                         <td>
                             <strong>
-                                <span class="amount">${cart == null ? 0 : cart.convertToMoney(cart.getTotalPriceAndShipFee())}đ</span>
+                                <span class="amount">${cart == null || cart.getTotalPriceAndShipFee() == 20000 ? 0 : cart.convertToMoney(cart.getTotalPriceAndShipFee())}đ</span>
                             </strong>
                         </td>
                     </tr>

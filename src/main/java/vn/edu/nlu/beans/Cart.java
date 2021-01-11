@@ -66,4 +66,22 @@ public class Cart implements Serializable {
     public String convertToMoney(double price) {
         return Converter.convertDoubleToMoneyString(price);
     }
+
+    public boolean containBookById(int id) {
+        for (Book book : getBooks()) {
+            if (book.getId() == id) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int getQuantityById(int id) {
+        for (Book book : getBooks()) {
+            if (book.getId() == id) {
+                return bookMap.get(book);
+            }
+        }
+        return -1;
+    }
 }

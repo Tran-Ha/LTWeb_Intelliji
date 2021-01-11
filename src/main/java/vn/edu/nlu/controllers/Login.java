@@ -22,17 +22,16 @@ public class Login extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-
         User user = UserEntity.getUserByEmailAndPassword(email, password);
         if (user == null) {
-            request.setAttribute("notification", "Sai thông tin đăng nhập! Vui lòng nhập lại!");
-            request.getRequestDispatcher("login_signup.jsp").forward(request, response);
+            request.getSession(true).setAttribute("loginNotification", "Sai thông tin đăng nhập! Vui lòng nhập lại!");
+            response.sendRedirect("default?page=login");
         } else {
             HttpSession session = request.getSession(true);
             session.setAttribute("user", user);
             session.setAttribute("cart", new Cart());
             session.setAttribute("role", RoleEntity.getRoleByUser(user));
-            response.sendRedirect("home.jsp");
+            response.sendRedirect("default?page=home");
         }
     }
 }
