@@ -79,24 +79,35 @@ public class BookEntity {
         return result;
     }
 
-    // Tan's code end
-    public static void main(String[] args) {
-        System.out.println(BookEntity.getBookById(2));
-    }
-
-    //load list language book
-    public ArrayList<TypeLanguage> getLanguages() {
-
-        String sql = "select * from TypeLanguage ";
-        ArrayList<TypeLanguage> list = new ArrayList<>();
+    public static Map<Integer,Book> getBooksByIdCat(int id_cat, int start, int bPerPage, int order){
+        Map<Integer, Book> list = new HashMap<Integer, Book>();
+        String sql="select * from \n" +
+                "(select b.ID, b.`NAME` Tittle, b.PRICE, b.PRICESALE, b.DESCRIPTION, b.INFORMATION\n" +
+                "from book b\n" +
+                "limit ?,?) bk\n" +
+                "inner join image i on i.ID_BOOK=bk.ID;";
         try {
-            PreparedStatement ps = ConnectionDB.connect(sql);
-            ResultSet rs = ps.executeQuery();
+            PreparedStatement ps= ConnectionDB.connect(sql);
+            ResultSet rs=ps.executeQuery();
+
             while (rs.next()) {
-                TypeLanguage lang = new TypeLanguage();
-                lang.setId(rs.getInt(1));
-                lang.setName(rs.getString(2));
-                list.add(lang);
+                Book b = new Book();
+                b.setId(rs.getInt("Id"));
+
+                if(!list.containsKey(b.getId())){
+
+                    b.setName(rs.getString("Tittle"));
+                    b.setPrice(rs.getLong("Price"));
+                    b.setPriceSale(rs.getLong("PriceSale"));
+                    b.setDescription(rs.getString("Description"));
+                    b.setInformation(rs.getString("Information"));
+                    b.getImgs().add(rs.getString("Link"));
+
+                    list.put(b.getId(),b);
+                }
+                else{
+                    b.getImgs().add(rs.getString("Link"));
+                }
             }
             rs.close();
             ps.close();
@@ -105,131 +116,6 @@ public class BookEntity {
         }
         return list;
     }
-
-    //load list language book by id
-    public ArrayList<TypeLanguage> getLanguages(int id_lang) {
-
-        String sql = "select * from TypeLanguage where id=?";
-        ArrayList<TypeLanguage> list = new ArrayList<>();
-        try {
-            PreparedStatement ps = ConnectionDB.connect(sql);
-            ps.setInt(1, id_lang);
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
-                TypeLanguage lang = new TypeLanguage();
-                lang.setId(rs.getInt(1));
-                lang.setName(rs.getString(2));
-                list.add(lang);
-            }
-            rs.close();
-            ps.close();
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-        }
-        return list;
-    }
-
-    //load list group book
-    public ArrayList<GroupBook> getGroups() {
-
-        String sql = "select * from group_book ";
-        ArrayList<GroupBook> list = new ArrayList<>();
-        try {
-            PreparedStatement ps = ConnectionDB.connect(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                GroupBook group = new GroupBook();
-                group.setId(rs.getInt(1));
-                group.setName(rs.getString(2));
-                group.setId_language(rs.getInt(3));
-                list.add(group);
-            }
-            rs.close();
-            ps.close();
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-        }
-        return list;
-    }
-
-    //load list group book by id
-    public ArrayList<GroupBook> getGroups(int id_group) {
-
-        String sql = "select * from group_book where id=?";
-        ArrayList<GroupBook> list = new ArrayList<>();
-        try {
-            PreparedStatement ps = ConnectionDB.connect(sql);
-            ps.setInt(1, id_group);
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
-                GroupBook group = new GroupBook();
-                group.setId(rs.getInt(1));
-                group.setName(rs.getString(2));
-                group.setId_language(rs.getInt(3));
-                list.add(group);
-            }
-            rs.close();
-            ps.close();
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-        }
-        return list;
-    }
-
-    //load list category book
-    public ArrayList<Categories> getCategories() {
-
-        String sql = "select * from group_book";
-        ArrayList<Categories> list = new ArrayList<>();
-        try {
-            PreparedStatement ps = ConnectionDB.connect(sql);
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
-                Categories cat = new Categories();
-                cat.setId(rs.getInt(1));
-                cat.setName(rs.getString(2));
-                cat.setId_group(rs.getInt(3));
-                list.add(cat);
-            }
-            rs.close();
-            ps.close();
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-        }
-        return list;
-    }
-    /*public static void main(String[] args) {
-        BookEntity be= new BookEntity();
-    }*/
-
-    //load list category book by id
-    public ArrayList<Categories> getCategories(int id_cat) {
-
-        String sql = "select * from group_book where id=?";
-        ArrayList<Categories> list = new ArrayList<>();
-        try {
-            PreparedStatement ps = ConnectionDB.connect(sql);
-            ps.setInt(1, id_cat);
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
-                Categories cat = new Categories();
-                cat.setId(rs.getInt(1));
-                cat.setName(rs.getString(2));
-                cat.setId_group(rs.getInt(3));
-                list.add(cat);
-            }
-            rs.close();
-            ps.close();
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-        }
-        return list;
-    }
-
     // Tan code start
     public List<Book> getNewBook() {
         Statement statement = null;

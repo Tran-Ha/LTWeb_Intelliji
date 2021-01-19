@@ -3,44 +3,11 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!doctype html>
-<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths"
-      lang="en" style="">
+<html >
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Kết quả tìm kiếm</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <jsp:include page="head.jsp"/>
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/gif" sizes="16x16" href="img/icon/icon.gif">
-    <!-- all css here -->
-    <!-- bootstrap v3.3.6 css -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- animate css -->
-    <link rel="stylesheet" href="css/animate.css">
-    <!-- meanmenu css -->
-    <link rel="stylesheet" href="css/meanmenu.min.css">
-    <!-- owl.carousel css -->
-    <link rel="stylesheet" href="css/owl.carousel.css">
-    <!-- font-awesome css -->
-    <link rel="stylesheet" href="css/all.min.css">
-    <link rel="stylesheet" href="css/fontawesome.min.css">
-    <!-- flexslider.css-->
-    <link rel="stylesheet" href="css/flexslider.css">
-    <!-- chosen.min.css-->
-    <link rel="stylesheet" href="css/chosen.min.css">
-    <!-- style css -->
-    <link rel="stylesheet" href="style.css">
-    <!-- responsive css -->
-    <link rel="stylesheet" href="css/responsive.css">
-    <!-- modernizr css -->
-    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
-    <style type="text/css">
-        .product-wrapper:hover .product-link {
-            margin-bottom: -40px;
-        }
-    </style>
 </head>
 
 <body class="shop">
@@ -49,248 +16,10 @@
 
 <!-- Add your site or application content here -->
 <!-- header-area-start -->
-<header>
-    <!-- header-top-area-start -->
-    <div class="header-top-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-12">
-                </div>
-                <div class="col-lg-6 col-md-6 col-12">
-                    <div class="account-area text-right">
-                        <ul>
-                            <li><a href="my-account.html">Tài khoản</a></li>
-                            <li><a href="checkout.html">Thanh toán</a></li>
-                            <li><a href="login_signup.html">Đăng nhập</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- header-top-area-end -->
-    <!-- header-mid-area-start -->
-    <div class="header-mid-area ptb-20">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-lg-3 col-md-5 col-12 ">
-                    <div class="logo-area text-center logo-xs-mrg">
-                        <a href="home.html">
-                            <div class="logo-web">Zoe</div>
-                            <span class="slogan">A book - A life</span>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-lg-6 col-md-4 col-12">
-                    <div class="header-search ptb-10">
-                        <form action="LoadFilter" method="GET">
-                            <input type="text" placeholder="Tìm sản phẩm, danh mục, thương hiệu,...">
-                            <a href="LoadFilter<%--http://localhost:8080/LoadDB_war_exploded/LoadFilter--%>"><i class="fa fa-search"></i></a>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-3 col-12">
-                    <div class="my-cart ptb-10">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i>Giỏ hàng</a>
-                                <span>2</span>
-                                <div class="mini-cart-sub">
-                                    <div class="cart-product">
-                                        <div class="single-cart">
-                                            <div class="cart-img">
-                                                <a href="product-details.html"><img src="img/products/1.jpg" alt="book"></a>
-                                            </div>
-                                            <div class="cart-info">
-                                                <h5><a href="#">Lý thuyết tiền tệ</a></h5>
-                                                <p>1 x 60.000đ</p>
-                                            </div>
-                                            <div class="cart-icon">
-                                                <a href="#"><i class="fa fa-remove"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="single-cart">
-                                            <div class="cart-img">
-                                                <a href="product-details.html"><img src="img/products/3.jpg" alt="book"></a>
-                                            </div>
-                                            <div class="cart-info">
-                                                <h5><a href="#">Bất động sản</a></h5>
-                                                <p>1 x 52.000đ</p>
-                                            </div>
-                                            <div class="cart-icon">
-                                                <a href="#"><i class="fa fa-remove"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="cart-totals">
-                                        <h5>Thành tiền <span>12.000đ</span></h5>
-                                    </div>
-                                    <div class="cart-bottom">
-                                        <a class="view-cart" href="cart.html">Xem giỏ hàng</a>
-                                        <a href="checkout.html">Thanh toán</a>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- header-mid-area-end -->
-    <!-- main-menu-area-start -->
-    <div class="main-menu-area d-md-none d-none d-lg-block sticky-header-1 sticky" id="header-sticky">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="menu-area">
-                        <nav>
-                            <ul>
-                                <li class="active"><a href="home.html">Trang chủ</a>
-                                </li>
-                                <li><a href="shop-list.html">Sách Tiếng Việt<i class="fa fa-angle-down"></i></a>
-                                    <div class="mega-menu">
-                                            <span>
-                                                <a href="shop.html" class="title">Sách mới<i
-                                                        class="fas fa-book-open"></i></a>
-                                            </span>
-                                        <span>
-                                                <a href="shop.html" class="title">bán chạy<i class="fas fa-heart"></i> </a>
-                                            </span>
-                                        <span>
-                                                <a href="shop.html" class="title">Tuyển chọn<i
-                                                        class="fas fa-bookmark"></i></a>
-                                            </span>
-                                        <span>
-                                                <a href="shop.html" class="title">Giảm giá<i
-                                                        class="fas fa-tags"></i></a>
-                                            </span>
-                                        <span>
-                                                <a href="shop-list.html" class="title">văn học</a>
-                                                <a href="shop.html">Tiểu thuyết</a>
-                                                <a href="shop.html">Truyện ngắn</a>
-                                                <a href="shop.html">Kinh điển</a>
-                                                <a href="shop-list.html" class="more">Xem thêm...</a>
-                                            </span>
-                                        <span>
-                                                <a href="shop-list.html" class="title">kinh tế</a>
-                                                <a href="shop.html">Kinh doanh</a>
-                                                <a href="shop.html">Quản trị</a>
-                                                <a href="shop.html">Marketing</a>
-                                                <a href="shop-list.html" class="more">Xem thêm...</a>
-                                            </span>
-                                        <span>
-                                                <a href="shop-list.html" class="title">kĩ năng</a>
-                                                <a href="shop.html">Kỹ năng sống</a>
-                                                <a href="shop.html">Tâm lí</a>
-                                                <a href="shop.html">Sống đẹp</a>
-                                                <a href="shop-list.html" class="more">Xem thêm...</a>
-                                            </span>
-                                        <span>
-                                                <a href="shop-list.html" class="title">thiếu nhi</a>
-                                                <a href="shop.html">Cổ tích</a>
-                                                <a href="shop.html">Truyện tranh</a>
-                                                <a href="shop.html">Luyện chữ</a>
-                                                <a href="shop-list.html" class="more">Xem thêm...</a>
-                                            </span>
-                                        <span>
-                                                <a href="shop-list.html" class="title">Thường thức</a>
-                                                <a href="shop.html">Giáo khoa</a>
-                                                <a href="shop.html">Mẹ và bé</a>
-                                                <a href="shop.html">Gia đình</a>
-                                                <a href="shop-list.html" class="more">Xem thêm...</a>
-                                            </span>
-                                        <span>
-                                                <a href="shop-list.html" class="title">học ngoại ngữ</a>
-                                                <a href="shop.html">Tiếng Anh</a>
-                                                <a href="shop.html">Tiếng Nhật</a>
-                                                <a href="shop.html">Từ điển</a>
-                                                <a href="shop-list.html" class="more">Xem thêm...</a>
-                                            </span>
-                                        <span>
-                                                <a href="shop-list.html" class="title">tổng hợp</a>
-                                                <a href="shop.html">Âm nhạc - Hội họa</a>
-                                                <a href="shop.html">Chính trị - Pháp lý</a>
-                                                <a href="shop.html">Nông - Lâm - Ngư nghiệp</a>
-                                                <a href="shop-list.html" class="more">Xem thêm...</a>
-                                            </span>
-
-                                    </div>
-                                </li>
-                                <li><a href="shop-list.html">English books<i class="fa fa-angle-down"></i></a>
-                                    <div class="mega-menu">
-                                            <span>
-                                                <a href="shop-list.html" class="title">Business - Economics</a>
-                                                <a href="shop.html">Economics</a>
-                                                <a href="shop.html">Finance </a>
-                                                <a href="shop.html">Investment</a>
-                                                <a href="shop-list.html" class="more">See more</a>
-                                            </span>
-                                        <span>
-                                                <a href="shop-list.html" class="title">How-to Self help</a>
-                                                <a href="shop.html">Communication</a>
-                                                <a href="shop.html">Creativity</a>
-                                                <a href="shop.html">Emotions</a>
-                                                <a href="shop-list.html" class="more">See more</a>
-                                            </span>
-                                        <span>
-                                                <a href="shop-list.html" class="title">Science - Technology</a>
-                                                <a href="shop.html">Astronomy</a>
-                                                <a href="shop.html">Internet - Computer</a>
-                                                <a href="shop.html">Ecology</a>
-                                                <a href="shop-list.html" class="more">See more</a>
-                                            </span>
-                                        <span>
-                                                <a href="shop-list.html" class="title">Travel - Holiday</a>
-                                                <a href="shop.html">American</a>
-                                                <a href="shop.html">Asia</a>
-                                                <a href="shop.html">Discovery</a>
-                                                <a href="shop-list.html" class="more">See more</a>
-                                            </span>
-                                        <span>
-                                                <a href="shop-list.html" class="title">Magazines</a>
-                                                <a href="shop.html">Fashion</a>
-                                                <a href="shop.html">Science</a>
-                                                <a href="shop.html">Economics</a>
-                                                <a href="shop-list.html" class="more">See more</a>
-                                            </span>
-                                        <span>
-                                                <a href="shop-list.html" class="title">Education - Teaching</a>
-                                                <a href="shop.html">ELTs</a>
-                                                <a href="shop.html">Grammar</a>
-                                                <a href="shop.html">Teaching</a>
-                                                <a href="shop-list.html" class="more">See more</a>
-                                            </span>
-                                    </div>
-                                </li>
-                                <li><a href="#">Blog<i class="fa fa-angle-down"></i></a>
-                                    <div class="sub-menu sub-menu-2">
-                                        <ul>
-                                            <li><a href="about.html">Giới thiệu</a></li>
-                                            <li><a href="blog-details.html">Hội sách tháng 10/2020</a></li>
-                                            <li><a href="blog-details.html">Hội sách tháng 11/2020</a></li>
-                                            <li><a href="blog-details.html">Hội sách tháng 12/2020</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li><a href="contact.html">Liên hệ</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- main-menu-area-end -->
-
-</header>
+<jsp:include page="header.jsp"/>
 
 <!-- breadcrumbs-area-start -->
-<div class="breadcrumbs-area mb-70">
+<div class="breadcrumbs-area mb-30">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -310,52 +39,67 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-12 col-12 order-lg-1 order-2 mt-sm-50 mt-xs-40">
-                <div class="shop-left">
-                    <div class="section-title-5 mb-30">
-                        <h2>Tùy chọn mua sắm</h2>
-                    </div>
-                    <div class="left-title mb-20">
-                        <h4>Thể loại</h4>;
-                    </div>
-                    <div class="left-menu mb-30">
-                        <ul>
-                            <c:forEach items="${list}" var="item">
-                            <li><a href="#">${item.name}<span>(15)</span></a></li>
-                            </c:forEach>
-                        </ul>
-                    </div>
-                    <div class="left-title mb-20">
-                        <h4>Công ty phát hành</h4>
-                    </div>
-                    <div class="left-menu mb-30">
-                        <ul>
-                            <li><a href="#">Nhà xuất bản Trẻ<span>(4)</span></a></li>
-                            <li><a href="#">Nhà xuất bản Kim Đồng<span>(7)</span></a></li>
-                            <li><a href="#">Thái Hà <span>(3)</span></a></li>
-                            <li><a href="#">Nhã Nam<span>(3)</span></a></li>
-                            <li><a href="#">Công ty cổ phần Văn hóa sách Việt Nam<span>(2)</span></a></li>
-                            <li><a href="#">Alphabooks<span>(3)</span></a></li>
-                            <li><a href="#">First new - Trí Việt <span>(1)</span></a></li>
-                        </ul>
-                    </div>
-                    <div class="left-title mb-20">
-                        <h4>Giá</h4>
-                    </div>
-                    <div class="left-menu mb-30">
-                        <ul>
-                            <li><a href="#">dưới 100.000đ<span>(1)</span></a></li>
-                            <li><a href="#">từ 100.000đ - 200.000đ<span>(11)</span></a></li>
-                            <li><a href="#">từ 200.000đ - 300.000đ<span>(2)</span></a></li>
-                            <li><a href="#">từ 300.000đ - 500.000đ<span>(3)</span></a></li>
-                            <li><a href="#">trên 500.000đ<span>(1)</span></a></li>
-                        </ul>
-                    </div>
-                    <div class="left-title mb-20">
+                <div class="shop-left" id="body-row">
+
+                    <!-- Sidebar -->
+                    <div id="sidebar-container" class="sidebar-expanded d-none d-md-block">
+                        <!-- d-* hiddens the Sidebar in smaller devices. Its itens can be kept on the Navbar 'Menu' -->
+                        <!-- Bootstrap List Group -->
+                        <ul class="list-group">
+                            <!-- Separator with title -->
+                            <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
+                                <small>Danh mục sản phẩm</small>
+                            </li>
+                            <!-- /END Separator -->
+                            <!-- Menu with submenu -->
+                            <a href="#submenu1" data-toggle="collapse" aria-expanded="false" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-start align-items-center">
+                                    <span class="menu-collapsed">Thể loại</span>
+                                    <span class="submenu-icon ml-auto"></span>
+                                </div>
+                            </a>
+                            <!-- Submenu content -->
+                            <div id='submenu1' class="collapse sidebar-submenu">
+                                <c:forEach items="${groups}" var="g">
+                                    <a class="list-group-item list-group-item-action" href="/Zoe/loadingCategories?group=${g.id}">${g.name}</a>
+                                </c:forEach>
+                            </div>
+                            <a href="#submenu2" data-toggle="collapse" aria-expanded="false" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-start align-items-center">
+                                    <span class="menu-collapsed">Nhà phát hành</span>
+                                    <span class="submenu-icon ml-auto"></span>
+                                </div>
+                            </a>
+                            <!-- Submenu content -->
+                            <div id='submenu2' class="collapse sidebar-submenu">
+                                <c:forEach items="${pubs}" var="p">
+                                    <li><a class="list-group-item list-group-item-action" href="/Zoe/loadingCategories?pub=${p.id}">${p.name}</a></li>
+                                </c:forEach>
+                            </div>
+
+                            <a href="#submenu3" data-toggle="collapse" aria-expanded="false" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-start align-items-center">
+                                    <span class="menu-collapsed">Giá</span>
+                                    <span class="submenu-icon ml-auto"></span>
+                                </div>
+                            </a>
+                            <!-- Submenu content -->
+                            <div id='submenu3' class="collapse sidebar-submenu">
+                                <a class="list-group-item list-group-item-action" href="/Zoe/loadingCategories?up=100000">Dưới 100.000đ</a>
+                                <a class="list-group-item list-group-item-action" href="/Zoe/loadingCategories?down=100000&up=200000">Từ 100.000đ - 200.000đ</a>
+                                <a class="list-group-item list-group-item-action" href="/Zoe/loadingCategories?down=100000&up=200000">Từ 200.000đ - 300.000đ</a>
+                                <a class="list-group-item list-group-item-action" href="/Zoe/loadingCategories?down=100000&up=200000">Từ 300.000đ - 500.000đ</a>
+                                <a class="list-group-item list-group-item-action" href="/Zoe/loadingCategories?down=500000">Trên 500.000đ</a>
+                            </div>
+
+                        </ul><!-- List Group END-->
+                    </div><!-- sidebar-container END -->
+
+                    <div class="left-title mb-20 mt-16">
                         <h4>Đề xuất</h4>
                     </div>
                     <div class="random-area mb-30">
                         <div class="product-active-2 owl-carousel owl-loaded owl-drag">
-
 
                             <div class="owl-stage-outer">
                                 <div class="owl-stage"
@@ -1036,13 +780,13 @@
                     <div class="tab-pane fade" id="th">
                         <div class="row">
 
-                            <c:forEach items="${data}" var="d">
-                                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                            <c:forEach items="${books}"  var="b">
+                                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6  mb-40">
                                     <!-- single-product-start -->
-                                    <div class="product-wrapper mb-40">
+                                    <div class="product-wrapper">
                                         <div class="product-img">
                                             <a href="#">
-                                                <img src="${d.img}" alt="book" class="primary">
+                                                <img src="${b.getMainImg()}" alt="book" class="primary">
                                             </a>
                                             <div class="quick-view">
                                                 <a class="action-view" href="#" data-target="#productModal"
@@ -1066,22 +810,23 @@
                                                     <li><a href="#"><i class="fa fa-star"></i></a></li>
                                                 </ul>
                                             </div>
-                                            <h4><a href="#">${d.title}</a></h4>
+                                            <h4><a href="#">${b.name}</a></h4>
                                             <div class="product-price">
                                                 <ul>
-                                                    <li>${d.getPriceSale()}đ</li>
+                                                    <li>${b.getDecimalFormatPrice()}đ</li>
+                                                    <li class="old-price">${b.getDecimalFormatPrice()}đ</li>
                                                 </ul>
                                             </div>
                                         </div>
                                         <div class="product-link">
                                             <div class="product-button">
-                                                <a href="#" title="Add to cart"><i class="fa fa-shopping-cart"></i>Thêm
-                                                    vào giỏ hàng</a>
+                                                <a href="#" title="Add to cart">
+                                                    <i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
                                             </div>
                                             <div class="add-to-link">
                                                 <ul>
-                                                    <li><a href="product-details.html" title="Details"><i
-                                                            class="fa fa-external-link"></i></a></li>
+                                                    <li><a href="product-details.html" title="Details">
+                                                        <i class="fa fa-external-link"></i></a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -1094,14 +839,14 @@
 
                     <div class="tab-pane fade active show" id="list">
                         <!-- single-shop-start -->
-                        <c:forEach items="${data}" var="item">
+                        <c:forEach items="${books}"  var="b">
                             <div class="single-shop mb-30">
-                                <div class="row">
+                                <div class="row list-box">
                                     <div class="col-lg-4 col-md-4 col-12">
                                         <div class="product-wrapper-2">
                                             <div class="product-img">
                                                 <a href="#">
-                                                    <img src="${item.img}" alt="book" class="primary">
+                                                    <img src="${b.getMainImg()}" alt="${b.name}" class="primary">
                                                 </a>
                                             </div>
                                         </div>
@@ -1109,6 +854,7 @@
                                     <div class="col-lg-8 col-md-8 col-12">
                                         <div class="product-wrapper-content">
                                             <div class="product-details">
+                                                <h4><a href="#">${b.name}</a></h4>
                                                 <div class="product-rating">
                                                     <ul>
                                                         <li><a href="#"><i class="fa fa-star"></i></a></li>
@@ -1118,24 +864,23 @@
                                                         <li><a href="#"><i class="fa fa-star"></i></a></li>
                                                     </ul>
                                                 </div>
-                                                <h4><a href="#">${item.title}</a></h4>
                                                 <div class="product-price">
                                                     <ul>
-                                                        <li>${item.priceSale}đ</li>
-                                                        <li class="old-price">${item.price}đ</li>
+                                                        <li>${b.getDecimalFormatPriceSale()}đ</li>
+                                                        <li class="old-price">${b.getDecimalFormatPrice()}đ</li>
                                                     </ul>
                                                 </div>
-                                                <p>${item.text}</p>
+                                                <p class="description">${b.description}</p>
                                             </div>
                                             <div class="product-link">
                                                 <div class="product-button">
-                                                    <a href="#" title="Add to cart"><i class="fa fa-shopping-cart"></i>Thêm
-                                                        vào giỏ hàng</a>
+                                                    <a href="#" title="Add to cart"><i class="fa fa-shopping-cart">
+                                                    </i>Thêm vào giỏ hàng</a>
                                                 </div>
                                                 <div class="add-to-link">
                                                     <ul>
-                                                        <li><a href="product-details.html" title="Details"><i
-                                                                class="fa fa-external-link"></i></a></li>
+                                                        <li><a href="product-details.html" title="Details">
+                                                            <i  class="fa fa-external-link"></i></a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -1162,132 +907,21 @@
                         </ul>
                     </div>
                 </div>
+                -------------------------------------------------
+
+
+
+                <ul class="pagination" id="pagination"></ul>
+
+
+
+
                 <!-- pagination-area-end -->
             </div>
         </div>
     </div>
 </div>
 <!-- shop-main-area-end -->
-<!-- footer-area-start -->
-<footer>
-    <!-- footer-top-start -->
-    <div class="footer-top">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="footer-top-menu bb-2">
-                        <nav>
-                            <ul>
-                                <li><a href="#">Trang chủ</a></li>
-                                <li><a href="#">Liên hệ</a></li>
-                                <li><a href="#">Blog</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- footer-top-start -->
-    <!-- footer-mid-start -->
-    <div class="footer-mid ptb-20">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-md-12">
-                    <div class="row">
-                        <div class="col-lg-8 col-md-8 col-12">
-                            <div class="single-footer br-2 xs-mb">
-                                <div class="footer-title mb-20">
-                                    <h3>Về chúng tôi</h3>
-                                </div>
-                                <div class="footer-mid-menu">
-                                    <p>Zoe nhận đặt hàng trực tuyến và giao hàng tận nơi,<br>
-                                        có hỗ trợ mua và nhận hàng trực tiếp tại cửa hàng chính.</p>
-                                    <h3>KẾT NỐI VỚI CHÚNG TÔI</h3>
-                                    <p>
-                                        <a rel="noreferrer" href="" class="icon" target="_blank" title="Facebook"><i
-                                                class="fab fa-facebook-f" style="color: blue;"></i></a>
-                                        <a rel="noreferrer" href="" class="icon" target="_blank" title="Youtube"><i
-                                                class="fab fa-youtube " style="color: red;"></i></a>
-                                        <a rel="noreferrer" href="" class="icon" target="_blank" title="Zalo"><img
-                                                src="img/icon/zalo.png" alt="Zalo" srcset=""
-                                                style="width: 22px;height: 22px;margin-bottom: 7px;"></a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- <div class="col-lg-4 col-md-4 col-12">
-                            <div class="single-footer br-2 xs-mb">
-                                <div class="footer-title mb-20">
-                                    <h3>Công ty</h3>
-                                </div>
-                                <div class="footer-mid-menu">
-                                    <ul>
-                                        <li><a href="contact.html">Liên hệ</a></li>
-                                        <li><a href="#">Bản đồ</a></li>
-                                        <li><a href="#">Cửa hàng</a></li>
-                                        <li><a href="register.html">Tài khoản</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div> -->
-                        <div class="col-lg-4 col-md-4 col-12">
-                            <div class="single-footer br-2 xs-mb">
-                                <div class="footer-title mb-20">
-                                    <h3>Tài khoản của bạn</h3>
-                                </div>
-                                <div class="footer-mid-menu">
-                                    <ul>
-                                        <li><a href="contact.html">Địa chỉ</a></li>
-                                        <li><a href="#">Thanh toán</a></li>
-                                        <li><a href="#">Hóa đơn</a></li>
-                                        <li><a href="#">Thông tin cá nhân</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-12">
-                    <div class="single-footer mrg-sm">
-                        <div class="footer-title mb-20">
-                            <h3>THÔNG TIN CỬA HÀNG</h3>
-                        </div>
-                        <div class="footer-contact">
-                            <p class="adress">
-                                <span>Công ty Zoe</span>
-                                42 kp 6, p. Linh Trung, Thủ Đức, TP Hồ Chí Minh
-                            </p>
-                            <p><span>Liên hệ:</span> (+1)866-540-3229</p>
-                            <p><span>Email:</span> support@zoe.com</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- footer-mid-end -->
-    <!-- footer-bottom-start -->
-    <div class="footer-bottom">
-        <div class="container">
-            <div class="row bt-2">
-                <div class="col-lg-6 col-md-6 col-12">
-                    <div class="copy-right-area">
-                        <p>Bản quyền thuộc về ©<a href="#">Zoe</a>. Giấy chứng nhận Đăng ký Kinh doanh số 1234567890
-                        </p>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-12">
-                    <div class="payment-img text-right">
-                        <a href="#"><img src="img/1.png" alt="payment"/></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- footer-bottom-end -->
-</footer>
-<!-- footer-area-end -->
 
 <!-- Modal -->
 <div class="modal fade" id="productModal" tabindex="-1" role="dialog">
@@ -1365,35 +999,61 @@
     </div>
 </div>
 <!-- Modal end -->
-<!-- all js here -->
-<!-- jquery latest version -->
-<script src="js/vendor/jquery-1.12.0.min.js"></script>
-<!-- popper js -->
-<script src="js/popper.min.js"></script>
-<!-- bootstrap js -->
-<script src="js/bootstrap.min.js"></script>
-<!-- owl.carousel js -->
-<script src="js/owl.carousel.min.js"></script>
-<!-- meanmenu js -->
-<script src="js/jquery.meanmenu.js"></script>
-<!-- wow js -->
-<script src="js/wow.min.js"></script>
-<!-- jquery.parallax-1.1.3.js -->
-<script src="js/jquery.parallax-1.1.3.js"></script>
-<!-- jquery.countdown.min.js -->
-<script src="js/jquery.countdown.min.js"></script>
-<!-- jquery.flexslider.js -->
-<script src="js/jquery.flexslider.js"></script>
-<!-- chosen.jquery.min.js -->
-<script src="js/chosen.jquery.min.js"></script>
-<!-- jquery.counterup.min.js -->
-<script src="js/jquery.counterup.min.js"></script>
-<!-- waypoints.min.js -->
-<script src="js/waypoints.min.js"></script>
-<!-- plugins js -->
-<script src="js/plugins.js"></script>
-<!-- main js -->
-<script src="js/main.js"></script>
+
+<!-- footer-area-start -->
+<jsp:include page="footer.jsp"/>
+<!-- footer-area-end -->
+
+<%--js--%>
+<jsp:include page="script.jsp"/>
+
+<%--sidebar--%>
+<script>
+    // Hide submenus
+    $('#body-row .collapse').collapse('hide');
+
+    // Collapse/Expand icon
+    $('#collapse-icon').addClass('fa-angle-double-left');
+
+    // Collapse click
+    $('[data-toggle=sidebar-colapse]').click(function() {
+        SidebarCollapse();
+    });
+
+    function SidebarCollapse () {
+        $('.menu-collapsed').toggleClass('d-none');
+        $('.sidebar-submenu').toggleClass('d-none');
+        $('.submenu-icon').toggleClass('d-none');
+        $('#sidebar-container').toggleClass('sidebar-expanded sidebar-collapsed');
+
+        // Treating d-flex/d-none on separators with title
+        var SeparatorTitle = $('.sidebar-separator-title');
+        if ( SeparatorTitle.hasClass('d-flex') ) {
+            SeparatorTitle.removeClass('d-flex');
+        } else {
+            SeparatorTitle.addClass('d-flex');
+        }
+
+        // Collapse/Expand icon
+        $('#collapse-icon').toggleClass('fa-angle-double-left fa-angle-double-right');
+    }
+</script>
+<%--pagination--%>
+<script>
+    $(function (){
+        window.pagObj = $('#pagination').twbsPagination({
+            totalPages: 10,
+            visiblePages: 5,
+            startPage: 4,
+            onPageClick: function (event, page) {
+                console.info(page + ' (from options)');
+            }
+        }).on('page',function (event, page){
+            console.info(page+' (from event listening) ');
+        });
+    });
+</script>
+
 </body>
 
 </html>
