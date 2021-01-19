@@ -365,8 +365,9 @@
                             <div class="cart-products-inner" style="width: 1100px">
                                 <div class="cart-products__group">
                                     <ul class="cart-products__products">
+
                                         <li class="cart-products__product">
-                                            <div class="cart-products__inner">
+                                            <div class="cart-products__inner" >
                                                 <div class="cart-products__img"><a
                                                         href="/nhung-giac-mo-o-hieu-sach-morisaki-p614854.html?spid=614857"><img
                                                             src="../img/product/1.jpg"
@@ -395,10 +396,19 @@
                                                             </div>
                                                             <div class="cart-products__qty">
                                                                 <div class="CartQty__StyledCartQty-o1bx97-0 iaIXXn">
-                                                                    <span
-                                                                        class="qty-decrease qty-disable">-</span><input
-                                                                        type="tel" class="qty-input" value="1"><span
-                                                                        class="qty-increase ">+</span></div>
+                                                                    <span class="qty-decrease qty-disable">-</span>
+                                                                    <form  id="updateForm" method="get" action="updateCart" style="margin: auto">
+                                                                        <input type="hidden" name="page" value="cart.jsp">
+                                                                        <input type="hidden"  name="id" value="10">
+                                                                        <input type="text" name="quantity" class="qty-input" value="1"
+                                                                        onkeypress="function handler(obj) {
+                                                                            if (obj.target.keyCode == onEnter) {
+                                                                                document.getElementById('updateForm').submit();
+                                                                            }
+                                                                        }"
+                                                                        >
+                                                                    </form>
+                                                                    <a href="addBook?page=cart&id=1"><span class="qty-increase ">+</span></a></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -406,6 +416,7 @@
                                             </div>
                                             <ul class="cart-products__gift-items"></ul>
                                         </li>
+                                        <hr>
                                     </ul>
                                 </div>
                             </div>
@@ -415,6 +426,10 @@
             </div>
         </div>
     </div>
+
+    <script>
+
+    </script>
 
     <div class="container" style="background-color: #fff">
         <div class="row">

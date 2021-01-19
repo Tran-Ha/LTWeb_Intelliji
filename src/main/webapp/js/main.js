@@ -204,7 +204,7 @@
         nav: true,
         autoplay: false,
         dots: false,
-        margin: 20,
+        // margin: 20,
         loop: true,
         navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
         responsive: {

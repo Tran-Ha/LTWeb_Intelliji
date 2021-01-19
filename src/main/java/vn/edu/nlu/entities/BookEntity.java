@@ -36,6 +36,8 @@ public class BookEntity {
                 book.setName(resultSet.getString("NAME"));
                 book.setPrice(resultSet.getLong("PRICE"));
                 book.setPriceSale(resultSet.getLong("PRICESALE"));
+                book.setQuantity(resultSet.getInt("QUANTITY"));
+                book.setInformation(resultSet.getString("INFORMATION"));
                 book.setImgs(getImageLinksById(id));
                 book.setAuthors(getAuthorsById(id));
                 return book;

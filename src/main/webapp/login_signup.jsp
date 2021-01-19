@@ -53,38 +53,32 @@
                 </ul>
 
                 <form method="post" action="login" id="login" style="display: block;" >
-                    <%
-                        String notification = (String) request.getAttribute("notification");
-                        if (notification == null) {
-                            notification = "";
-                        } else {
-                            notification = "<p style='text-align: center; color:red'>* " + notification +"</p>";
-                        }
-                    %>
                     <div class="form-group">
-                        <%= notification %>
-                        <input type="mail" name="email" id="username" class=" form-control"
-                               placeholder="Nhập email">
+                        <c:if test="${loginNotification != null}">
+                            <p style='text-align: center; color:red'>* ${loginNotification}</p>
+                        </c:if>
+                        <c:remove scope="session" var="loginNotification"/>
+                        <input type="email" name="email" id="username" class=" form-control" placeholder="Nhập email">
                         <p id="username-error"></p>
                     </div>
+
                     <div class="form-group">
-                        <input type="password" name="password" id="password" class=" form-control"
-                               placeholder="Mật khẩu">
+                        <input type="password" name="password" id="password" class=" form-control" placeholder="Mật khẩu">
                         <p id="password-error"></p>
                     </div>
+
                     <div class="user-foot text-center">
                         <div class="single-login">
                             <input id="ckb1" type="checkbox" name="remember-me" value="forever">
-                            <label for="ckb1">
-                                Ghi nhớ
-                            </label>
+                            <label for="ckb1">Ghi nhớ</label>
                         </div>
+
                         <div class="mb-15 " style="width: 100%;clear: both;">
-                            <button type="submit" id="btnsignin" style="border: 1px solid #9f9e9e;">
-                                Đăng nhập </button>
+                            <button type="submit" id="loginButton" style="border: 1px solid #9f9e9e;">Đăng nhập </button>
                         </div>
+
                         <div class="mb-15 ">
-                            <a href="forgetPassword.jsp" class="clearfix" rel="nofollow" style="text-decoration: underline;">
+                            <a href="default?page=forgetPassword" class="clearfix" rel="nofollow" style="text-decoration: underline;">
                                 <i class="fas fa-question-circle"></i>
                                 Quên mật khẩu
                             </a>
@@ -102,25 +96,25 @@
                             <a href="#"><i class="fab fa-google-plus-g"></i> Đăng nhập Google</a>
                         </div>
                     </div>
-
                 </form>
 
                 <form method="post" action="signup" id="signup" style="display: none;">
                     <div class="form-group">
-                        <input type="text" name="fullName" id="fullName"
-                               class="form-control"
-                               placeholder="Họ tên (*)"></div>
-                    <div class="form-group">
-                        <input type="text" name="phone" id="mobile"
-                               class="form-control" placeholder="Điện thoại (*)">
+                        <input type="text" name="fullName" id="fullName" class="form-control" placeholder="Họ tên (*)">
                     </div>
+
                     <div class="form-group">
-                        <input type="date" id="birthday" name="birthday" value="" placeholder="Ngày sinh"
-                               class="form-control">
+                        <input type="text" name="phone" id="mobile" class="form-control" placeholder="Điện thoại (*)">
                     </div>
+
                     <div class="form-group">
-                        <input type="email" name="email" id="email"
-                               class="form-control" placeholder="Email (*)"></div>
+                        <input type="date" id="birthday" name="birthday" value="" placeholder="Ngày sinh" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="email" name="email" id="email" class="form-control" placeholder="Email (*)">
+                    </div>
+
                     <div class="form-group">
                         <select id="cityId" name="city" class="form-control" style="color: #495057 !important;">
                             <option value="">Tỉnh/Thành phố *</option>
@@ -187,33 +181,37 @@
                             <option value="314">Hậu Giang</option>
                             <option value="315">Bạc Liêu</option>
                             <option value="316">Điện Biên</option>
-                        </select></div>
+                        </select>
+                    </div>
+
                     <div class="form-group">
                         <input type="text" id="address" name="address" value=""
                                placeholder="Địa chỉ chi tiết  " class=" form-control input-sm">
                     </div>
+
                     <div class="form-group">
                         <input type="password" name="password" id="pwd" class=" form-control"
                                placeholder="Mật khẩu của bạn (*)">
                     </div>
+
                     <div class="form-group">
                         <input type="password" name="rePassword" id="rePassword"  class=" form-control"
                                placeholder="Nhập lại mật khẩu (*)">
                     </div>
+
                     <div class="form-group text-center">
                         <button type="submit"  style="border: 1px solid #9f9e9e;">
                             Đăng ký </button>
                     </div>
+
                     <div class="form-group d-none">
                         <i>Lưu ý: các trường dấu <span class="required">*</span> là bắt buộc phải nhập</i></div>
                 </form>
-
             </div>
 
         </div>
     </div>
 </div>
-</body>
 <!-- user-login-area-end -->
 
 <!-- footer-area-start -->
@@ -221,6 +219,34 @@
 <!-- footer-area-end -->
 
 <!-- all js here -->
-<%@ include file="script.jsp"%>
+<!-- jquery latest version -->
+<script src="js/vendor/jquery-1.12.0.min.js"></script>
+<!-- popper js -->
+<script src="js/popper.min.js"></script>
+<!-- bootstrap js -->
+<script src="js/bootstrap.min.js"></script>
+<!-- owl.carousel js -->
+<script src="js/owl.carousel.min.js"></script>
+<!-- meanmenu js -->
+<script src="js/jquery.meanmenu.js"></script>
+<!-- wow js -->
+<script src="js/wow.min.js"></script>
+<!-- jquery.parallax-1.1.3.js -->
+<script src="js/jquery.parallax-1.1.3.js"></script>
+<!-- jquery.countdown.min.js -->
+<script src="js/jquery.countdown.min.js"></script>
+<!-- jquery.flexslider.js -->
+<script src="js/jquery.flexslider.js"></script>
+<!-- chosen.jquery.min.js -->
+<script src="js/chosen.jquery.min.js"></script>
+<!-- jquery.counterup.min.js -->
+<script src="js/jquery.counterup.min.js"></script>
+<!-- waypoints.min.js -->
+<script src="js/waypoints.min.js"></script>
+<!-- plugins js -->
+<script src="js/plugins.js"></script>
+<!-- main js -->
+<script src="js/main.js"></script>
+</body>
 
 </html>

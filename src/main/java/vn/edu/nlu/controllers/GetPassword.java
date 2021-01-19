@@ -1,5 +1,8 @@
 package vn.edu.nlu.controllers;
 
+import vn.edu.nlu.beans.Cart;
+import vn.edu.nlu.beans.User;
+import vn.edu.nlu.entities.RoleEntity;
 import vn.edu.nlu.entities.UserEntity;
 
 import javax.servlet.ServletException;
@@ -18,10 +21,12 @@ public class GetPassword extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String randomKey = request.getParameter("key");
-        int id = UserEntity.getIdByKey(randomKey);
-        if (UserEntity.checkTimeById(id, 30*60*1000)) {
-            HttpSession session = request.getSession();
-            session.setAttribute("user", UserEntity.getUserById(id));
+        User user = UserEntity.getUserByKey(randomKey);
+        if (UserEntity.checkTimeById(user.getId(), 30*60*1000)) {
+            HttpSession session = request.getSession(true);
+            session.setAttribute("cart", new Cart());
+            session.setAttribute("role", RoleEntity.getRoleByUser(user));
+            session.setAttribute("user", user);
             response.sendRedirect("my-account.jsp");
         } else {
             response.sendRedirect("login_signup.jsp");
