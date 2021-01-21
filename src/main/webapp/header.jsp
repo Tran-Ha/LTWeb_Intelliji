@@ -19,7 +19,7 @@
                 <div class="account-area text-right">
                     <ul>
                         <c:choose>
-                            <c:when test="${user != null}">
+                            <c:when test="${not empty user}">
                                 <li><a>Xin chào, ${user.name}</a></li>
                                 <li><a href="default?page=myAccount">Tài khoản</a></li>
                                 <li><a href="default?page=checkout">Thanh toán</a></li>

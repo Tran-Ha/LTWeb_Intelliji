@@ -185,7 +185,12 @@ public class Book implements Serializable {
     public double getDiscount() {
         return (price - priceSale)  * 100 / price;
     }
-
+    public int getIntDiscount() {
+        float down = price-priceSale;
+        float discount=(down*100)/price;
+        discount=((discount*10)%10 >=5 ?(discount*10)/10+1 :(discount*10)/10);
+        return  (int)discount;
+    }
     @Override
     public String toString() {
         return "Book{" +

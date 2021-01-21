@@ -1,11 +1,8 @@
 package vn.edu.nlu.entities;
 
-import vn.edu.nlu.beans.Book;
-import vn.edu.nlu.beans.Categories;
-import vn.edu.nlu.beans.GroupBook;
-import vn.edu.nlu.beans.TypeLanguage;
+import vn.edu.nlu.beans.*;
 import vn.edu.nlu.database.ConnectionDB;
-
+import vn.edu.nlu.utils.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -81,15 +78,122 @@ public class BookEntity {
         return result;
     }
 
-    public static Map<Integer,Book> getBooksByIdCat(int id_cat, int start, int bPerPage, int order){
-        Map<Integer, Book> list = new HashMap<Integer, Book>();
-        String sql="select * from \n" +
-                "(select b.ID, b.`NAME` Tittle, b.PRICE, b.PRICESALE, b.DESCRIPTION, b.INFORMATION\n" +
-                "from book b\n" +
-                "limit ?,?) bk\n" +
-                "inner join image i on i.ID_BOOK=bk.ID;";
+
+
+    public static int getTotalByIdCat(int id_cat, int id_price) {
+        int total = 0;
+        String typePrice="";
+        if (id_price!=-1) typePrice= TypePrice.getSQL(id_price);
+        String sql = "select count(*) from book where ID_CATEGORIES=?"+ typePrice+";" ;
         try {
+            PreparedStatement ps = ConnectionDB.connect(sql);
+            ps.setInt(1, id_cat);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                total = rs.getInt(1);
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        return total;
+    }
+
+    public static int getTotalByIdPub(int id_pub, int id_price) {
+        int total = 0;
+        String typePrice="";
+        if (id_price!=-1) typePrice=TypePrice.getSQL(id_price);
+        String sql = "select count(*) from book where ID_PUBLICATION=?"+ typePrice ;
+        try {
+            PreparedStatement ps = ConnectionDB.connect(sql);
+            ps.setInt(1, id_pub);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                total = rs.getInt(1);
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        return total;
+    }
+
+    public static int getTotalByIdLang(int id_lang, int id_price) {
+        int total = 0;
+        String typePrice="";
+        if (id_price!=-1) typePrice=TypePrice.getSQL(id_price);
+        String sql = "select count(*) from book b, categories c, group_book g, typelanguage l " +
+                "where ID_LANGUAGE=? and b.ID_CATEGORIES=c.ID and c.ID_GROUP=g.ID and g.ID_LANGUAGE=l.ID"+ typePrice ;
+        try {
+            PreparedStatement ps = ConnectionDB.connect(sql);
+            ps.setInt(1, id_lang);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                total = rs.getInt(1);
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        return total;
+    }
+
+    public static int getTotalByIdGroup(int id_group, int id_price) {
+        int total = 0;
+        String typePrice="";
+        if (id_price!=-1) typePrice=TypePrice.getSQL(id_price);
+        String sql = "select count(*) from book b, categories c, group_book g " +
+                "where ID_GROUP=? and b.ID_CATEGORIES=c.ID and c.ID_GROUP=g.ID "+ typePrice ;
+        try {
+            PreparedStatement ps = ConnectionDB.connect(sql);
+            ps.setInt(1, id_group);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                total = rs.getInt(1);
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        return total;
+    }
+
+    //update?
+    public static int getTotalByKey(int key) {
+        int total = 0;
+        String sql = "select count(*) from book ";
+        try {
+            PreparedStatement ps = ConnectionDB.connect(sql);
+            // ps.setInt(1, id_group);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                total = rs.getInt(1);
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        return total;
+    }
+
+    public static Map<Integer,Book> getBooksByIdCat(int id_cat, int currentPage, int bPerPage, int order, int id_price){
+        Map<Integer, Book> list = new LinkedHashMap<Integer, Book>();
+        String typePrice="";
+        if (id_price!=-1) typePrice=TypePrice.getSQL(id_price);
+        String sql="select *  from \n" +
+                "(select b.ID, b.`NAME` Tittle, b.PRICE, b.PRICESALE, b.DESCRIPTION, b.INFORMATION," +
+                "b.DATE_CREATED,sum(b.ORIGINAL-b.QUANTITY) sold,sum(price-pricesale) discount " +
+                "from book b where b.ID_CATEGORIES=? " + typePrice +
+                "\tgroup by  b.ID,  Tittle, b.PRICE, b.PRICESALE, b.DESCRIPTION, b.INFORMATION " +
+                " limit ?,?) bk\n" +
+                "inner join image i on i.ID_BOOK=bk.ID "+ TypeOrder.getSQL(order)+";";
+        System.out.println(sql);
+        try {
+            int start=(currentPage-1)*bPerPage+1;
             PreparedStatement ps= ConnectionDB.connect(sql);
+            ps.setInt(1,id_cat);
+            ps.setInt(2,start);
+            ps.setInt(3,bPerPage);
             ResultSet rs=ps.executeQuery();
 
             while (rs.next()) {
@@ -118,6 +222,148 @@ public class BookEntity {
         }
         return list;
     }
+
+    public static Map<Integer,Book> getBooksByIdGroup(int id_group, int currentPage, int bPerPage, int order, int id_price){
+        Map<Integer, Book> list = new LinkedHashMap<Integer, Book>();
+        String typePrice="";
+        if (id_price!=-1) typePrice=TypePrice.getSQL(id_price);
+        String sql="select *  from \n" +
+                "(select b.ID, b.`NAME` Tittle, b.PRICE, b.PRICESALE, b.DESCRIPTION, b.INFORMATION," +
+                "b.DATE_CREATED,sum(b.ORIGINAL-b.QUANTITY) sold,sum(price-pricesale) discount " +
+                "from book b, group_book g , categories c where b.ID_CATEGORIES\t=c.ID and c.ID_GROUP=g.ID and g.ID=? "
+                + typePrice +
+                "\tgroup by  b.ID,  Tittle, b.PRICE, b.PRICESALE, b.DESCRIPTION, b.INFORMATION  limit ?,?) bk\n" +
+                "inner join image i on i.ID_BOOK=bk.ID "+ TypeOrder.getSQL(order)+";";
+        try {
+            int start=(currentPage-1)*bPerPage+1;
+            PreparedStatement ps= ConnectionDB.connect(sql);
+            ps.setInt(1,id_group);
+            ps.setInt(2,start);
+            ps.setInt(3,bPerPage);
+            ResultSet rs=ps.executeQuery();
+
+            while (rs.next()) {
+                Book b = new Book();
+                b.setId(rs.getInt("Id"));
+
+                if(!list.containsKey(b.getId())){
+
+                    b.setName(rs.getString("Tittle"));
+                    b.setPrice(rs.getLong("Price"));
+                    b.setPriceSale(rs.getLong("PriceSale"));
+                    b.setDescription(rs.getString("Description"));
+                    b.setInformation(rs.getString("Information"));
+                    b.getImgs().add(rs.getString("Link"));
+
+                    list.put(b.getId(),b);
+                }
+                else{
+                    b.getImgs().add(rs.getString("Link"));
+                }
+            }
+            rs.close();
+            ps.close();
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public static Map<Integer,Book> getBooksByIdLang(int id_lang, int currentPage, int bPerPage, int order, int id_price){
+        Map<Integer, Book> list = new LinkedHashMap<Integer, Book>();
+        String typePrice="";
+        if (id_price!=-1) typePrice=TypePrice.getSQL(id_price);
+        String sql="select *  from \n" +
+                "(select b.ID, b.`NAME` Tittle, b.PRICE, b.PRICESALE, b.DESCRIPTION, b.INFORMATION," +
+                "b.DATE_CREATED,sum(b.ORIGINAL-b.QUANTITY) sold,sum(price-pricesale) discount " +
+                "from book b, group_book g , categories c, typelanguage l " +
+                "where b.ID_CATEGORIES\t=c.ID and c.ID_GROUP=g.ID and g.ID_LANGUAGE=l.ID and l.ID=? " + typePrice +
+                "\tgroup by  b.ID,  Tittle, b.PRICE, b.PRICESALE, b.DESCRIPTION, b.INFORMATION  limit ?,?) bk\n" +
+                "inner join image i on i.ID_BOOK=bk.ID "+ TypeOrder.getSQL(order)+";";
+        try {
+            int start=(currentPage-1)*bPerPage+1;
+            PreparedStatement ps= ConnectionDB.connect(sql);
+            ps.setInt(1,id_lang);
+            ps.setInt(2,start);
+            ps.setInt(3,bPerPage);
+            ResultSet rs=ps.executeQuery();
+
+            while (rs.next()) {
+                Book b = new Book();
+                b.setId(rs.getInt("Id"));
+
+                if(!list.containsKey(b.getId())){
+
+                    b.setName(rs.getString("Tittle"));
+                    b.setPrice(rs.getLong("Price"));
+                    b.setPriceSale(rs.getLong("PriceSale"));
+                    b.setDescription(rs.getString("Description"));
+                    b.setInformation(rs.getString("Information"));
+                    b.getImgs().add(rs.getString("Link"));
+
+                    list.put(b.getId(),b);
+                }
+                else{
+                    b.getImgs().add(rs.getString("Link"));
+                }
+            }
+            rs.close();
+            ps.close();
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public static Map<Integer,Book> getBooksByIdPub(int id_pub, int currentPage, int bPerPage, int order, int id_price){
+        String typePrice="";
+        if (id_price!=-1) typePrice=TypePrice.getSQL(id_price);
+        Map<Integer, Book> list = new LinkedHashMap<Integer, Book>();
+        String sql="select *  from \n" +
+                "(select b.ID, b.`NAME` Tittle, b.PRICE, b.PRICESALE, b.DESCRIPTION, b.INFORMATION," +
+                "b.DATE_CREATED,sum(b.ORIGINAL-b.QUANTITY) sold,sum(price-pricesale) discount " +
+                "from book b where b.ID_PUBLICATION=? " + typePrice +
+                "\tgroup by  b.ID,  Tittle, b.PRICE, b.PRICESALE, b.DESCRIPTION, b.INFORMATION  limit ?,?) bk\n" +
+                "inner join image i on i.ID_BOOK=bk.ID "+ TypeOrder.getSQL(order)+";";
+        try {
+            int start=(currentPage-1)*bPerPage+1;
+            PreparedStatement ps= ConnectionDB.connect(sql);
+            ps.setInt(1,id_pub);
+            ps.setInt(2,start);
+            ps.setInt(3,bPerPage);
+            ResultSet rs=ps.executeQuery();
+
+            while (rs.next()) {
+                Book b = new Book();
+                b.setId(rs.getInt("Id"));
+
+                if(!list.containsKey(b.getId())){
+
+                    b.setName(rs.getString("Tittle"));
+                    b.setPrice(rs.getLong("Price"));
+                    b.setPriceSale(rs.getLong("PriceSale"));
+                    b.setDescription(rs.getString("Description"));
+                    b.setInformation(rs.getString("Information"));
+                    b.getImgs().add(rs.getString("Link"));
+
+                    list.put(b.getId(),b);
+                }
+                else{
+                    b.getImgs().add(rs.getString("Link"));
+                }
+            }
+            rs.close();
+            ps.close();
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+
+
+
+
     // Tan code start
     public List<Book> getNewBook() {
         Statement statement = null;
@@ -257,5 +503,42 @@ public class BookEntity {
             e.printStackTrace();
             return new LinkedList<>();
         }
+    }
+
+    public static long getMaxPrice() {
+        String sql="select max(price) max\n" +
+                "from book";
+        long max=0;
+        try {
+            PreparedStatement ps= ConnectionDB.connect(sql);
+            ResultSet rs=ps.executeQuery();
+
+            if (rs.next())
+                max=rs.getLong("max");
+
+            rs.close();
+            ps.close();
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        return max;
+    }
+    public static long getMinPrice() {
+        String sql="select min(price) min\n" +
+                "from book";
+        long min=0;
+        try {
+            PreparedStatement ps= ConnectionDB.connect(sql);
+            ResultSet rs=ps.executeQuery();
+
+            if (rs.next())
+                min=rs.getLong("min");
+
+            rs.close();
+            ps.close();
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        return min;
     }
 }

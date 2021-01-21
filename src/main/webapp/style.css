@@ -59,7 +59,7 @@
 }
 
 *{
-   box-sizing: border-box; 
+    box-sizing: border-box;
 }
 html,
 body {
@@ -1441,10 +1441,20 @@ body {
     padding: 5px;
 }
 
-.product-img,
 .most-product-img {
     position: relative;
     overflow: hidden;
+}
+.product-wrapper-2 .product-img a img{
+    width: 200px;
+    height: 210px;
+}
+.single-shop .list-box
+{
+    border: 1px solid #EBEBEB;
+    padding: 5px;
+    margin: 0;
+    box-shadow: 5px 5px 5px 0px #EBEBEB;
 }
 
 .product-img::after,
@@ -1470,11 +1480,11 @@ body {
 .single-deal:hover .banner-img-3::after {
     height: 100%;
     opacity: 1;
-    
-}
 
-.product-img a img {
-    width: 100%;
+}
+.product-wrapper .product-img a img{
+    width: 190px;
+    height: 190px;
 }
 
 .quick-view {
@@ -1524,12 +1534,11 @@ body {
 }
 
 .product-details h4 a {
+    overflow: hidden;
+    max-height: 52px;
     color: #242424;
     display: block;
     font-size: 14px;
-    line-height: 1.3;
-    overflow: hidden;
-    padding: 0 10px;
     text-transform: capitalize;
     transition: .3s;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -1835,18 +1844,6 @@ body {
     border-top: 1px solid #e5e5e5;
 }
 
-
-/*----------------------------------------*/
-/*  7. Banner static area
-/*----------------------------------------*/
-
-.banner-static-area {
-    background: rgba(0, 0, 0, 0) url("img/banner/7.jpg") repeat scroll center center;
-    border-top: 1px solid #cecece;
-    border-bottom: 1px solid #cecece;
-
-}
-
 /*----------------------------------------*/
 /*  8. Most product area
 /*----------------------------------------*/
@@ -2007,7 +2004,7 @@ body {
     color: #fff;
     font-size: 16px;
     line-height: 24px;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     font-weight: 400;
 }
@@ -2449,7 +2446,7 @@ footer {
     color: #fff;
     margin-bottom: 0;
     margin-top: 8px;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     font-weight: 400;
 }
@@ -2603,7 +2600,7 @@ a#scrollUp:hover {
     position: relative;
     text-transform: capitalize;
     text-decoration: none;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     font-weight: 400;
 }
@@ -2751,19 +2748,6 @@ a#scrollUp:hover {
     color: #F07C29;
 }
 
-.list-page {
-    float: left;
-    margin-left: 10px;
-    margin-top: 6px;
-}
-
-.list-page p {
-    color: #333;
-    font-weight: 400;
-    line-height: 26px;
-    margin: 0;
-}
-
 .list-page-2 {
     float: left;
     margin-left: 10px;
@@ -2781,15 +2765,6 @@ a#scrollUp:hover {
     float: right;
 }
 
-.toolbar-sorter span {
-    color: #2b2b2b;
-    display: inline-block;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 35px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-weight: 400;
-}
 
 .toolbar-sorter .sorter-options {
     border: 1px solid #ccc;
@@ -2802,19 +2777,13 @@ a#scrollUp:hover {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 400;
     color: #333;
-}
-
-.toolbar-sorter a {
-    color: #808080;
-    font-size: 20px;
-    line-height: 32px;
-    padding-left: 5px;
+    cursor: pointer;
 }
 
 .toolbar-sorter {
     display: inline-block;
     float: right;
-    margin-right: 30px;
+    margin-left: 30px;
 }
 
 .control select {
@@ -2890,7 +2859,6 @@ a#scrollUp:hover {
     padding-bottom: 0px;
     position: relative;
     visibility: visible;
-    border-top: 1px solid #ccc;
     padding: 10px 0;
 }
 
@@ -2909,21 +2877,23 @@ a#scrollUp:hover {
 }
 
 .product-wrapper-content .product-details h4 a {
-    font-size: 24px;
+    font-size: 18px;
 }
 
 .product-wrapper-content .product-price ul li {
-    font-size: 25px;
+    font-size: 21px;
 }
 
 .product-wrapper-content .product-price ul li.old-price {
     font-size: 18px;
 }
 
-.product-wrapper-content .product-details p {
+.product-wrapper-content .product-details p.description{
     color: #707070;
-    margin: 30px 0 20px;
+    margin:  10px 0;
     font-size: 15px;
+    overflow: hidden;
+    max-height: 72px;
 }
 
 /*----------------------------------------*/
@@ -3955,6 +3925,7 @@ a#scrollUp:hover {
     border: 1px solid #F07C29;
 }
 
+
 /*----------------------------------------*/
 /*  22. Login
 /*----------------------------------------*/
@@ -3975,45 +3946,45 @@ a#scrollUp:hover {
 .user-login-area .form_list{
     box-shadow: 0 1px 3px rgb(219, 218, 218);
     border-radius: 3px;
-	margin: 30px auto;
-	max-width: 800px;
-	overflow: hidden;
-	position: relative;
-	padding: 0;
+    margin: 30px auto;
+    max-width: 800px;
+    overflow: hidden;
+    position: relative;
+    padding: 0;
 }
 .user-login-area .form_list form {
-     padding: 30px; 
-    }
+    padding: 30px;
+}
 #signup {
-     display: none;
-    }
+    display: none;
+}
 .user-login-area .form_list .tab-group {
-	list-style: none;
-	padding: 0;
-	margin: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 .user-login-area .form_list .tab-group:after {
-	content: "";
-	display: table;
-	clear: both;
+    content: "";
+    display: table;
+    clear: both;
 }
 .user-login-area .form_list .tab-group li{
     background: #e5e6e7;
 }
 
 .user-login-area .form_list .tab-group li a {
-	display: inline-block;
-	text-decoration: none;
-	padding: 15px;
-	font-size: 20px;
-	float: left;
-	width: 50%;
-	text-align: center;
-	border-top: 3px solid transparent;
-	-moz-transition: all 0.4s ease-in-out;
-	-o-transition: all 0.4s ease-in-out;
-	-webkit-transition: all 0.4s ease-in-out;
-	transition: all 0.4s ease-in-out;
+    display: inline-block;
+    text-decoration: none;
+    padding: 15px;
+    font-size: 20px;
+    float: left;
+    width: 50%;
+    text-align: center;
+    box-shadow: 0 0 3px 2px rgba(228, 227, 227, 0.5);
+    -moz-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    -webkit-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
 }
 .user-login-area .form_list .tab-group li a:hover {
     background: #F07C29;
@@ -4023,7 +3994,7 @@ a#scrollUp:hover {
     color:white;
 }
 .user-login-area .form_list .tab-group .active a {
-	background: white;
+    background: white;
     border-bottom: 3px solid #F07C29;
 }
 .user-login-area .form_list .tab-group .active a h2{
@@ -4049,31 +4020,45 @@ a#scrollUp:hover {
     color: #F07C29;
 }
 .user-foot button, .form-group button[type ='submit']{
-    width: fit-content;
+    width: 100%;
     padding: 5px 15px;
-    border-radius: 15px;
-    border: 2px solid #F07C29;
-    color: #F07C29;
+    border-radius: 3px;
+    color: white;
+    background-color: #f07822;
+    background-image: linear-gradient(#f8a62d, #F07C29);
     font-weight: bold;
     margin-bottom: 5px;
 }
 
 .user-foot button:hover,  .form-group button[type ='submit']:hover{
-   background: #F07C29;
+    background: #F07C29;
     color: white;
-    font-weight: 700px;
 }
 .user-foot .loginFb a{
-    background: #2c29f0;
+    background-color: #3B5998;
+    background-image: linear-gradient(#5a7dc6, #3b5998);
     color: white;
-    padding: 5px 15px;
-    border-radius: 15px;
+    padding: 10px 15px;
+    border-radius: 3px;
+    display: inline-block;
+    width: 100%;
+    height: 40px;
+}
+.user-foot .loginFb a:hover{
+    background: #3B5998;
 }
 .user-foot .loginGg a{
-    background: #f03029;
+    background-color: #E02F2F;
+    background-image: linear-gradient(#e05252, #E02F2F);
     color: white;
-    padding: 5px 15px;
-    border-radius: 15px;
+    padding: 10px 15px;
+    border-radius: 3px;
+    display: inline-block;
+    width: 100%;
+    height: 40px;
+}
+.user-foot .loginGg a:hover{
+    background: #E02F2F;
 }
 .login-form {
     border: 1px solid rgba(0, 0, 0, 0.12);
@@ -4109,7 +4094,10 @@ a#scrollUp:hover {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 400;
 }
-
+.form-control:focus{
+    border-color: #e77600;
+    box-shadow: 0 0 3px 2px rgba(228,121,17,.5);
+}
 .login-form .single-login a {
     background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
     border: 1px solid #eceff8;
@@ -4155,6 +4143,23 @@ a#scrollUp:hover {
     font-size: 14px;
 }
 
+/*Error login*/
+input.valid.success-alert {
+    border: 2px solid #4CAF50;
+    color: green;
+}
+
+.fail-alert {
+    color: #f04e23;
+    margin-top: 5px;
+}
+
+input.error,
+textarea.error {
+    border: 1px dashed red;
+    font-weight: 300;
+
+}
 /*----------------------------------------*/
 /*  23. Register
 /*----------------------------------------*/
@@ -4618,7 +4623,7 @@ a#scrollUp:hover {
 .entry-header-title h2 {
     font-weight: 400;
     color: #333;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     font-weight: 400;
 }
@@ -4631,7 +4636,7 @@ a#scrollUp:hover {
     font-size: 20px;
     margin: 0;
     text-transform: uppercase;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     font-weight: 400;
 }
@@ -4673,7 +4678,7 @@ a#scrollUp:hover {
     font-size: 13px;
     padding: 20px 10px;
     vertical-align: middle;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     font-weight: 400;
 }
@@ -4688,7 +4693,7 @@ a#scrollUp:hover {
     font-weight: 700;
     margin-left: 10px;
     text-decoration: none;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     font-weight: 400;
     color: #333;
@@ -4712,7 +4717,7 @@ a#scrollUp:hover {
     height: 40px;
     padding: 0 5px 0 10px;
     width: 60px;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     font-weight: 400;
 }
@@ -4721,7 +4726,7 @@ a#scrollUp:hover {
     font-size: 14px;
     font-weight: bold;
     width: 120px;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     font-weight: 400;
 }
@@ -4767,7 +4772,7 @@ a#scrollUp:hover {
     text-shadow: none;
     text-transform: uppercase;
     transition: all 0.3s ease 0s;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     font-weight: 400;
 }
@@ -4794,7 +4799,7 @@ a#scrollUp:hover {
 .coupon p {
     font-size: 14px;
     color: #777;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     font-weight: 400;
     color: #333;
@@ -4808,7 +4813,7 @@ a#scrollUp:hover {
     max-width: 100%;
     padding: 0 0 0 10px;
     width: 170px;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     font-weight: 400;
     color: #333;
@@ -4850,7 +4855,7 @@ a#scrollUp:hover {
     text-transform: uppercase;
     vertical-align: top;
     color: #777;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     font-weight: 400;
     color: #333;
@@ -4870,7 +4875,7 @@ a#scrollUp:hover {
     margin-left: 5px;
     text-align: right;
     text-transform: uppercase;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     font-weight: 400;
 }
@@ -4889,7 +4894,7 @@ a#scrollUp:hover {
     width: 100%;
     color: #333;
     font-size: 13px;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     font-weight: 400;
 }
@@ -4912,7 +4917,7 @@ a#scrollUp:hover {
     font-size: 20px;
     text-transform: uppercase;
     white-space: nowrap;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     font-weight: 400;
 }
@@ -4934,7 +4939,7 @@ a#scrollUp:hover {
     margin-top: 20px;
     padding: 0 30px;
     text-transform: uppercase;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     font-weight: 400;
 }
@@ -4980,7 +4985,7 @@ a#scrollUp:hover {
 .coupon-accordion span {
     color: #6f6f6f;
     cursor: pointer;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     font-weight: 400;
 }
@@ -5014,7 +5019,7 @@ p.lost-password a:hover {
 .coupon-accordion span {
     color: #333;
     cursor: pointer;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     font-weight: 400;
 }
@@ -5023,7 +5028,7 @@ p.lost-password a:hover {
 .coupon-info p.form-row-last label span.required {
     color: #FF1111;
     font-weight: 700;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     font-weight: 400;
 }
@@ -5036,7 +5041,7 @@ p.lost-password a:hover {
     max-width: 100%;
     padding: 0 0 0 10px;
     width: 370px;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     font-weight: 400;
 }
@@ -5061,7 +5066,7 @@ p.lost-password a:hover {
     text-transform: uppercase;
     transition: all 0.3s ease 0s;
     white-space: nowrap;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     font-weight: 400;
 }
@@ -5081,7 +5086,7 @@ p.lost-password {
 
 p.lost-password a {
     color: #333;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     font-weight: 400;
 }
@@ -5106,7 +5111,7 @@ p.checkout-coupon input[type="submit"] {
     margin-left: 6px;
     padding: 5px 10px;
     transition: all 0.3s ease 0s;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     font-weight: 400;
 }
@@ -5127,7 +5132,7 @@ p.lost-password a:hover {
     margin: 0 0 20px;
     padding-bottom: 10px;
     text-transform: uppercase;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     font-weight: 400;
 }
@@ -5144,7 +5149,7 @@ p.lost-password a:hover {
     font-size: 14px;
     font-weight: 600;
     margin: 0 0 5px;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     font-weight: 400;
 }
@@ -5152,7 +5157,7 @@ p.lost-password a:hover {
 .country-select label span.required,
 .checkout-form-list label span.required {
     color: #FF1111;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     font-weight: 400;
 }
@@ -5163,7 +5168,7 @@ p.lost-password a:hover {
     border: 1px solid #ddd;
     padding-left: 10px;
     font-size: 13px;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     font-weight: 400;
 }
@@ -5180,7 +5185,7 @@ p.lost-password a:hover {
     height: 42px;
     padding: 0 0 0 10px;
     width: 100%;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     font-weight: 400;
 }
@@ -5213,7 +5218,7 @@ p.lost-password a:hover {
 .create-account p {
     font-size: 13px;
     color: #777;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     font-weight: 400;
 }
@@ -5243,7 +5248,7 @@ p.lost-password a:hover {
     text-transform: uppercase;
     width: 100%;
     color: #252525;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     font-weight: 400;
 }
@@ -5271,7 +5276,7 @@ p.lost-password a:hover {
     padding: 15px 0;
     text-align: center;
     color: #333;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     font-weight: 400;
 }
@@ -5297,7 +5302,7 @@ p.lost-password a:hover {
 .your-order-table table tr.order-total td span {
     color: #ec4445;
     font-size: 20px;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     font-weight: 400;
 }
@@ -5333,7 +5338,7 @@ p.lost-password a:hover {
     text-transform: capitalize;
     margin-bottom: 10px;
     display: inline-block;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     font-weight: 400;
 }
@@ -5347,7 +5352,7 @@ p.lost-password a:hover {
     font-size: 14px;
     margin-bottom: 0;
     color: #333;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     font-weight: 400;
 }
@@ -5392,7 +5397,7 @@ p.lost-password a:hover {
     text-transform: uppercase;
     transition: all 0.3s ease 0s;
     width: 100%;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     font-weight: 400;
 }
@@ -5409,7 +5414,7 @@ p.lost-password a:hover {
     color: #252525;
     font-size: 30px;
     font-weight: 300;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     font-weight: 400;
 }
@@ -5432,7 +5437,7 @@ p.lost-password a:hover {
     padding: 15px 10px;
     text-align: center;
     color: #333;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     font-weight: 400;
 }
@@ -5462,7 +5467,7 @@ p.lost-password a:hover {
 .wishlist-table table .product-remove>a {
     font-size: 25px;
     color: #333;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     font-weight: 400;
 }
@@ -5478,7 +5483,7 @@ p.lost-password a:hover {
 .product-name a {
     color: #333;
     transition: .3s;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     font-weight: 400;
 }
@@ -5507,7 +5512,7 @@ p.lost-password a:hover {
     padding: 10px 56px;
     text-transform: uppercase;
     width: 260px;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     font-weight: 400;
 }
@@ -5524,7 +5529,7 @@ p.lost-password a:hover {
     color: #252525;
     font-size: 18px;
     font-weight: 500;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     font-weight: 400;
 }
@@ -5539,7 +5544,7 @@ p.lost-password a:hover {
     font-size: 20px;
     text-decoration: none;
     transition: all 0.3s ease 0s;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     font-weight: 400;
 }
@@ -5560,7 +5565,7 @@ p.lost-password a:hover {
     color: #000;
     font-size: 24px;
     margin-bottom: 0;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     font-weight: 400;
     font-weight: 400;
@@ -5579,7 +5584,7 @@ p.lost-password a:hover {
     padding: 10px 30px;
     transition: .3s;
     text-decoration: none;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     font-weight: 400;
     font-weight: 400;
@@ -5912,101 +5917,161 @@ p.lost-password a:hover {
     font-size: 14px;
 }
 
-/*-------- Start My Account Page Wrapper --------*/
+/*-------- End My Account Page Wrapper --------*/
+/*-------- Results  Page --------*/
 
-/*------ Start Compare Page Wrapper -----*/
-.compare-table .table tbody tr td {
-    text-align: center;
-    padding: 20px 20px;
-    vertical-align: middle;
-    border-color: #ccc;
+#body-row {
+    margin-left:0;
+    margin-right:0;
 }
-
-.compare-table .table tbody tr td.first-column {
-    min-width: 175px;
-    font-size: 15px;
-    font-weight: 500;
-    color: #222222;
-    margin: 0;
-}
-
-@media only screen and (max-width: 767.98px) {
-    .compare-table .table tbody tr td.first-column {
-        min-width: 115px;
-    }
-}
-
-.compare-table .table tbody tr td.product-image-title {
-    min-width: 310px;
-    vertical-align: bottom;
-}
-
-@media only screen and (max-width: 767.98px) {
-    .compare-table .table tbody tr td.product-image-title {
-        min-width: 220px;
-    }
-}
-
-.compare-table .table tbody tr td.product-image-title .image {
-    clear: both;
-    width: 100%;
-    margin-bottom: 15px;
-    display: block;
-}
-
-.compare-table .table tbody tr td.product-image-title .category {
-    float: left;
-    clear: both;
-    color: #c29958;
-    text-transform: capitalize;
-    letter-spacing: 0.5px;
-}
-
-.compare-table .table tbody tr td.product-image-title .title {
-    float: left;
-    clear: both;
-    font-size: 16px;
-    color: #222222;
-    font-weight: 500;
-    text-transform: capitalize;
-}
-
-.compare-table .table tbody tr td.product-image-title .title:hover {
-    color: #c29958;
-}
-
-.compare-table .table tbody tr td.pro-desc p {
-    text-align: left;
-    margin: 0;
-}
-
-.compare-table .table tbody tr td.pro-price,
-.compare-table .table tbody tr td.pro-color,
-.compare-table .table tbody tr td.pro-stock {
-    font-size: 14px;
-    font-weight: 400;
-}
-
-.compare-table .table tbody tr td.pro-remove button {
-    border: none;
-    background-color: transparent;
+#sidebar-container {
+    min-height: 150px;
     padding: 0;
+}
+
+/* Sidebar sizes when expanded and expanded */
+.sidebar-expanded {
+    width: 230px;
+}
+.sidebar-collapsed {
+    width: 60px;
+}
+
+/* Menu item*/
+#sidebar-container .list-group a {
+    height: 50px;
+}
+
+/* Submenu item*/
+#sidebar-container .list-group .sidebar-submenu a {
+    height: 45px;
+    padding-left: 30px;
+    font-size: 12px;
+}
+.sidebar-submenu {
+    font-size: 0.9rem;
+}
+
+/* Separators */
+.sidebar-separator-title {
+    height: 35px;
+}
+.sidebar-separator-title small{
+    font-size: 14px;
+    padding: 10px;
+    text-transform: uppercase;
+}
+.sidebar-separator {
+    height: 25px;
+}
+.logo-separator {
+    height: 60px;
+}
+
+/* Closed submenu icon */
+#sidebar-container .list-group .list-group-item[aria-expanded="false"] .submenu-icon::after {
+    content: " \f0d7";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    display: inline;
+    text-align: right;
+    padding-left: 10px;
+}
+/* Opened submenu icon */
+#sidebar-container .list-group .list-group-item[aria-expanded="true"] .submenu-icon::after {
+    content: " \f0da";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    display: inline;
+    text-align: right;
+    padding-left: 10px;
+}
+#sidebar-container .list-group .list-group-item .menu-collapsed{
+    font-weight: 600;
+}
+/*
+select result jsp
+ */
+.options {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    float: right;
+    margin: 0 0 0 15px ;
+    font-size: 14px;
+    border-radius: 3px;
+    display: block;
     cursor: pointer;
-    -webkit-transition: 0.4s;
-    -o-transition: 0.4s;
-    transition: 0.4s;
 }
 
-.compare-table .table tbody tr td.pro-remove button:hover {
-    color: #e74c3c;
+.options ul[class^=sub_menu] {
+    display: none;
+    width: 150px;
+    list-style: none;
+    margin: 0;
+    background-color: #FFF;
+    border-right: 1px solid #C7C7C7;
+    border-bottom: 1px solid #C7C7C7;
+    border-left: 1px solid #C7C7C7;
+    position: absolute;
+    z-index: 200;
 }
 
-.compare-table .table tbody tr td.pro-remove button i {
-    font-size: 20px;
+.options ul[class^=sub_menu] li {
+    color: #656565;
+    position: relative;
+    z-index: 50;
 }
 
-.compare-table .table tbody tr td.pro-ratting i {
-    color: #c29958;
+.options ul[class^=sub_menu] li:hover {
+    color: white !important;
+    background: #F7941E;
 }
 
-/*------ end Compare Page Wrapper -----*/
+.options ul[class^=sub_menu] li a,
+a.nav_link,
+.external_links_sub a {
+    color: #333;
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+    padding: 5px 10px;
+}
+
+.options ul[class^=sub_menu] li a:hover,
+a.nav_link:hover,
+.external_links_sub a:hover {
+    text-decoration: none;
+    color: white;
+
+}
+
+.options .title {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    height: 30px;
+    padding-left: 10px;
+    padding-top: 3px;
+    width: 150px;
+    position: relative;
+}
+
+.options .title:after {
+    width: 30px;
+    content: " \f0d7";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    font-size: 16px;
+    color: #333;
+    height: 30px;
+}
+.no_found{
+    background-color: rgb(255 254 251);
+    border: 1px solid rgb(251 187 114);
+    color: rgb(109 123 108);
+    padding: 12px 24px;
+    display: flex;
+}

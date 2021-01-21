@@ -35,5 +35,9 @@ public class Default extends HttpServlet {
         if (page.equals("productDetail")) {
             request.getRequestDispatcher("product-details.jsp").forward(request, response);
         }
+
+        if (page.equals("search")) {
+            request.getRequestDispatcher("result.jsp").forward(request, response);
+        }
     }
 }

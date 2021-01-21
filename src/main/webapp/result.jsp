@@ -1,23 +1,25 @@
+
+<%@ page import="java.util.*" %>
+<%@ page import="vn.edu.nlu.beans.GroupBook" %>
+<%@ page import="vn.edu.nlu.entities.GroupEntity" %>
+<%@ page import="vn.edu.nlu.beans.Publication" %>
+<%@ page import="vn.edu.nlu.entities.PublicationEntities" %>
+<%@ page import="vn.edu.nlu.utils.TypePrice" %>
+<%@ page import="vn.edu.nlu.utils.TypeOrder" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!doctype html>
-<html >
+<html>
 <head>
     <title>Kết quả tìm kiếm</title>
     <jsp:include page="head.jsp"/>
-
 </head>
 
 <body class="shop">
-<!--[if lt IE 8]>
-<![endif]-->
-
-<!-- Add your site or application content here -->
-<!-- header-area-start -->
 <jsp:include page="header.jsp"/>
-
+<c:set var="theString" scope="request" value="${uri_query}"/>
 <!-- breadcrumbs-area-start -->
 <div class="breadcrumbs-area mb-30">
     <div class="container">
@@ -34,6 +36,7 @@
     </div>
 </div>
 <!-- breadcrumbs-area-end -->
+
 <!-- shop-main-area-start -->
 <div class="shop-main-area mb-70">
     <div class="container">
@@ -43,57 +46,75 @@
 
                     <!-- Sidebar -->
                     <div id="sidebar-container" class="sidebar-expanded d-none d-md-block">
-                        <!-- d-* hiddens the Sidebar in smaller devices. Its itens can be kept on the Navbar 'Menu' -->
-                        <!-- Bootstrap List Group -->
                         <ul class="list-group">
-                            <!-- Separator with title -->
                             <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
                                 <small>Danh mục sản phẩm</small>
                             </li>
-                            <!-- /END Separator -->
-                            <!-- Menu with submenu -->
-                            <a href="#submenu1" data-toggle="collapse" aria-expanded="false" class="list-group-item list-group-item-action flex-column align-items-start">
+                            <a href="#submenu1" data-toggle="collapse" aria-expanded="false"
+                               class="list-group-item list-group-item-action flex-column align-items-start">
                                 <div class="d-flex w-100 justify-content-start align-items-center">
                                     <span class="menu-collapsed">Thể loại</span>
                                     <span class="submenu-icon ml-auto"></span>
                                 </div>
                             </a>
-                            <!-- Submenu content -->
+                            <%
+                                Set<GroupBook> groups = GroupEntity.getAll();
+                                request.setAttribute("groups", groups);
+                            %>
                             <div id='submenu1' class="collapse sidebar-submenu">
                                 <c:forEach items="${groups}" var="g">
-                                    <a class="list-group-item list-group-item-action" href="/Zoe/loadingCategories?group=${g.id}">${g.name}</a>
+                                    <a class="list-group-item list-group-item-action"
+                                       href="/Zoe/Search?type=group&id_group=${g.id}">${g.name}</a>
                                 </c:forEach>
                             </div>
-                            <a href="#submenu2" data-toggle="collapse" aria-expanded="false" class="list-group-item list-group-item-action flex-column align-items-start">
+
+                            <a href="#submenu2" data-toggle="collapse" aria-expanded="false"
+                               class="list-group-item list-group-item-action flex-column align-items-start">
                                 <div class="d-flex w-100 justify-content-start align-items-center">
                                     <span class="menu-collapsed">Nhà phát hành</span>
                                     <span class="submenu-icon ml-auto"></span>
                                 </div>
                             </a>
-                            <!-- Submenu content -->
+                            <%
+                                Set<Publication> pubs = PublicationEntities.getPublications();
+                                request.setAttribute("pubs", pubs);
+                            %>
                             <div id='submenu2' class="collapse sidebar-submenu">
                                 <c:forEach items="${pubs}" var="p">
-                                    <li><a class="list-group-item list-group-item-action" href="/Zoe/loadingCategories?pub=${p.id}">${p.name}</a></li>
+                                    <li><a class="list-group-item list-group-item-action"
+                                           href="/Zoe/Search?type=pub&id_pub=${p.id}">${p.name}</a></li>
                                 </c:forEach>
                             </div>
 
-                            <a href="#submenu3" data-toggle="collapse" aria-expanded="false" class="list-group-item list-group-item-action flex-column align-items-start">
+                            <a href="#submenu3" data-toggle="collapse" aria-expanded="false"
+                               class="list-group-item list-group-item-action flex-column align-items-start">
                                 <div class="d-flex w-100 justify-content-start align-items-center">
                                     <span class="menu-collapsed">Giá</span>
                                     <span class="submenu-icon ml-auto"></span>
                                 </div>
                             </a>
-                            <!-- Submenu content -->
+                            <%
+                                TypePrice.createType(10);
+                                Collection<String> price = TypePrice.getAll();
+                                request.setAttribute("price", price);
+                                int idPrice = 0;
+                            %>
                             <div id='submenu3' class="collapse sidebar-submenu">
-                                <a class="list-group-item list-group-item-action" href="/Zoe/loadingCategories?up=100000">Dưới 100.000đ</a>
-                                <a class="list-group-item list-group-item-action" href="/Zoe/loadingCategories?down=100000&up=200000">Từ 100.000đ - 200.000đ</a>
-                                <a class="list-group-item list-group-item-action" href="/Zoe/loadingCategories?down=100000&up=200000">Từ 200.000đ - 300.000đ</a>
-                                <a class="list-group-item list-group-item-action" href="/Zoe/loadingCategories?down=100000&up=200000">Từ 300.000đ - 500.000đ</a>
-                                <a class="list-group-item list-group-item-action" href="/Zoe/loadingCategories?down=500000">Trên 500.000đ</a>
+                                <c:forEach items="${price}" var="pri">
+                                    <c:choose>
+                                        <c:when test="${fn:contains(theString, '?')}">
+                                            <li><a class="list-group-item list-group-item-action"
+                                                   href="${uri_query}&id_price=${idPrice=idPrice+1}">${pri}</a></li>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <li><a class="list-group-item list-group-item-action"
+                                                   href="#">${pri}</a></li>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:forEach>
                             </div>
-
-                        </ul><!-- List Group END-->
-                    </div><!-- sidebar-container END -->
+                        </ul>
+                    </div>
 
                     <div class="left-title mb-20 mt-16">
                         <h4>Đề xuất</h4>
@@ -747,40 +768,71 @@
                 <div class="category-image mb-30">
                     <a href="#"><img src="img/banner/32.jpg" alt="banner"></a>
                 </div>
-                <div class="section-title-5 mb-30">
+                <div class="section-title-5 mb-10">
                     <h2>Sách</h2>
                 </div>
-                <div class="toolbar mb-30">
+                <div class="toolbar mb-15">
                     <div class="shop-tab">
                         <div class="tab-3">
                             <ul class="nav">
-                                <li><a href="#th" data-toggle="tab" class=""><i class="fa fa-th-large"></i>lưới</a></li>
-                                <li><a class="active" href="#list" data-toggle="tab"><i class="fa fa-bars"></i>danh sách</a>
+                                <li><a href="#th" data-toggle="tab" class="active"><i class="fa fa-th-large"></i>lưới</a></li>
+                                <li><a class="" href="#list" data-toggle="tab"><i class="fa fa-bars"></i>danh sách</a>
                                 </li>
                             </ul>
                         </div>
-                        <div class="list-page">
-                            <p>Sản phẩm 1-9 trong 11</p>
-                        </div>
                     </div>
-                    <div class="toolbar-sorter">
-                        <span>Sắp xếp</span>
-                        <select id="sorter" class="sorter-options" data-role="sorter">
-                            <option selected="selected" value="position"> Giá thấp - cao</option>
-                            <option value="name"> Giá cao - thấp</option>
-                            <option value="price"> Giảm giá nhiều</option>
-                            <option value="name"> Hàng mới</option>
-                            <option value="price"> Bán chạy</option>
-                        </select>
-                        <a href="#"><i class="fa fa-arrow-up"></i></a>
+                    <%
+                        TypeOrder.getInstance();
+                        Collection<String> order = TypeOrder.getAll();
+                        request.setAttribute("order", order);
+                        int id_o = 0;
+                        Set<Integer> list_page = TypeOrder.getList();
+                        request.setAttribute("list_page", list_page);
+                    %>
+
+                    <div class="options" id="option1">
+                        <div class="title">
+                            Số lượng
+                        </div>
+                        <ul class="sub_menu">
+                            <c:forEach items="${list_page}" var="l">
+                                <c:choose>
+                                    <c:when test="${fn:contains(theString, '?')}">
+                                        <li><a href="${uri_query}&bPerPage=${l}">${l} sản phẩm</a></li>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <li><a href="#">${l} sản phẩm</a></li>
+                                    </c:otherwise>
+                                </c:choose> </c:forEach>
+                        </ul>
+                    </div>
+                    <div class="options" id="option2">
+                        <div class="title">
+                            Sắp xếp
+                        </div>
+                        <ul class="sub_menu">
+                            <c:forEach items="${order}" var="o">
+                                <c:choose>
+                                    <c:when test="${fn:contains(theString, '?')}">
+                                        <li><a href="${uri_query}&id_order=${id_o=id_o+1}">${o}</a></li>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <li><a href="#">${o}</a></li>
+                                    </c:otherwise>
+                                </c:choose>
+                            </c:forEach>
+                        </ul>
                     </div>
                 </div>
-                <!-- tab-area-start -->
                 <div class="tab-content">
-                    <div class="tab-pane fade" id="th">
-                        <div class="row">
 
-                            <c:forEach items="${books}"  var="b">
+                    <c:if test="${not empty no_found}">
+                        <div class="no_found">${no_found}</div>
+                    </c:if>
+                    
+                    <div class="tab-pane fade active show" id="th">
+                        <div class="row">
+                            <c:forEach items="${books}" var="b">
                                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6  mb-40">
                                     <!-- single-product-start -->
                                     <div class="product-wrapper">
@@ -794,11 +846,14 @@
                                                     <i class="fa fa-search-plus"></i>
                                                 </a>
                                             </div>
-                                            <div class="product-flag">
-                                                <ul>
-                                                    <li><span class="discount-percentage">-5%</span></li>
-                                                </ul>
-                                            </div>
+                                            <c:if test = "${b.getIntDiscount()>0}">
+                                                <div class="product-flag">
+                                                    <ul>
+                                                        <li><span class="discount-percentage">-${b.getIntDiscount()}%</span></li>
+                                                    </ul>
+                                                </div>
+                                            </c:if>
+
                                         </div>
                                         <div class="product-details text-center">
                                             <div class="product-rating">
@@ -813,7 +868,7 @@
                                             <h4><a href="#">${b.name}</a></h4>
                                             <div class="product-price">
                                                 <ul>
-                                                    <li>${b.getDecimalFormatPrice()}đ</li>
+                                                    <li>${b.getDecimalFormatPriceSale()}đ</li>
                                                     <li class="old-price">${b.getDecimalFormatPrice()}đ</li>
                                                 </ul>
                                             </div>
@@ -837,9 +892,9 @@
                         </div>
                     </div>
 
-                    <div class="tab-pane fade active show" id="list">
+                    <div class="tab-pane fade " id="list">
                         <!-- single-shop-start -->
-                        <c:forEach items="${books}"  var="b">
+                        <c:forEach items="${books}" var="b">
                             <div class="single-shop mb-30">
                                 <div class="row list-box">
                                     <div class="col-lg-4 col-md-4 col-12">
@@ -880,7 +935,7 @@
                                                 <div class="add-to-link">
                                                     <ul>
                                                         <li><a href="product-details.html" title="Details">
-                                                            <i  class="fa fa-external-link"></i></a></li>
+                                                            <i class="fa fa-external-link"></i></a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -894,28 +949,33 @@
                     </div>
                 </div>
 
+
                 <!-- tab-area-end -->
                 <!-- pagination-area-start -->
-                <div class="pagination-area mt-50">
-                    <div class="page-number">
-                        <ul>
-                            <li><a href="#" class="active">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#" class="angle"><i class="fa fa-angle-right"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-                -------------------------------------------------
-
-
-
-                <ul class="pagination" id="pagination"></ul>
-
-
-
-
+                <nav aria-label="Navigation for books">
+                    <ul class="pagination">
+                        <c:forEach begin="1" end="${numPage}" var="i">
+                            <c:choose>
+                                <c:when test="${currentPage eq i}">
+                                    <li class="page-item active"><a href="#" class="page-link">
+                                            ${i} <span class="sr-only">(current)</span></a>
+                                    </li>
+                                </c:when>
+                                <c:otherwise>
+                                    <c:choose>
+                                        <c:when test="${fn:contains(theString, '?')}">
+                                            <li class="page-item"><a class="page-link"
+                                                                     href="${uri_query}&cPage=${i}">${i}</a></li>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <li><a href="#">${o}</a></li>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:forEach>
+                    </ul>
+                </nav>
                 <!-- pagination-area-end -->
             </div>
         </div>
@@ -1006,53 +1066,6 @@
 
 <%--js--%>
 <jsp:include page="script.jsp"/>
-
-<%--sidebar--%>
-<script>
-    // Hide submenus
-    $('#body-row .collapse').collapse('hide');
-
-    // Collapse/Expand icon
-    $('#collapse-icon').addClass('fa-angle-double-left');
-
-    // Collapse click
-    $('[data-toggle=sidebar-colapse]').click(function() {
-        SidebarCollapse();
-    });
-
-    function SidebarCollapse () {
-        $('.menu-collapsed').toggleClass('d-none');
-        $('.sidebar-submenu').toggleClass('d-none');
-        $('.submenu-icon').toggleClass('d-none');
-        $('#sidebar-container').toggleClass('sidebar-expanded sidebar-collapsed');
-
-        // Treating d-flex/d-none on separators with title
-        var SeparatorTitle = $('.sidebar-separator-title');
-        if ( SeparatorTitle.hasClass('d-flex') ) {
-            SeparatorTitle.removeClass('d-flex');
-        } else {
-            SeparatorTitle.addClass('d-flex');
-        }
-
-        // Collapse/Expand icon
-        $('#collapse-icon').toggleClass('fa-angle-double-left fa-angle-double-right');
-    }
-</script>
-<%--pagination--%>
-<script>
-    $(function (){
-        window.pagObj = $('#pagination').twbsPagination({
-            totalPages: 10,
-            visiblePages: 5,
-            startPage: 4,
-            onPageClick: function (event, page) {
-                console.info(page + ' (from options)');
-            }
-        }).on('page',function (event, page){
-            console.info(page+' (from event listening) ');
-        });
-    });
-</script>
 
 </body>
 
