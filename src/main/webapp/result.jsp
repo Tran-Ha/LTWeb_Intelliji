@@ -838,7 +838,7 @@
                                     <div class="product-wrapper">
                                         <div class="product-img">
                                             <a href="#">
-                                                <img src="${b.getMainImg()}" alt="book" class="primary">
+                                                <img src="${pageContext.request.contextPath }/${b.getMainImg()}" alt="book" class="primary">
                                             </a>
                                             <div class="quick-view">
                                                 <a class="action-view" href="#" data-target="#productModal"
@@ -901,7 +901,7 @@
                                         <div class="product-wrapper-2">
                                             <div class="product-img">
                                                 <a href="#">
-                                                    <img src="${b.getMainImg()}" alt="${b.name}" class="primary">
+                                                    <img src="${pageContext.request.contextPath }/${b.getMainImg()}" alt="${b.name}" class="primary">
                                                 </a>
                                             </div>
                                         </div>
