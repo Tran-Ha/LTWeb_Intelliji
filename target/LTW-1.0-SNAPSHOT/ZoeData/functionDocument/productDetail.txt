@@ -1,0 +1,10 @@
+okay, trong phần chi tiết sản phẩm này thì, uhm, mọi thứ ổn
+
+step 1. người dùng click vào link detailProduct?page=<page>&id=<id>
+step 2. servlet detailProduct sẽ gọi BookEntity.getBookById(id)
+        nếu book nhận được là null thì chuyển về page
+        nếu book nhận được khác null thì
+            thêm đối tượng book thành thuộc tính book của request
+            gửi sang detailProduct.jsp để hiển thị
+
+?=> sao phần này có vẻ đơn giản nhỉ, hửm, thực sự vậy chăng??? Tương lai sẽ trả lời :))

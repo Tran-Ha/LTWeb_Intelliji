@@ -1,0 +1,12 @@
+INSERT INTO ROLE (ID, NAME)
+VALUES (1, 'SA');
+INSERT INTO ROLE (ID, NAME)
+VALUES (2, 'bookManager');
+INSERT INTO ROLE (ID, NAME)
+VALUES (3, 'contactManager');
+INSERT INTO ROLE (ID, NAME)
+VALUES (4, 'blogManager');
+INSERT INTO ROLE (ID, NAME)
+VALUES (5, 'orderManager');
+INSERT INTO ROLE (ID, NAME)
+VALUES (6, 'customer');

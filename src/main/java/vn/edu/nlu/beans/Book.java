@@ -23,6 +23,8 @@ public class Book implements Serializable {
     private String information;
     private ArrayList<String> imgs = new ArrayList<>();
     private Set<String> authors = new HashSet<>();
+
+    private String category;
     // constructor
     public Book() {
     }
@@ -172,6 +174,17 @@ public class Book implements Serializable {
                 return img;
         }
         return imgs.get(0);
+    }
+
+    public int getPercent(){
+        return (int)(((double)price - (double) priceSale)/ (double) price * 100);
+    }
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getDecimalFormatPrice() {
