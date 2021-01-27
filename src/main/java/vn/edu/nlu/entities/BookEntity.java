@@ -35,7 +35,6 @@ public class BookEntity {
                 book.setPriceSale(resultSet.getLong("PRICESALE"));
                 book.setQuantity(resultSet.getInt("QUANTITY"));
                 book.setInformation(resultSet.getString("INFORMATION"));
-                book.setCategoriesId(resultSet.getInt("ID_CATEGORIES"));
                 book.setImgs(getImageLinksById(id));
                 book.setAuthors(getAuthorsById(id));
                 return book;
@@ -79,91 +78,8 @@ public class BookEntity {
         return result;
     }
 
-    public static Set<Book> getSimilarBooksByBook(Book book, int numberOfBook) {
-        if (book == null) {
-            return null;
-        }
-        return getBooksByCategoriesId(book.getCategoriesId(), numberOfBook);
-    }
 
-    public static Set<Book> getPurchasedBooksByBook(Book book, int numberOfBook){
-        if (book == null) {
-            return null;
-        }
-        return getBooksByCategoriesId(book.getCategoriesId(), numberOfBook);
-    }
 
-    public static Set<Book> getBooksByCategoriesId(int groupId, int numberOfBook) {
-        Set<Book> result = new HashSet<>();
-        String bookQuery = "select * from BOOK where ACTIVE = true and QUANTITY > 0 and ID_CATEGORIES = ?";
-        try {
-            PreparedStatement preparedStatement = ConnectionDB.connect(bookQuery);
-            preparedStatement.setInt(1, groupId);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            int counter = 0;
-            while (resultSet.next() && counter++ < numberOfBook) {
-                Book book = new Book();
-                book.setId(resultSet.getInt("ID"));
-                book.setName(resultSet.getString("NAME"));
-                book.setPrice(resultSet.getLong("PRICE"));
-                book.setPriceSale(resultSet.getLong("PRICESALE"));
-                book.setQuantity(resultSet.getInt("QUANTITY"));
-                book.setInformation(resultSet.getString("DESCRIPTION"));
-                book.setImgs(getImageLinksById(book.getId()));
-                result.add(book);
-            }
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-        }
-        return result;
-    }
-
-    public static Set<Book> getFavoriteBooksByUser(User user, int numberOfBook) {
-        if (user == null) {
-            return null;
-        }
-        return getFavoriteBooksByUserId(user.getId(), numberOfBook);
-    }
-
-    public static Set<Book> getFavoriteBooksByUserId(int userId, int numberOfBook) {
-        Set<Book> result = new HashSet<>();
-        String query = "select * from FAVORITE where ID_USER = ?";
-        try {
-            PreparedStatement preparedStatement = ConnectionDB.connect(query);
-            preparedStatement.setInt(1, userId);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            int counter = 0;
-            while (resultSet.next() && counter++ < numberOfBook) {
-                int bookId = resultSet.getInt("ID_BOOK");
-                Book book = getBookById(bookId);
-                result.add(book);
-            }
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-        }
-        return result;
-    }
-
-    public static int getQuantityByBook(Book book) {
-        return getQuantityByBookId(book.getId());
-    }
-
-    public static int getQuantityByBookId(int bookId) {
-        String query = "select QUANTITY from BOOK where ACTIVE = true and ID = ?";
-        try {
-            PreparedStatement preparedStatement = ConnectionDB.connect(query);
-            preparedStatement.setInt(1, bookId);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                return resultSet.getInt("QUANTITY");
-            }
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-        }
-        return 0;
-    }
-
-    //
     public static int getTotalByIdCat(int id_cat, int id_price) {
         int total = 0;
         String typePrice="";
@@ -444,7 +360,6 @@ public class BookEntity {
         return list;
     }
 
-    // Tan code start
     public List<Book> getNewBook() {
         Statement statement = null;
         List<Book> list = new ArrayList<>();
@@ -622,18 +537,209 @@ public class BookEntity {
         return min;
     }
 
-    // run test
-    public static void main(String[] args) {
-        Book book = new Book();
-        book.setCategoriesId(2);
+    public List<Book> getLiteraryBook(){
+        Statement statement = null;
+        List<Book> list = new ArrayList<>();
+        String sql = "select b.id, b.name, price, pricesale, description, information, link from book b join image i on b.id = i.id_book join categories c on b.id_categories = c.id join group_book g on g.id = c.id_group where g.id = 6 limit 200";
+        try {
+            statement = ConnectionDB.connect(sql);
+            ResultSet rs = statement.executeQuery(sql);
 
-        Set<Book> books = BookEntity.getFavoriteBooksByUserId(11, 9);
-        Iterator iterator = books.iterator();
-        System.out.println("size: " + books.size());
-        System.out.println(iterator.next());
-        System.out.println(iterator.next());
-        System.out.println(iterator.next());
-        System.out.println(iterator.next());
-
+            int current = -1;
+            int previous  = -1;
+            while (rs.next()) {
+                current = rs.getInt(1);
+                if(current != previous){
+                    Book book = new Book();
+                    book.setId(rs.getInt(1));
+                    book.setName(rs.getString(2));
+                    book.setPrice(rs.getLong(3));
+                    book.setPriceSale(rs.getLong(4));
+                    book.setDescription(rs.getString(5));
+                    book.setInformation(rs.getString(6));
+                    book.getImgs().add(rs.getString(7));
+                    list.add(book);
+                    previous = current;
+                } else {
+                    list.get(list.size() - 1).getImgs().add(rs.getString(7));
+                    previous = current;
+                }
+            }
+            return list;
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+            return new LinkedList<>();
+        }
     }
+
+    public List<Book> getSkillBook(){
+        Statement statement = null;
+        List<Book> list = new ArrayList<>();
+        String sql = "select b.id, b.name, price, pricesale, description, information, link from book b join image i on b.id = i.id_book join categories c on b.id_categories = c.id join group_book g on g.id = c.id_group where g.id = 0 limit 200";
+        try {
+            statement = ConnectionDB.connect(sql);
+            ResultSet rs = statement.executeQuery(sql);
+
+            int current = -1;
+            int previous  = -1;
+            while (rs.next()) {
+                current = rs.getInt(1);
+                if(current != previous){
+                    Book book = new Book();
+                    book.setId(rs.getInt(1));
+                    book.setName(rs.getString(2));
+                    book.setPrice(rs.getLong(3));
+                    book.setPriceSale(rs.getLong(4));
+                    book.setDescription(rs.getString(5));
+                    book.setInformation(rs.getString(6));
+                    book.getImgs().add(rs.getString(7));
+
+                    list.add(book);
+                    previous = current;
+                } else {
+                    list.get(list.size() - 1).getImgs().add(rs.getString(7));
+                    previous = current;
+                }
+            }
+            return list;
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+            return new LinkedList<>();
+        }
+    }
+
+    public List<List<Book>> getCoupleBooks(List<Book> books){
+        List<List<Book>> result = new ArrayList<>();
+        int counter = 0;
+        List<Book> subList = new ArrayList<>();
+        for (Book book: books) {
+            if(subList.size() < 2){
+                subList.add(book);
+            } else {
+                result.add(subList);
+                subList = new ArrayList<>();
+                subList.add(book);
+                counter = 0;
+            }
+        }
+        return result;
+    }
+
+    public List<List<Book>> getCoupleSkillBooks(){
+        return getCoupleBooks(getSkillBook());
+    }
+
+    public List<List<Book>> getCoupleLiteraryBooks(){
+        return getCoupleBooks(getLiteraryBook());
+    }
+
+    // admin
+    public static int countAll() {
+        try{
+            String query = "select count(*) from book";
+            ConnectionDB connectionDB = new ConnectionDB();
+            PreparedStatement ps = connectionDB.connect(query);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                return  rs.getInt(1);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public static int count(String txtSearch) {
+        try{
+            String query = "select * from book where name like ?";
+            ConnectionDB connectionDB = new ConnectionDB();
+            PreparedStatement ps = connectionDB.connect(query);
+            ps.setString(1, "%" + txtSearch + "%");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                return  rs.getInt(1);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public static List<Book> search(String txtSearch, int index, int size) {
+        try {
+            String query = "select * from (select b.id, b.name, b.pricesale, b.quantity, b.new, b.hot, b.bestSeller, b.promotion, b.active, c.name as cat_name from book b join categories c on b.id_categories = c.id where b.name like ? order by b.id limit ?, ?) t join image i WHERE i.ID_BOOK = t.id and i.LINK like ?";
+            ConnectionDB connectionDB = new ConnectionDB();
+            PreparedStatement ps = connectionDB.connect(query);
+            ps.setString(1, "%" + txtSearch + "%");
+            ps.setInt(2, index*size - (size -1));
+            ps.setInt(3, size);
+            ps.setString(4, "%0.jpg");
+            ResultSet rs = ps.executeQuery();
+
+            List<Book> list = new ArrayList<>();
+
+            while (rs.next()) {
+                    Book book = new Book();
+                    book.setId(rs.getInt(1));
+                    book.setName(rs.getString(2));
+                    book.setPriceSale(rs.getLong(3));
+                    book.setQuantity(rs.getInt(4));
+                    book.setNew(rs.getBoolean(5));
+                    book.setHot(rs.getBoolean(6));
+                    book.setBestseller(rs.getBoolean(7));
+                    book.setPromotion(rs.getBoolean(8));
+                    book.setActive(rs.getBoolean(9));
+
+                    book.setCategory(rs.getString(10));
+                    book.getImgs().add(rs.getString("LINK"));
+
+                    list.add(book);
+            }
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static Book get(int id) {
+        try {
+            String query = "select * from (select b.id, b.name, b.pricesale, b.quantity, b.new, b.hot, b.bestSeller, b.promotion, b.active, b.information, c.name as cat_name from book b join categories c on b.id_categories = c.id where b.id = ?) t join image i WHERE i.ID_BOOK = t.id and i.LINK like ?";
+            ConnectionDB connectionDB = new ConnectionDB();
+            PreparedStatement ps = connectionDB.connect(query);
+            ps.setInt(1, id);
+            ps.setString(2, "%0.jpg");
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Book book = new Book();
+                book.setId(rs.getInt(1));
+                book.setName(rs.getString(2));
+                book.setPriceSale(rs.getLong(3));
+                book.setQuantity(rs.getInt(4));
+                book.setNew(rs.getBoolean(5));
+                book.setHot(rs.getBoolean(6));
+                book.setBestseller(rs.getBoolean(7));
+                book.setPromotion(rs.getBoolean(8));
+                book.setActive(rs.getBoolean(9));
+                book.setInformation(rs.getString(10));
+                book.setCategory(rs.getString(11));
+                book.getImgs().add(rs.getString("LINK"));
+
+
+                return book;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    /*public static void main(String[] args) {
+        List<Book> list = search("con", 1, 10);
+
+        for (Book book: list) {
+            System.out.println(book);
+        }
+    }*/
 }
+
