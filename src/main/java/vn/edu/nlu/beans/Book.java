@@ -21,6 +21,7 @@ public class Book implements Serializable {
     private int quantity;
     private String description;
     private String information;
+    private int categoriesId;
     private ArrayList<String> imgs = new ArrayList<>();
     private Set<String> authors = new HashSet<>();
     // constructor
@@ -135,7 +136,15 @@ public class Book implements Serializable {
     }
 
     public String getDescription() {
-        return description;
+        String result = "";
+        int counter = 0;
+        for (String paragraph: getInformation()) {
+            result += paragraph;
+            if (result.length() >= counter) {
+                break;
+            }
+        }
+        return result;
     }
 
     public void setDescription(String description) {
@@ -148,6 +157,14 @@ public class Book implements Serializable {
 
     public void setInformation(String information) {
         this.information = information;
+    }
+
+    public int getCategoriesId() {
+        return categoriesId;
+    }
+
+    public void setCategoriesId(int categoriesId) {
+        this.categoriesId = categoriesId;
     }
 
     public ArrayList<String> getImgs() {
@@ -185,12 +202,14 @@ public class Book implements Serializable {
     public double getDiscount() {
         return (price - priceSale)  * 100 / price;
     }
+
     public int getIntDiscount() {
         float down = price-priceSale;
         float discount=(down*100)/price;
-        discount=((discount*10)%10 >=5 ?(discount*10)/10+1 :(discount*10)/10);
-        return  (int)discount;
+        discount=((discount*10)%10 >=5 ? (discount*10)/10+1 :(discount*10)/10);
+        return  (int) discount;
     }
+
     @Override
     public String toString() {
         return "Book{" +

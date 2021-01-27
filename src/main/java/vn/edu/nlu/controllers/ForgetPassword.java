@@ -37,7 +37,6 @@ public class ForgetPassword extends HttpServlet {
                     String link = "http://localhost:8080/Zoe/getPassword?key=" + randomKey;
                     // gửi mail
                     MailSender.sendForgetPasswordMail(userEmail, link);
-                    System.out.println("send email: ok");
                 }
             }).start();
             // thông báo

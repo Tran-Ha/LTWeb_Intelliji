@@ -1,11 +1,10 @@
 package vn.edu.nlu.beans;
 
-import vn.edu.nlu.beans.Book;
 import vn.edu.nlu.utils.Converter;
 
 import java.io.Serializable;
-import java.text.DecimalFormat;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -43,7 +42,19 @@ public class Cart implements Serializable {
         return result;
     }
 
+    public int getBookQuantity() {
+        return bookMap.keySet().size();
+    }
+
     public double getTotalPrice() {
+        double result = 0;
+        for (Book book : getBooks()) {
+            result += book.getPrice() * bookMap.get(book);
+        }
+        return result;
+    }
+
+    public double getDiscountPrice() {
         double result = 0;
         for (Book book : getBooks()) {
             result += book.getPriceSale() * bookMap.get(book);
@@ -83,5 +94,14 @@ public class Cart implements Serializable {
             }
         }
         return -1;
+    }
+
+    public Set<Book> getBooksJson() {
+        Set<Book> result = new LinkedHashSet();
+        for (Book book : getBooks()) {
+            book.setQuantity(bookMap.get(book));
+            result.add(book);
+        }
+        return result;
     }
 }

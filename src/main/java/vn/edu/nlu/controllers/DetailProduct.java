@@ -20,8 +20,11 @@ public class DetailProduct extends HttpServlet {
         String id = request.getParameter("id");
         Book book = BookEntity.getBookById(id);
         if (book != null) {
-            request.getSession(true).setAttribute("book", book);
-            response.sendRedirect("default?page=productDetail");
+            request.setAttribute("book", book);
+//            request.getRequestDispatcher("ajaxProductDetail.jsp").forward(request, response);
+            request.getRequestDispatcher("product-details.jsp").forward(request, response);
+        } else {
+            request.getRequestDispatcher("default?page=home").forward(request, response);
         }
     }
 }

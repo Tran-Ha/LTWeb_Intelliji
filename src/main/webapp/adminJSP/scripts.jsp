@@ -3,8 +3,8 @@
 <!DOCTYPE html>
 
 <!-- add scripts -->
-<script src="Scripts/myScripts/languageAndUser.js"></script>
-<script src="Scripts/myScripts/orderAndMemberSearch.js"></script>
-<script src="Scripts/myScripts/logoutMessage.js"></script>
-<script src="Scripts/myScripts/openFullScreen.js"></script>
-<script src="Scripts/myScripts/createOrder.js"></script>
+<script src="adminJSP/Scripts/myScripts/languageAndUser.js"></script>
+<script src="adminJSP/Scripts/myScripts/orderAndMemberSearch.js"></script>
+<script src="adminJSP/Scripts/myScripts/logoutMessage.js"></script>
+<script src="adminJSP/Scripts/myScripts/openFullScreen.js"></script>
+<script src="adminJSP/Scripts/myScripts/createOrder.js"></script>

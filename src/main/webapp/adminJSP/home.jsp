@@ -39,7 +39,7 @@
 								<h1>
 									Chào mừng bạn đến với Zoe, <span>zoe</span>
 								</h1>
-								<img src="images/macbook.webp">
+								<img src="adminJSP/images/macbook.webp">
 							</div>
 						</div>
 					</div>

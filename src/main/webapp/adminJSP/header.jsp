@@ -20,7 +20,7 @@
 		<ul id="profile-img" class="header-dropdown-list hidden-xs padding-5">
 			<li id="userButtonOnHeader" class=""><a href="#" target="_self"
 				class="dropdown-toggle  no-margin avatar" data-toggle="dropdown"> <img
-					src="images/user.png" alt="Zoe"
+					src="adminJSP/images/user.png" alt="Zoe"
 					class="img-circle"> <span>zoe</span> <i
 					class="fa fa-caret-down"></i>
 			</a>
@@ -41,15 +41,15 @@
 		<!-- multiple lang dropdown : find all flags in the flags page -->
 		<ul class="header-dropdown-list hidden-xs">
 			<li id="languageButtonOnHeader" class=""><a href="#" target="_self" class="dropdown-toggle"
-				data-toggle="dropdown"> <img src="images/blank.gif"
+				data-toggle="dropdown"> <img src="adminJSP/images/blank.gif"
 					class="flag flag-vn" alt="Tiếng Việt"> <span> Tiếng Việt </span> <i class="fa fa-caret-down"></i>
 			</a>
 				<ul class="dropdown-menu pull-right">
-					<li class="active"><a href="javascript:void(0);"><img
-							src="images/blank.gif" class="flag flag-vn"
+					<li class="active"><a><img
+							src="adminJSP/images/blank.gif" class="flag flag-vn"
 							alt="France"> Tiếng Việt</a></li>
-					<li><a href="javascript:void(0);"><img
-							src="images/blank.gif" class="flag flag-us"
+					<li><a><img
+							src="adminJSP/images/blank.gif" class="flag flag-us"
 							alt="United States"> English</a></li>
 				</ul></li>
 		</ul>

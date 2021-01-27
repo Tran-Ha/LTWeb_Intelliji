@@ -10,7 +10,8 @@ public class MailSender {
     // fields
     private static final String name = "Zoe";
     private static final String email = "votinh1997@gmail.com";
-    private static final String password = "thisismypassword@230178";
+    private static final String password = "matszgyxwpjuxmcm";
+
     private static Session session;
 
     // method
@@ -27,6 +28,7 @@ public class MailSender {
                         return new PasswordAuthentication(email, password);
                     }
                 });
+//        session.setDebug(true);
     }
 
     public static Message createMessage(String userEmail) {

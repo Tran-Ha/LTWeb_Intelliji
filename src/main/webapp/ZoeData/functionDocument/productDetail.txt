@@ -2,9 +2,16 @@ okay, trong phần chi tiết sản phẩm này thì, uhm, mọi thứ ổn
 
 step 1. người dùng click vào link detailProduct?page=<page>&id=<id>
 step 2. servlet detailProduct sẽ gọi BookEntity.getBookById(id)
-        nếu book nhận được là null thì chuyển về page
+        nếu book nhận được là null thì chuyển về home
         nếu book nhận được khác null thì
             thêm đối tượng book thành thuộc tính book của request
             gửi sang detailProduct.jsp để hiển thị
 
 ?=> sao phần này có vẻ đơn giản nhỉ, hửm, thực sự vậy chăng??? Tương lai sẽ trả lời :))
+
+Phát từ lương lai trở về đây :)) Phần này khó vcl nhean, bổ sung thêm phần sản phẩm tương tự và sản phẩm yêu thích nữa
+ok thì sản phẩm tương tự mình sẽ cho nó là sản phẩm cùng group
+sản phẩm yêu thích thì mình cho nó là ây cha, vcl sản phẩm yêu thích phải nhấn nút yêu thích rồi mới cho nó chạy được
+sản phẩm thường được mua cùng là sản phẩm mà uhm, mình sẽ cho nó là sản phẩm tương tự luôn
+ok, tất cả các danh sách này mình để trong phần BookEntity
+bởi vì BookEntity sẽ biết cách để gọi danh sách sản phẩm tương tự hoặc sản phẩm yêu thích từ cơ sở dữ liệu

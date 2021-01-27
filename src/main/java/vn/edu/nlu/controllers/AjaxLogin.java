@@ -13,20 +13,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 
-@WebServlet(name = "Login", urlPatterns = "/login")
-public class Login extends HttpServlet {
+@WebServlet(name = "AjaxLogin", urlPatterns = "/ajaxLogin")
+public class AjaxLogin extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
+        response.setCharacterEncoding("UTF-8");
+        PrintWriter printWriter = response.getWriter();
+
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         User user = UserEntity.getUserByEmailAndPassword(email, password);
+
         if (user == null) {
-            request.setAttribute("loginNotification", "Sai thông tin đăng nhập! Vui lòng nhập lại!");
-            request.getRequestDispatcher("login_signup.jsp").forward(request, response);
+            printWriter.println("* Sai thông tin đăng nhập! Vui lòng nhập lại!");
         } else {
             Role role = RoleEntity.getRoleByUser(user);
 
@@ -36,9 +41,9 @@ public class Login extends HttpServlet {
             session.setAttribute("role", role);
 
             if (role == null || role.getId() == 6) {
-                response.sendRedirect("default?page=home");
+                printWriter.println("default?page=home");
             } else {
-                response.sendRedirect("default?page=adminHome");
+                printWriter.println("default?page=adminHome");
             }
         }
     }

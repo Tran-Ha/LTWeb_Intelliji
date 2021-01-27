@@ -1,0 +1,14 @@
+Các thành phần:
+database: cung cấp connection kết nối tới database
+beans: thể hiện dữ liệu dưới dạng đối tượng
+entity: chuyển đổi dữ liệu từ cơ sở dữ liệu thành dạng đối tượng
+controller: xử lý request
+jsp: trả về html
+utils: thực hiện một số tiện ích
+filter: lọc các truy cập trái phép
+
+Một số qui ước:
+1. Yêu cầu đăng nhập để đặt sản phẩm vào giỏ hàng, thanh toán
+2. Đăng nhập rồi mới lưu thông tin vào session (không lưu session khi chưa đăng nhập)
+3. Chặn tất cả các truy cập vào jsp, tức là chỉ cho phép truy cập servlet (dùng JspFilter)
+4. tất cả các trang liên quan tới admin đều có chứa từ admin để phân quyền (dùng AdminFilter)

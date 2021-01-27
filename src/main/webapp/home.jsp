@@ -2855,6 +2855,7 @@
                                     <img src="img/product/quickview-l2.jpg" alt=""/>
                                 </div>
                             </div>
+
                             <div class="product-details-small quickview-active owl-carousel">
                                 <a class="active" href="#image-1"><img src="img/product/quickview-s1.jpg" alt=""/></a>
                                 <a href="#image-2"><img src="img/product/quickview-s2.jpg" alt=""/></a>
@@ -2863,6 +2864,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-md-7 col-sm-7 col-xs-12">
                         <div class="modal-pro-content">
                             <h3>Thay đổi cuộc sống với nhân số học</h3>

@@ -1,0 +1,7 @@
+ok, mai thi hệ quản trị mà chưa học hành gì :))
+xong chức năng thêm sản phẩm yêu thích rồi học hệ quản trị thôi :((
+chức năng này dành cho những user đã đăng nhập
+servlet favoriteBook sẽ xử lý
+nếu chưa đăng nhập thì thông báo
+nếu đăng nhập rồi và có id book thì gọi favoriteEntity lưu dữ liệu xuống cơ sở dữ liệu
+đơn giản thế thôi :))

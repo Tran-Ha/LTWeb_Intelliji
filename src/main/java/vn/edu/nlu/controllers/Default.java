@@ -16,28 +16,27 @@ public class Default extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String page = request.getParameter("page");
 
-        if (page == null || page.equals("home")) {
-            request.getRequestDispatcher("home.jsp").forward(request, response);
-        }
-
-        if (page.equals("login")) {
-            request.getRequestDispatcher("login_signup.jsp").forward(request, response);
-        }
-
-        if (page.equals("cart")) {
-            request.getRequestDispatcher("cart.jsp").forward(request, response);
-        }
-
-        if (page.equals("forgetPassword")) {
-            request.getRequestDispatcher("forgetPassword.jsp").forward(request, response);
-        }
-
-        if (page.equals("productDetail")) {
-            request.getRequestDispatcher("product-details.jsp").forward(request, response);
-        }
-
-        if (page.equals("search")) {
-            request.getRequestDispatcher("result.jsp").forward(request, response);
+        switch (page) {
+            case "home":
+                request.getRequestDispatcher("home.jsp").forward(request, response);
+                break;
+            case "login":
+                request.getRequestDispatcher("login_signup.jsp").forward(request, response);
+                break;
+            case "forgetPassword":
+                request.getRequestDispatcher("forgetPassword.jsp").forward(request, response);
+                break;
+            case "productDetail":
+                request.getRequestDispatcher("detailProduct").forward(request, response);
+                break;
+            case "cart":
+                request.getRequestDispatcher("cart.jsp").forward(request, response);
+                break;
+            case "adminHome":
+                request.getRequestDispatcher("adminJSP/home.jsp").forward(request, response);
+                break;
+            default:
+                response.getWriter().println("404 File not found!");
         }
     }
 }

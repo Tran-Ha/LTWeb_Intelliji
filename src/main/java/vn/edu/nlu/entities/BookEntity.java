@@ -35,6 +35,7 @@ public class BookEntity {
                 book.setPriceSale(resultSet.getLong("PRICESALE"));
                 book.setQuantity(resultSet.getInt("QUANTITY"));
                 book.setInformation(resultSet.getString("INFORMATION"));
+                book.setCategoriesId(resultSet.getInt("ID_CATEGORIES"));
                 book.setImgs(getImageLinksById(id));
                 book.setAuthors(getAuthorsById(id));
                 return book;
@@ -78,8 +79,91 @@ public class BookEntity {
         return result;
     }
 
+    public static Set<Book> getSimilarBooksByBook(Book book, int numberOfBook) {
+        if (book == null) {
+            return null;
+        }
+        return getBooksByCategoriesId(book.getCategoriesId(), numberOfBook);
+    }
 
+    public static Set<Book> getPurchasedBooksByBook(Book book, int numberOfBook){
+        if (book == null) {
+            return null;
+        }
+        return getBooksByCategoriesId(book.getCategoriesId(), numberOfBook);
+    }
 
+    public static Set<Book> getBooksByCategoriesId(int groupId, int numberOfBook) {
+        Set<Book> result = new HashSet<>();
+        String bookQuery = "select * from BOOK where ACTIVE = true and QUANTITY > 0 and ID_CATEGORIES = ?";
+        try {
+            PreparedStatement preparedStatement = ConnectionDB.connect(bookQuery);
+            preparedStatement.setInt(1, groupId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            int counter = 0;
+            while (resultSet.next() && counter++ < numberOfBook) {
+                Book book = new Book();
+                book.setId(resultSet.getInt("ID"));
+                book.setName(resultSet.getString("NAME"));
+                book.setPrice(resultSet.getLong("PRICE"));
+                book.setPriceSale(resultSet.getLong("PRICESALE"));
+                book.setQuantity(resultSet.getInt("QUANTITY"));
+                book.setInformation(resultSet.getString("DESCRIPTION"));
+                book.setImgs(getImageLinksById(book.getId()));
+                result.add(book);
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public static Set<Book> getFavoriteBooksByUser(User user, int numberOfBook) {
+        if (user == null) {
+            return null;
+        }
+        return getFavoriteBooksByUserId(user.getId(), numberOfBook);
+    }
+
+    public static Set<Book> getFavoriteBooksByUserId(int userId, int numberOfBook) {
+        Set<Book> result = new HashSet<>();
+        String query = "select * from FAVORITE where ID_USER = ?";
+        try {
+            PreparedStatement preparedStatement = ConnectionDB.connect(query);
+            preparedStatement.setInt(1, userId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            int counter = 0;
+            while (resultSet.next() && counter++ < numberOfBook) {
+                int bookId = resultSet.getInt("ID_BOOK");
+                Book book = getBookById(bookId);
+                result.add(book);
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public static int getQuantityByBook(Book book) {
+        return getQuantityByBookId(book.getId());
+    }
+
+    public static int getQuantityByBookId(int bookId) {
+        String query = "select QUANTITY from BOOK where ACTIVE = true and ID = ?";
+        try {
+            PreparedStatement preparedStatement = ConnectionDB.connect(query);
+            preparedStatement.setInt(1, bookId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                return resultSet.getInt("QUANTITY");
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    //
     public static int getTotalByIdCat(int id_cat, int id_price) {
         int total = 0;
         String typePrice="";
@@ -360,10 +444,6 @@ public class BookEntity {
         return list;
     }
 
-
-
-
-
     // Tan code start
     public List<Book> getNewBook() {
         Statement statement = null;
@@ -540,5 +620,20 @@ public class BookEntity {
             e.printStackTrace();
         }
         return min;
+    }
+
+    // run test
+    public static void main(String[] args) {
+        Book book = new Book();
+        book.setCategoriesId(2);
+
+        Set<Book> books = BookEntity.getFavoriteBooksByUserId(11, 9);
+        Iterator iterator = books.iterator();
+        System.out.println("size: " + books.size());
+        System.out.println(iterator.next());
+        System.out.println(iterator.next());
+        System.out.println(iterator.next());
+        System.out.println(iterator.next());
+
     }
 }

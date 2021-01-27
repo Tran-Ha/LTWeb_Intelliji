@@ -66,7 +66,7 @@
                 <div class="my-cart ptb-10">
                     <ul>
                         <li><a href="default?page=cart"><i class="fa fa-shopping-cart"></i>Giỏ hàng</a>
-                            <span>${cart.getTotalQuantity() == null ? 0 : cart.getTotalQuantity()}</span>
+                            <span id="headerCartQuantity">${cart.getTotalQuantity() == null ? 0 : cart.getTotalQuantity()}</span>
                             <div class="mini-cart-sub">
                                 <div class="cart-product">
                                     <c:choose>
@@ -74,30 +74,38 @@
                                             <c:forEach var="book" items="${cart.getBooks()}" begin="0" end="2">
                                                 <div class="single-cart">
                                                     <div class="cart-img">
-                                                        <a href="detailProduct?id=${book.id}"><img src="${book.getMainImg()}" alt="book"/></a>
+                                                        <a href="default?page=productDetail&id=${book.id}"><img
+                                                                src="${book.getMainImg()}" alt="book"/></a>
                                                     </div>
                                                     <div class="cart-info">
-                                                        <h5><a href="detailProduct?id=${book.id}">${book.getName()}</a></h5>
-                                                        <p>${cart.getQuantityOfBook(book)} x ${book.getDecimalFormatPrice()}đ</p>
+                                                        <h5>
+                                                            <a href="default?page=productDetail&id=${book.id}">${book.getName()}</a>
+                                                        </h5>
+                                                        <p>${cart.getQuantityOfBook(book)}
+                                                            x ${book.getDecimalFormatPrice()}đ</p>
                                                     </div>
                                                 </div>
                                             </c:forEach>
                                         </c:when>
                                         <c:otherwise>
-                                            <p style='text-align:center'>Bạn chưa có sản phẩm trong giỏ hàng!</p>
+                                            <p id="notification" style='text-align:center'>Bạn chưa có sản phẩm trong
+                                                giỏ hàng!</p>
                                         </c:otherwise>
                                     </c:choose>
                                 </div>
                                 <c:if test="${cart.getBookQuantity() > 3}">
-                                    <div class="cart-totals">
-                                        <h5>Xem thêm trong giỏ hàng...</h5>
-                                    </div>
+                                    <h2>Xem thêm trong giỏ hàng...</h2>
                                 </c:if>
-                                <c:if test="${cart.getTotalQuantity() > 0}">
-                                    <div class="cart-totals">
-                                        <h5>Thành tiền <span>${cart.convertToMoney(cart.getTotalPrice())}đ</span></h5>
-                                    </div>
-                                </c:if>
+                                <div class="cart-totals">
+                                    <h5>Giá gốc
+                                        <span id="headerCartPrice">${cart.convertToMoney(cart.getTotalPrice())}đ</span>
+                                    </h5>
+                                </div>
+                                <div class="cart-totals">
+                                    <h5>Giá ưu đãi
+                                        <span  id="headerCartPriceSale">${cart.convertToMoney(cart.getDiscountPrice())}đ</span>
+                                    </h5>
+                                </div>
                                 <div class="cart-bottom">
                                     <a class="view-cart" href="default?page=cart">Xem giỏ hàng</a>
                                     <a href="default?page=checkout">Thanh toán</a>
@@ -128,12 +136,14 @@
                             <li><a href="default?page=home">Trang chủ</a></li>
 
                             <c:forEach var="language" items="${menu.languages}">
-                                <li><a href="search?lang=${language.name}">${language.name}<i class="fa fa-angle-down"></i></a>
+                                <li><a href="search?lang=${language.name}">${language.name}<i
+                                        class="fa fa-angle-down"></i></a>
                                     <div class="mega-menu">
                                         <c:forEach var="group" items="${menu.getGroupsByLanguage(language)}">
                                     <span>
                                         <a href="search?group=${group.name}" class="title">${group.name}</a>
-                                        <c:forEach var="category" items="${menu.getCategoriesByGroup(group)}" begin="0" end="2">
+                                        <c:forEach var="category" items="${menu.getCategoriesByGroup(group)}" begin="0"
+                                                   end="2">
                                             <a href="search?cate=${category.name}">${category.name}</a>
                                         </c:forEach>
                                     </span>
@@ -144,11 +154,11 @@
 
                             <li><a href="#">Blog<i class="fa fa-angle-down"></i></a>
                                 <c:forEach var="blog" items="${menu.blogs}" begin="0" end="2">
-                                <div class="sub-menu sub-menu-2">
-                                    <ul>
-                                        <li><a href="default?page=blog">${blog.title}</a></li>
-                                    </ul>
-                                </div>
+                                    <div class="sub-menu sub-menu-2">
+                                        <ul>
+                                            <li><a href="default?page=blog">${blog.title}</a></li>
+                                        </ul>
+                                    </div>
                                 </c:forEach>
                             </li>
 

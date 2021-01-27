@@ -9,7 +9,7 @@
     <%@ include file="head.jsp" %>
     <script>
         <c:if test="${cartNotification != null}">
-        onload = setTimeout(function () {
+        setTimeout(function () {
             alert("${cartNotification}");
         }, 0);
         <c:remove var="cartNotification"/>
@@ -84,9 +84,9 @@
                                                     </div>
                                                     <div class="cart-products__details">
                                                         <div class="cart-products__pricess">
-                                                            <p class="cart-products__real-prices">${cart.convertToMoney(book.price)}đ</p>
+                                                            <p class="cart-products__real-prices">${cart.convertToMoney(book.priceSale)}đ</p>
                                                             <p class="cart-products__discount-prices">
-                                                                <del>${cart.convertToMoney(book.priceSale)}đ</del>
+                                                                <del>${cart.convertToMoney(book.price)}đ</del>
                                                                 <span class="cart-products__percent-prices">-${book.getDiscount()}%</span>
                                                             </p>
                                                         </div>
