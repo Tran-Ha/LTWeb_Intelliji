@@ -463,106 +463,52 @@
 <!-- product-main-area-end -->
 
 <%-- modal start--%>
-<div class="modal fade show" id="productModal" tabindex="-1" role="dialog" style="display: none; padding-right: 12px;"
-     aria-modal="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">x</span></button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-5 col-sm-5 col-xs-12">
-                        <div class="modal-tab">
-                            <div class="product-details-large tab-content">
-                                <div class="tab-pane active" id="image-1">
-                                    <img src="img/product/quickview-l1.jpg" alt="">
-                                </div>
-                                <div class="tab-pane" id="image-2">
-                                    <img src="img/product/quickview-l2.jpg" alt="">
-                                </div>
-                                <div class="tab-pane" id="image-3">
-                                    <img src="img/product/quickview-l1.jpg" alt="">
-                                </div>
-                                <div class="tab-pane" id="image-4">
-                                    <img src="img/product/quickview-l2.jpg" alt="">
-                                </div>
-                            </div>
-                            <div class="product-details-small quickview-active owl-carousel owl-loaded owl-drag">
-                                <div class="owl-stage-outer">
-                                    <div class="owl-stage"
-                                         style="transform: translate3d(-351px, 0px, 0px); transition: all 0s ease 0s; width: 1174px;">
-                                        <div class="owl-item cloned" style="width: 105.333px; margin-right: 12px;"><a
-                                                href="#image-2"><img src="img/product/quickview-s2.jpg" alt=""></a>
-                                        </div>
-                                        <div class="owl-item cloned" style="width: 105.333px; margin-right: 12px;"><a
-                                                href="#image-3"><img src="img/product/quickview-s1.jpg" alt=""></a>
-                                        </div>
-                                        <div class="owl-item cloned" style="width: 105.333px; margin-right: 12px;"><a
-                                                href="#image-4"><img src="img/product/quickview-s2.jpg" alt=""></a>
-                                        </div>
-                                        <div class="owl-item active" style="width: 105.333px; margin-right: 12px;"><a
-                                                class="active" href="#image-1"><img src="img/product/quickview-s1.jpg"
-                                                                                    alt=""></a></div>
-                                        <div class="owl-item active" style="width: 105.333px; margin-right: 12px;"><a
-                                                href="#image-2"><img src="img/product/quickview-s2.jpg" alt=""></a>
-                                        </div>
-                                        <div class="owl-item active" style="width: 105.333px; margin-right: 12px;"><a
-                                                href="#image-3"><img src="img/product/quickview-s1.jpg" alt=""></a>
-                                        </div>
-                                        <div class="owl-item" style="width: 105.333px; margin-right: 12px;"><a
-                                                href="#image-4"><img src="img/product/quickview-s2.jpg" alt=""></a>
-                                        </div>
-                                        <div class="owl-item cloned" style="width: 105.333px; margin-right: 12px;"><a
-                                                class="active" href="#image-1"><img src="img/product/quickview-s1.jpg"
-                                                                                    alt=""></a></div>
-                                        <div class="owl-item cloned" style="width: 105.333px; margin-right: 12px;"><a
-                                                href="#image-2"><img src="img/product/quickview-s2.jpg" alt=""></a>
-                                        </div>
-                                        <div class="owl-item cloned" style="width: 105.333px; margin-right: 12px;"><a
-                                                href="#image-3"><img src="img/product/quickview-s1.jpg" alt=""></a>
-                                        </div>
+<c:forEach var="similarBook" items="${BookEntity.getSimilarBooksByBook(book, 4)}">
+    <div class="modal fade" id="productModal${similarBook.id}" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">x</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-5 col-sm-5 col-xs-12">
+                            <div class="modal-tab">
+                                <div class="product-details-large tab-content">
+                                    <div class="tab-pane active" id="image-${similarBook.id}">
+                                        <img src="${similarBook.getMainImg()}" alt="">
                                     </div>
-                                </div>
-                                <div class="owl-nav">
-                                    <button type="button" role="presentation" class="owl-prev"><i
-                                            class="fa fa-angle-left"></i></button>
-                                    <button type="button" role="presentation" class="owl-next"><i
-                                            class="fa fa-angle-right"></i></button>
-                                </div>
-                                <div class="owl-dots">
-                                    <button role="button" class="owl-dot active"><span></span></button>
-                                    <button role="button" class="owl-dot"><span></span></button>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-7 col-sm-7 col-xs-12">
-                        <div class="modal-pro-content">
-                            <h3>Thay đổi cuộc sống với nhân số học</h3>
-                            <div class="price">
-                                <span>249.000đ</span>
-                            </div>
-                            <p>Cuốn sách Thay đổi cuộc sống với Nhân số học là tác phẩm được chị Lê Đỗ Quỳnh Hương phát
-                                triển từ tác phẩm gốc
-                                “The Complete Book of Numerology” của tiến sỹ David A. Phillips, khiến bộ môn Nhân số
-                                học khởi nguồn từ nhà toán học Pythagoras
-                                trở nên gần gũi, dễ hiểu hơn với độc giả Việt Nam.</p>
 
-                            <form action="#" style="margin-top: 16px">
-                                <label>Số lượng</label>
-                                <input type="number" value="1">
-                                <button>Thêm vào giỏ hàng</button>
-                            </form>
-                            <span><i class="fa fa-check"></i>Còn hàng</span>
+                        <div class="col-md-7 col-sm-7 col-xs-12">
+                            <div class="modal-pro-content">
+                                <h5>${similarBook.name}</h5>
+                                <div class="price">
+                                    <span style="font-size: 22px;"><del>${similarBook.getDecimalFormatPrice()}đ</del></span>
+                                    <span style="font-size: 22px;">${similarBook.getDecimalFormatPriceSale()}đ</span>
+                                </div>
+
+                                <p>${similarBook.getDescription()}...</p>
+
+                                <form method="get" action="addBookQuantity" style="margin-top: 16px">
+                                    <label>Số lượng: </label>
+                                    <input type="hidden" name="page" value="productDetail">
+                                    <input type="hidden" name="id" value="${similarBook.id}">
+                                    <input name="quantity" type="text" value="1">
+                                    <button type="submit" style="margin-left: 0px">Thêm vào giỏ hàng</button>
+                                </form>
+                                <span><i class="fa fa-check"></i>Còn hàng</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</c:forEach>
 <%-- modal end--%>
 
 <!-- footer-area-start -->
@@ -618,47 +564,51 @@
 
                         const books = cart.books;
                         const notification = cart.notification;
-                        // get total book quantity
-                        let totalBookQuantity = 0;
-                        for (let i = 0; i < books.length; i++) {
-                            totalBookQuantity += books[i].quantity;
-                        }
-                        // reset book quantity
-                        $('#headerCartQuantity').html(totalBookQuantity);
-                        // reset notification "chua co sach trong gio hang"
-                        if (books.length == 0) {
-                            $('#notification').text("Bạn chưa có sản phẩm trong giỏ hàng!");
-                        } else {
-                            $('#notification').remove();
-                        }
-                        // delete all single cart
-                        $('.single-cart').remove();
-                        // insert new single cart
-                        for (let i = 0; i < 2; i++) {
-                            let book = books[i];
-                            if (book != null) {
-                                $('.cart-product').append(
-                                    "<div class=\"single-cart\">" +
-                                    "<div class=\"cart-img\">" +
-                                    "<a href=\"default?page=productDetail&id=" + book.id + "\"><img src=\"" + book.imgs[0] + "\" alt=\"book\"/></a>" +
-                                    "</div>" +
-                                    "<div class=\"cart-info\">" +
-                                    "<h5><a href=\"default?page=productDetail&id=" + book.id + "\">" + book.name + "</a></h5>" +
-                                    "<p>" + book.quantity + " x " + (book.price).toFixed(1).replace(/\d(?=(\d{3})+\.)/g, '$&,') + "đ</p>" +
-                                    "</div>" +
-                                    "</div>")
+                        // check books is null (have not login)
+                        if (books != null) {
+                            // get total book quantity
+                            let totalBookQuantity = 0;
+                            for (let i = 0; i < books.length; i++) {
+                                totalBookQuantity += books[i].quantity;
                             }
+                            // reset book quantity
+                            $('#headerCartQuantity').html(totalBookQuantity);
+                            // reset notification "chua co sach trong gio hang"
+                            if (books.length == 0) {
+                                $('#notification').text("Bạn chưa có sản phẩm trong giỏ hàng!");
+                            } else {
+                                $('#notification').remove();
+                            }
+                            // delete all single cart
+                            $('.single-cart').remove();
+                            // insert new single cart
+                            for (let i = 0; i < 2; i++) {
+                                let book = books[i];
+                                if (book != null) {
+                                    $('.cart-product').append(
+                                        "<div class=\"single-cart\">" +
+                                        "<div class=\"cart-img\">" +
+                                        "<a href=\"default?page=productDetail&id=" + book.id + "\"><img src=\"" + book.imgs[0] + "\" alt=\"book\"/></a>" +
+                                        "</div>" +
+                                        "<div class=\"cart-info\">" +
+                                        "<h5><a href=\"default?page=productDetail&id=" + book.id + "\">" + book.name + "</a></h5>" +
+                                        "<p>" + book.quantity + " x " + (book.price).toFixed(1).replace(/\d(?=(\d{3})+\.)/g, '$&,') + "đ</p>" +
+                                        "</div>" +
+                                        "</div>")
+                                }
+                            }
+                            // price and priceSale
+                            let totalPrice = 0;
+                            let discountPrice = 0;
+                            for (let i = 0; i < books.length; i++) {
+                                let book = books[i];
+                                totalPrice += book.price * book.quantity;
+                                discountPrice += book.priceSale * book.quantity;
+                            }
+                            $('#headerCartPrice').html((totalPrice).toFixed(1).replace(/\d(?=(\d{3})+\.)/g, '$&,') + "đ");
+                            $('#headerCartPriceSale').html((discountPrice).toFixed(1).replace(/\d(?=(\d{3})+\.)/g, '$&,') + "đ");
+
                         }
-                        // price and priceSale
-                        let totalPrice = 0;
-                        let discountPrice = 0;
-                        for (let i = 0; i < books.length; i++) {
-                            let book = books[i];
-                            totalPrice += book.price * book.quantity;
-                            discountPrice += book.priceSale * book.quantity;
-                        }
-                        $('#headerCartPrice').html((totalPrice).toFixed(1).replace(/\d(?=(\d{3})+\.)/g, '$&,') + "đ");
-                        $('#headerCartPriceSale').html((discountPrice).toFixed(1).replace(/\d(?=(\d{3})+\.)/g, '$&,') + "đ");
                         // notify
                         alert(notification);
                     }

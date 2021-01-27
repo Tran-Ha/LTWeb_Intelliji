@@ -40,37 +40,38 @@ public class AjaxUpdateBookQuantity extends HttpServlet {
         // get cart from session
         Cart cart = (Cart) request.getSession().getAttribute("cart");
         // processing
-        String notification = "";
+        JsonCart jsonCart = new JsonCart(null, "Bạn chưa đăng nhập! Vui lòng đăng nhập hoặc đăng kí để mua hàng!");
+
         if (cart != null) {
+            int quantityOnDB = BookEntity.getQuantityByBook(book);
+
             if (quantity < 0) {
-                notification = "Số lượng sách là một số nguyên không âm! Vui lòng nhập lại!";
+                jsonCart.setNotification("Số lượng sách là một số nguyên không âm! Vui lòng nhập lại!");
             }
 
             if (book == null || quantity == 0) {
                 cart.deleteBook(book);
-                notification = "Một đầu sách đã được loại bỏ khỏi giỏ hàng của bạn!";
+                jsonCart.setNotification("Một đầu sách đã được loại bỏ khỏi giỏ hàng của bạn!");
             }
-
-            int quantityOnDB = BookEntity.getQuantityByBook(book);
 
             if (0 < quantity && quantity <= quantityOnDB) {
                 cart.updateBook(book, quantity);
-                request.setAttribute("cartNotification", "Giỏ hàng của bạn đã được cập nhật!");
+                jsonCart.setNotification("Giỏ hàng của bạn đã được cập nhật!");
             }
 
             if (quantity > quantityOnDB) {
                 cart.updateBook(book, quantityOnDB);
-                notification = "Bạn đã chọn mua số lượng sách tối đa!";
+                jsonCart.setNotification("Bạn đã chọn mua số lượng sách tối đa!");
             }
+
+            jsonCart.setBooks(cart.getBooksJson());
         }
 
         if (cart == null) {
-            notification = "Bạn chưa đăng nhập! Vui lòng đăng nhập hoặc đăng kí để mua hàng!";
+            jsonCart.setNotification("Bạn chưa đăng nhập! Vui lòng đăng nhập hoặc đăng kí để mua hàng!");
         }
 
-        JsonCart jsonCart = new JsonCart(cart.getBooksJson(), notification);
         String resString = new Gson().toJson(jsonCart);
-
         printWriter.print(resString);
     }
 }

@@ -138,15 +138,11 @@ public class Book implements Serializable {
     }
 
     public String getDescription() {
-        String result = "";
-        int counter = 0;
-        for (String paragraph: getInformation()) {
-            result += paragraph;
-            if (result.length() >= counter) {
-                break;
-            }
+        if (description.length() < 120) {
+            return description;
+        } else {
+            return description.substring(0, 120);
         }
-        return result;
     }
 
     public void setDescription(String description) {
@@ -196,6 +192,7 @@ public class Book implements Serializable {
     public int getPercent(){
         return (int)(((double)price - (double) priceSale)/ (double) price * 100);
     }
+
     public String getCategory() {
         return category;
     }

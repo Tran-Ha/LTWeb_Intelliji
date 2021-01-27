@@ -21,7 +21,7 @@ public class Default extends HttpServlet {
                 request.getRequestDispatcher("home.jsp").forward(request, response);
                 break;
             case "login":
-                request.getRequestDispatcher("login_signup.jsp").forward(request, response);
+                request.getRequestDispatcher("ajaxLoginAndSignup.jsp").forward(request, response);
                 break;
             case "forgetPassword":
                 request.getRequestDispatcher("forgetPassword.jsp").forward(request, response);

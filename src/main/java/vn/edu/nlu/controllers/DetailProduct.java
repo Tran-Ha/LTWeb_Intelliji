@@ -21,8 +21,8 @@ public class DetailProduct extends HttpServlet {
         Book book = BookEntity.getBookById(id);
         if (book != null) {
             request.setAttribute("book", book);
-//            request.getRequestDispatcher("ajaxProductDetail.jsp").forward(request, response);
-            request.getRequestDispatcher("product-details.jsp").forward(request, response);
+            request.getRequestDispatcher("ajaxProductDetail.jsp").forward(request, response);
+//            request.getRequestDispatcher("product-details.jsp").forward(request, response);
         } else {
             request.getRequestDispatcher("default?page=home").forward(request, response);
         }
