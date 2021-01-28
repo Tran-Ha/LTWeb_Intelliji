@@ -19,16 +19,14 @@
                 <div class="account-area text-right">
                     <ul>
                         <c:choose>
-                            <c:when test="${not empty user}">
+                            <c:when test="${user != null}">
                                 <li><a>Xin chào, ${user.name}</a></li>
-                                <li><a href="default?page=myAccount">Tài khoản</a></li>
-                                <li><a href="default?page=checkout">Thanh toán</a></li>
+                                <li><a href="default?page=MyAccount">Tài khoản</a></li>
+                                <li><a href="default?page=CheckOut">Thanh toán</a></li>
                                 <li><a href="logout">Đăng xuất</a></li>
                             </c:when>
                             <c:otherwise>
                                 <li><a href="default?page=login">Đăng nhập</a></li>
-                                <li><a href="default?page=myAccount">Tài khoản</a></li>
-                                <li><a href="default?page=checkout">Thanh toán</a></li>
                             </c:otherwise>
                         </c:choose>
                     </ul>
@@ -53,54 +51,67 @@
                 </div>
             </div>
             <%--search--%>
-            <div class="col-lg-6 col-md-4 col-12">
-                <div class="header-search ptb-10">
-                    <form id="searchBox" action="login" method="GET">
-                        <input type="text" name="key" placeholder="Tìm sản phẩm, danh mục, thương hiệu,..."/>
-                        <a id="searchButton" style="color: white"><i class="fa fa-search"></i></a>
-                    </form>
+                <div class="col-lg-6 col-md-4 col-12">
+                    <div class="header-search ptb-10">
+                        <form id="searchBox" action="/Zoe/Search" method="GET">
+                            <input id="enterSearch" type="text" name="keyword" placeholder="Tìm sản phẩm, danh mục, thương hiệu,..."/>
+                            <input hidden value="key" name="type">
+                            <%--                        <input type="submit" value="key" name="type">--%>
+
+                            <a id="searchButton" href="javascript:{}"
+                               onclick="document.getElementById('searchBox').submit();" style="color: white"><i class="fa fa-search"></i></a>
+                        </form>
+                    </div>
                 </div>
-            </div>
-            <%--cart--%>
+                <script>
+                    var input = document.getElementById("enterSearch");
+                    input.addEventListener("keyup", function(event) {
+                        if (event.keyCode === 13) {
+                            event.preventDefault();
+                            document.getElementById("searchButton").click();
+                        }
+                    });
+                </script>            <%--cart--%>
             <div class="col-lg-3 col-md-3 col-12">
                 <div class="my-cart ptb-10">
                     <ul>
-                        <li><a href="default?page=cart"><i class="fa fa-shopping-cart"></i>Giỏ hàng</a>
+                        <li><a href="#"><i class="fa fa-shopping-cart"></i>Giỏ hàng</a>
                             <span>${cart.getTotalQuantity() == null ? 0 : cart.getTotalQuantity()}</span>
                             <div class="mini-cart-sub">
                                 <div class="cart-product">
                                     <c:choose>
-                                        <c:when test="${cart.getTotalQuantity() > 0}">
-                                            <c:forEach var="book" items="${cart.getBooks()}" begin="0" end="2">
-                                                <div class="single-cart">
-                                                    <div class="cart-img">
-                                                        <a href="detailProduct?id=${book.id}"><img src="${book.getMainImg()}" alt="book"/></a>
-                                                    </div>
-                                                    <div class="cart-info">
-                                                        <h5><a href="detailProduct?id=${book.id}">${book.getName()}</a></h5>
-                                                        <p>${cart.getQuantityOfBook(book)} x ${book.getDecimalFormatPrice()}đ</p>
-                                                    </div>
-                                                </div>
-                                            </c:forEach>
+                                        <c:when test="${user != null}">
+                                            <c:choose>
+                                                <c:when test="${cart.getTotalQuantity() > 0}">
+                                                    <c:forEach var="book" items="${cart.getBooks()}" begin="0" end="2">
+                                                        <div class="single-cart">
+                                                            <div class="cart-img">
+                                                                <a href="detailProduct?id=${book.id}"><img src="${book.getMainImg()}" alt="book"/></a>
+                                                            </div>
+                                                            <div class="cart-info">
+                                                                <h5><a href="detailProduct?id=${book.id}">${book.getName()}</a></h5>
+                                                                <p>${cart.getQuantityOfBook(book)} x ${book.getDecimalFormatPrice()}đ</p>
+                                                            </div>
+                                                        </div>
+                                                    </c:forEach>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <p style='text-align:center'>Bạn chưa có sản phẩm trong giỏ hàng!</p>
+                                                </c:otherwise>
+                                            </c:choose>
                                         </c:when>
                                         <c:otherwise>
-                                            <p style='text-align:center'>Bạn chưa có sản phẩm trong giỏ hàng!</p>
+                                            <c:out value="Hãy đăng nhập để thêm vào giỏ hàng!"/>
                                         </c:otherwise>
                                     </c:choose>
+
                                 </div>
-                                <c:if test="${cart.getBookQuantity() > 3}">
-                                    <div class="cart-totals">
-                                        <h5>Xem thêm trong giỏ hàng...</h5>
-                                    </div>
-                                </c:if>
-                                <c:if test="${cart.getTotalQuantity() > 0}">
-                                    <div class="cart-totals">
-                                        <h5>Thành tiền <span>${cart.convertToMoney(cart.getTotalPrice())}đ</span></h5>
-                                    </div>
-                                </c:if>
+                                <div class="cart-totals">
+                                    <h5>Thành tiền <span><c:out value="0d"/></span></h5>
+                                </div>
                                 <div class="cart-bottom">
-                                    <a class="view-cart" href="default?page=cart">Xem giỏ hàng</a>
-                                    <a href="default?page=checkout">Thanh toán</a>
+                                    <a class="view-cart" href="cart.html">Xem giỏ hàng</a>
+                                    <a href="checkout.html">Thanh toán</a>
                                 </div>
                             </div>
                         </li>

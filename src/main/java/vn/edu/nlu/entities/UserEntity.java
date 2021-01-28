@@ -144,7 +144,9 @@ public class UserEntity {
                 Date birthday = resultSet.getDate("BIRTHDAY");
                 boolean active = resultSet.getBoolean("ACTIVE");
                 int idRole = resultSet.getInt("ID_ROLE");
-                user = new User(id, name, email, phone, password, address, city, img, birthday, active, idRole);
+                int reliability=resultSet.getInt("reliability");
+
+                user = new User(id, name, email, phone, password, address, city, img, birthday, active, idRole,reliability);
             }
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
@@ -177,6 +179,27 @@ public class UserEntity {
             e.printStackTrace();
         }
         return user;
+    }
+    public static User getInfoContact(int id_role) {
+        User info = null;
+        String query = "select * from USER where id_role=?";
+        try {
+            PreparedStatement preparedStatement = ConnectionDB.connect(query);
+            preparedStatement.setInt(1, id_role);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                info= new User();
+                info.setName(resultSet.getString("NAME"));
+                info.setPhone(resultSet.getString("PHONE"));
+                info.setAddress(resultSet.getString("ADDRESS"));
+                info.setCity( resultSet.getString("CITY"));
+                info.setEmail(resultSet.getString("EMAIL"));
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        return info;
     }
 
     // run test

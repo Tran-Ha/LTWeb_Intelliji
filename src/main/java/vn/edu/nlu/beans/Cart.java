@@ -62,10 +62,6 @@ public class Cart implements Serializable {
         return result;
     }
 
-    public double getTotalPriceAndShipFee() {
-        return getTotalPrice() + 20000;
-    }
-
     public void deleteBook(Book book) {
         bookMap.remove(book);
     }
@@ -103,5 +99,25 @@ public class Cart implements Serializable {
             result.add(book);
         }
         return result;
+    }
+    public double getTotalPriceAndShipFee() {
+        if(getTotalPrice()>250000) {
+            return getTotalPrice();
+        }
+        else
+            return getTotalPrice()+40000;
+    }
+    public String getTotalPriceOfBook(Book book) {
+        return Converter.convertIntToMoneyString(calTotalPriceOfBook(book));
+    }
+    public int calTotalPriceOfBook(Book book) {
+        int total = 0;
+        for(Map.Entry<Book, Integer> entry: bookMap.entrySet()){
+            if(book.equals(entry.getKey())){
+                total+=entry.getKey().getPriceSale()*entry.getValue();
+                break;
+            }
+        }
+        return total;
     }
 }
