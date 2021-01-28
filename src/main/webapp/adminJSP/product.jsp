@@ -101,7 +101,7 @@
 								</div>
 							</div>
 
-                            <form action="search-result.jsp" method="post">
+                            <form action="default?page=adminResult" method="post">
 							<div class="col-sm-4">
 								<div class="input-group">
                                         <input id ="txtSearch" type="text" class="form-control" name="txtSearch">

@@ -77,6 +77,9 @@ public class Default extends HttpServlet {
             case "adminOderDetail":
                 request.getRequestDispatcher("adminJSP/orderDetail.jsp").forward(request, response);
                 break;
+            case "adminResult":
+                request.getRequestDispatcher("adminJSP/search-result.jsp").forward(request, response);
+                break;
             default:
                 response.getWriter().println("404 File not found!");
         }
