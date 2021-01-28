@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix ="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix = "fn" uri = "http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -13,7 +13,7 @@
 <!-- Add your site or application content here -->
 <!-- header-area-start -->
 <header>
-    <%@ include file="header.jsp"%>
+    <%@ include file="header.jsp" %>
 </header>
 <!-- header-area-end -->
 
@@ -52,14 +52,15 @@
 
                 </ul>
 
-                <form method="post" action="#" id="login" style="display: block;" >
+                <form method="post" action="#" id="login" style="display: block;">
                     <div class="form-group">
                         <input type="email" name="email" id="email" class=" form-control" placeholder="Nhập email">
                         <p id="username-error"></p>
                     </div>
 
                     <div class="form-group">
-                        <input type="password" name="password" id="password" class=" form-control" placeholder="Mật khẩu">
+                        <input type="password" name="password" id="password" class=" form-control"
+                               placeholder="Mật khẩu">
                         <p id="password-error"></p>
                     </div>
 
@@ -70,11 +71,12 @@
                         </div>
 
                         <div class="mb-15 " style="width: 100%;clear: both;">
-                            <button type="button" id="loginButton" style="border: 1px solid #9f9e9e;">Đăng nhập </button>
+                            <button type="button" id="loginButton" style="border: 1px solid #9f9e9e;">Đăng nhập</button>
                         </div>
 
                         <div class="mb-15 ">
-                            <a href="default?page=forgetPassword" class="clearfix" rel="nofollow" style="text-decoration: underline;">
+                            <a href="default?page=forgetPassword" class="clearfix" rel="nofollow"
+                               style="text-decoration: underline;">
                                 <i class="fas fa-question-circle"></i>
                                 Quên mật khẩu
                             </a>
@@ -104,7 +106,8 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="date" id="birthday" name="birthday" value="" placeholder="Ngày sinh" class="form-control">
+                        <input type="date" id="birthday" name="birthday" value="" placeholder="Ngày sinh (*)"
+                               class="form-control">
                     </div>
 
                     <div class="form-group">
@@ -191,13 +194,14 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="password" name="rePassword" id="rePassword"  class=" form-control"
+                        <input type="password" name="rePassword" id="rePassword" class=" form-control"
                                placeholder="Nhập lại mật khẩu (*)">
                     </div>
 
-                    <div class="form-group text-center">
-                        <button type="submit"  style="border: 1px solid #9f9e9e;">
-                            Đăng ký </button>
+                    <div class="form-group text-center ">
+                        <button id="signupButton" type="button" style="border: 1px solid #9f9e9e; width: 100%; padding: 5px 15px; border-radius: 3px; color: white; background-color: #f07822; background-image: linear-gradient(#f8a62d, #F07C29); font-weight: bold; margin-bottom: 5px;">
+                            Đăng ký
+                        </button>
                     </div>
 
                     <div class="form-group d-none">
@@ -248,20 +252,47 @@
     $(document).ready(function () {
         $('#loginButton').click(function () {
             $.ajax({
-                type:'POST',
-                async:false,
+                type: 'POST',
+                async: false,
                 data: {
-                    email:$('#email').val(),
-                    password:$('#password').val()
+                    email: $('#email').val(),
+                    password: $('#password').val()
                 },
                 dataType: "text",
-                url:'ajaxLogin',
-                success:function (result) {
+                url: 'ajaxLogin',
+                success: function (result) {
                     console.log(result);
                     if (result.includes("* Sai thông tin đăng nhập! Vui lòng nhập lại!")) {
                         alert(result);
                     } else {
                         $('#login').attr('action', result).submit();
+                    }
+                }
+            })
+        });
+
+        $('#signupButton').click(function () {
+            $.ajax({
+                type: 'POST',
+                async: false,
+                data: {
+                    fullname: $('#fullName').val(),
+                    birthday: $('#birthday').val(),
+                    email: $('#signupEmail').val(),
+                    mobile: $('#mobile').val(),
+                    cityId: $('#cityId').val(),
+                    address: $('#address').val(),
+                    pwd: $('#pwd').val(),
+                    rePassword: $('#rePassword').val()
+                },
+                dataType: "text",
+                url: 'ajaxSignup',
+                success: function (result) {
+                    console.log(result);
+                    if (result.includes("default?page=home")) {
+                        $('#signup').attr('action', result).submit();
+                    } else {
+                        alert(result);
                     }
                 }
             })

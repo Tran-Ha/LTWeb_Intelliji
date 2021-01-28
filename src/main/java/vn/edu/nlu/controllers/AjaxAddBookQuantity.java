@@ -18,10 +18,10 @@ public class AjaxAddBookQuantity extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Converter.convertStringToInt(request.getParameter("id"));
+        int quantity = Converter.convertStringToInt(request.getParameter("quantity"));
         Cart cart = (Cart) request.getSession().getAttribute("cart");
 
-        if (cart != null && cart.containBookById(id)) {
-            int quantity = Converter.convertStringToInt(request.getParameter("quantity"));
+        if (cart != null && cart.containBookById(id) && quantity > 0) {
             int newQuantity = cart.getQuantityById(id) + quantity;
             request.setAttribute("quantity", newQuantity);
         }

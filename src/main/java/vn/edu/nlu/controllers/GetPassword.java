@@ -22,6 +22,7 @@ public class GetPassword extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String randomKey = request.getParameter("key");
         User user = UserEntity.getUserByKey(randomKey);
+
         if (UserEntity.checkTimeById(user.getId(), 30*60*1000)) {
             HttpSession session = request.getSession(true);
             session.setAttribute("cart", new Cart());

@@ -5,6 +5,7 @@ import vn.edu.nlu.beans.Role;
 import vn.edu.nlu.beans.User;
 import vn.edu.nlu.entities.RoleEntity;
 import vn.edu.nlu.entities.UserEntity;
+import vn.edu.nlu.utils.Encryption;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,7 +29,7 @@ public class AjaxLogin extends HttpServlet {
 
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        User user = UserEntity.getUserByEmailAndPassword(email, password);
+        User user = UserEntity.getUserByEmailAndPassword(email, String.valueOf(Encryption.encrypt(password)));
 
         if (user == null) {
             printWriter.println("* Sai thông tin đăng nhập! Vui lòng nhập lại!");
