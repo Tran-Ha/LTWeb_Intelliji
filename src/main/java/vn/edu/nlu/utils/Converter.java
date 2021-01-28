@@ -17,7 +17,10 @@ public class Converter {
         DecimalFormat f = new DecimalFormat();
         return f.format(number);
     }
-
+    public static String convertIntToMoneyString(int number) {
+        DecimalFormat f = new DecimalFormat();
+        return f.format(number);
+    }
     // run test
     public static void main(String[] args) {
         System.out.println("number: " + convertStringToInt("-123"));

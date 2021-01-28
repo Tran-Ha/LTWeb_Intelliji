@@ -137,57 +137,68 @@
 </div>
 </div>
 
-<div class="container" style="background-color: #fff">
-    <div class="row">
-        <div class="col-lg-8 col-md-6 col-12">
-            <div class="buttons-cart mb-30">
-                <ul>
-                    <li><a href="updateCart?page=cart">Cập nhật giỏ hàng</a></li>
-                    <li><a href="default?page=home">Tiếp tục mua hàng</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-12">
-            <div class="cart_totals">
-                <h2>TỔNG CỘNG</h2>
-                <table>
-                    <tbody>
-                    <tr class="cart-subtotal">
-                        <th>Thành tiền</th>
-                        <td>
-                            <span class="amount">${cart == null ? 0 : cart.convertToMoney(cart.getTotalPrice())}đ</span>
-                        </td>
-                    </tr>
-                    <tr class="shipping">
-                        <th>Giao hàng</th>
-                        <td>
-                            <ul id="shipping_method">
-                                <li style="margin-bottom: 0px ">
-                                    <label>
-                                        <span class="amount">20.000đ</span>
-                                    </label>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr class="order-total">
-                        <th>Tổng đơn hàng</th>
-                        <td>
-                            <strong>
-                                <span class="amount">${cart == null || cart.getTotalPriceAndShipFee() == 20000 ? 0 : cart.convertToMoney(cart.getTotalPriceAndShipFee())}đ</span>
-                            </strong>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-                <div class="wc-proceed-to-checkout">
-                    <a href="#">Đặt hàng</a>
+<c:choose>
+    <c:when test="${cart.getTotalQuantity()>0}">
+        <div class="container" style="background-color: #fff">
+            <div class="row">
+                <div class="col-lg-8 col-md-6 col-12">
+                    <div class="buttons-cart mb-30">
+                        <ul>
+                            <li><a href="/Zoe/updateCart">Cập nhật giỏ hàng</a></li>
+                            <li><a href="default?page=home">Tiếp tục mua hàng</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <br>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="cart_totals">
+                        <h2>TỔNG CỘNG</h2>
+                        <table>
+                            <tbody>
+                            <tr class="cart-subtotal">
+                                <th>Thành tiền</th>
+                                <td>
+                                    <span class="amount">${cart == null ? 0 : cart.convertToMoney(cart.getTotalPrice())}đ</span>
+                                </td>
+                            </tr>
+                            <tr class="shipping">
+                                <th>Giao hàng</th>
+                                <td>
+                                    <ul id="shipping_method">
+                                        <li style="margin-bottom: 0px ">
+                                            <label>
+                                                <span class="amount">20.000đ</span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr class="order-total">
+                                <th>Tổng đơn hàng</th>
+                                <td>
+                                    <strong>
+                                        <span class="amount">${cart == null || cart.getTotalPriceAndShipFee() == 20000 ? 0 : cart.convertToMoney(cart.getTotalPriceAndShipFee())}đ</span>
+                                    </strong>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="wc-proceed-to-checkout">
+                            <a href="#">Đặt hàng</a>
+                        </div>
+                        <br>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+    </c:when>
+    <c:otherwise>
+        <div class="container mb-40" style="text-align: center;">
+            <div class="mtb-15" style="color: #0c1923;font-size: 22px;">Giỏ hàng của bạn còn trống</div>
+            <a class="btn btn-primary" href="#" role="button" style="background: #d9440d; color: white;border: #c69500" class="mtb-15" >Mua ngay</a>
+        </div>
+
+    </c:otherwise>
+</c:choose>
 <!-- cart-main-area-end -->
 
 <!-- footer-area-start -->

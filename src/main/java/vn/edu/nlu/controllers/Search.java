@@ -122,7 +122,15 @@ public class Search extends HttpServlet {
 
     }
     private void searchKey(HttpServletRequest request, HttpServletResponse response) {
+        sort(request, response);
+        String keyword = request.getParameter("keyword");
+        if (keyword != null) {
+            query = "type=key&keyword=" + keyword;
+        }
+        list = BookEntity.getBooksByKeyword(keyword, currentPage, bPerPage, id_order, id_price).values();
 
+        int total = BookEntity.getTotalByKeyword(keyword, id_price);
+        numPage = (total % bPerPage > 0 ? (total / bPerPage) + 1 : (total / bPerPage));
     }
     private void sort(HttpServletRequest request, HttpServletResponse response) {
         String cPage= request.getParameter("cPage");

@@ -21,7 +21,7 @@ th {
     display: table-cell;
     vertical-align: inherit;
     font-weight: bold;
-    text-align: -internal-center;
+    text-align: center;
 }
 
 *, ::before, ::after {
@@ -494,4 +494,22 @@ element.style {
 }
 .cart-main-area.mb-70 {
   margin-bottom: 30px;
+}
+#cancel:hover {
+    background-color: #ffd801;
+}
+#cancel {
+    width: 150px;
+    height: 30px;
+    background-color: #ffc107;
+    border-radius: 4px;
+}
+.msg_my_Account
+{
+    margin: 0;
+    margin-left: 100px;
+    text-align: center;
+    width: 100%;
+    color: #d69d63;
+    font-size: 17px;
 }

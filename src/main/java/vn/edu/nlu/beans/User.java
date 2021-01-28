@@ -14,8 +14,30 @@ public class User {
     private Date birthday;
     private boolean active;
     private int role;
+    private int reliability;//độ tin cậy
 
     public User(){}
+    public User(int id, String name, String email, String phone, String password, String address, String city, String img, Date birthday, boolean active, int role,int reliability) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.password = password;
+        this.address = address;
+        this.city = city;
+        this.img = img;
+        this.birthday = birthday;
+        this.active = active;
+        this.role = role;
+        this.reliability=reliability;
+    }
+    public int getReliability() {
+        return reliability;
+    }
+
+    public void setReliability(int reliability) {
+        this.reliability = reliability;
+    }
 
     public User(int id, String name, String email, String phone, String password, String address, String city, String img, Date birthday, boolean active, int role) {
         this.id = id;

@@ -533,6 +533,97 @@ public class BookEntity {
         return list;
     }
 
+    public static Map<Integer,Book> getBooksByKeyword(String keyword, int currentPage, int bPerPage, int order, int id_price) {
+        String typePrice="";
+        if (id_price!=-1) typePrice=TypePrice.getSQL(id_price);
+        Map<Integer, Book> list = new LinkedHashMap<Integer, Book>();
+        String search =searchKey(keyword);
+        String sql="select *  from \n" +
+                "(select b.ID, b.`NAME` Tittle, b.PRICE, b.PRICESALE, b.DESCRIPTION, b.INFORMATION," +
+                "b.DATE_CREATED,sum(b.ORIGINAL-b.QUANTITY) sold,sum(price-pricesale) discount " +
+                "from book b where  " +search+ typePrice +
+                "\tgroup by  b.ID,  Tittle, b.PRICE, b.PRICESALE, b.DESCRIPTION, b.INFORMATION  limit ?,?) bk\n" +
+                "inner join image i on i.ID_BOOK=bk.ID "+ TypeOrder.getSQL(order)+";";
+        try {
+            int start=(currentPage-1)*bPerPage+1;
+            PreparedStatement ps= ConnectionDB.connect(sql);
+            ps.setInt(1,start);
+            ps.setInt(2,bPerPage);
+            ResultSet rs=ps.executeQuery();
+
+            while (rs.next()) {
+                Book b = new Book();
+                b.setId(rs.getInt("Id"));
+
+                if(!list.containsKey(b.getId())){
+
+                    b.setName(rs.getString("Tittle"));
+                    b.setPrice(rs.getLong("Price"));
+                    b.setPriceSale(rs.getLong("PriceSale"));
+                    b.setDescription(rs.getString("Description"));
+                    b.setInformation(rs.getString("Information"));
+                    b.getImgs().add(rs.getString("Link"));
+
+                    list.put(b.getId(),b);
+                }
+                else{
+                    b.getImgs().add(rs.getString("Link"));
+                }
+            }
+            rs.close();
+            ps.close();
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public static int getTotalByKeyword(String keyword, int id_price) {
+        int total = 0;
+        String typePrice="";
+        if (id_price!=-1) typePrice=TypePrice.getSQL(id_price);
+
+        String search =searchKey(keyword);
+        String sql = "select count(*) from book b where "+search+ typePrice ;
+        try {
+            PreparedStatement ps = ConnectionDB.connect(sql);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                total = rs.getInt(1);
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        return total;
+    }
+
+    public static String searchKey(String keyword){
+        List<String> keySearch= new ArrayList<String>();
+        keySearch.add(keyword+"%");
+        keySearch.add("%"+keyword+"%");
+        keySearch.add("%"+keyword);
+
+        String[] parts = keyword.split(" ");
+        int n=parts.length;
+        if(n>1){
+            for(int i=0; i<n;i++){
+                if(i==0) keySearch.add(parts[i]+"%");
+                else
+                if(i==n-1) keySearch.add("%"+parts[n-1]);
+                else
+                    keySearch.add("%"+parts[i]+"%");
+            }
+        }
+        String search="";
+        for(int i=0; i<keySearch.size();i++){
+            if(i==0) search+="b.name like \'"+keySearch.get(i)+"\'";
+            else
+                search+="or b.name like \'"+keySearch.get(i)+"\'";
+        }
+        return search;
+    }
+
     public static long getMaxPrice() {
         String sql = "select max(price) max\n" +
                 "from book".toUpperCase();

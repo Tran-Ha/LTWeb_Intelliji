@@ -837,7 +837,7 @@
                                     <!-- single-product-start -->
                                     <div class="product-wrapper">
                                         <div class="product-img">
-                                            <a href="#">
+                                            <a href="/detailProduct?id=${b.id}">
                                                 <img src="${pageContext.request.contextPath }/${b.getMainImg()}" alt="book" class="primary">
                                             </a>
                                             <div class="quick-view">
@@ -900,7 +900,7 @@
                                     <div class="col-lg-4 col-md-4 col-12">
                                         <div class="product-wrapper-2">
                                             <div class="product-img">
-                                                <a href="#">
+                                                <a href="/detailProduct?id=${b.id}">
                                                     <img src="${pageContext.request.contextPath }/${b.getMainImg()}" alt="${b.name}" class="primary">
                                                 </a>
                                             </div>
