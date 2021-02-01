@@ -140,7 +140,7 @@
 
                             <c:forEach var="language" items="${menu.languages}">
                                 <li><a href="search?lang=${language.name}">${language.name}<i class="fa fa-angle-down"></i></a>
-                                    <div class="mega-menu">
+                                    <div class="mega-menu" style="width: 800px">
                                         <c:forEach var="group" items="${menu.getGroupsByLanguage(language)}">
                                     <span>
                                         <a href="search?group=${group.name}" class="title">${group.name}</a>

@@ -21,7 +21,7 @@
 <!-- Add your site or application content here -->
 <!-- header-area-start -->
 <header>
-    <%@ include file="header.jsp" %>
+    <%@ include file="ajaxHeader.jsp" %>
 </header>
 <!-- header-area-end -->
 

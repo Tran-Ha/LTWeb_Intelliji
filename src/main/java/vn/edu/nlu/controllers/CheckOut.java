@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.Map;
 
-@WebServlet(name = "CheckOut", urlPatterns = "/CheckOut")
+@WebServlet(name = "CheckOut", urlPatterns = "/checkout")
 public class CheckOut extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);

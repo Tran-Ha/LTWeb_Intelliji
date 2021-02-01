@@ -4,16 +4,21 @@ public class Encryption {
     // methods
     public static int encrypt(String origin) {
         int result = 0;
-        for (Character character : origin.toCharArray()) {
-            result += (int) (character * character + 5 * character - 1);
+        try {
+            for (Character character : origin.toCharArray()) {
+                result += (int) (character * character + 5 * character - 1);
+            }
+            return result;
+        } catch (Exception exception){
+            return -1;
         }
-        return result;
     }
+
     // run test
     public static void main(String[] args) {
         System.out.println(encrypt("123"));
         System.out.println(encrypt("1234"));
-        System.out.println(encrypt("letanphat"));
+        System.out.println(encrypt("phatdetien+"));
         System.out.println(encrypt("chanquadi"));
         System.out.println(encrypt("haixzz chan"));
 

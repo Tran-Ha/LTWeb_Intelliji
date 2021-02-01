@@ -948,7 +948,7 @@
 <c:set var="books5" value="${HomePageHelper.getDistinctBooks(books3, books4)}"/>
 
 <c:forEach var="book" items="${books5}">
-    <div class="modal fade" id="productModal${book.id}" tabindex="-1" role="dialog">
+    <div class="modal fade" id="productModal${book.id}" tabindex="-1" role="dialog" style="top: 50px">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -961,7 +961,7 @@
                             <div class="modal-tab">
                                 <div class="product-details-large tab-content">
                                     <div class="tab-pane active" id="image-${book.id}">
-                                        <img src="${book.getMainImg()}" alt=""/>
+                                        <img style="height: 240px" src="${book.getMainImg()}" alt=""/>
                                     </div>
                                 </div>
                             </div>

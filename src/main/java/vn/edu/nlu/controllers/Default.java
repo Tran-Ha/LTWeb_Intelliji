@@ -35,11 +35,11 @@ public class Default extends HttpServlet {
             case "adminHome":
                 request.getRequestDispatcher("adminJSP/home.jsp").forward(request, response);
                 break;
-            case "CheckOut":
-                request.getRequestDispatcher("checkout.jsp").forward(request, response);
+            case "checkout":
+                request.getRequestDispatcher("checkout").forward(request, response);
                 break;
-            case "MyAccount":
-                request.getRequestDispatcher("my_account.jsp").forward(request, response);
+            case "myAccount":
+                request.getRequestDispatcher("myAccount").forward(request, response);
                 break;
             default:
                 response.getWriter().println("404 File not found!");

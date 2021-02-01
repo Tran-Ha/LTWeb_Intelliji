@@ -23,16 +23,17 @@ public class AjaxLogin extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // set up response
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
         PrintWriter printWriter = response.getWriter();
-
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        User user = UserEntity.getUserByEmailAndPassword(email, String.valueOf(Encryption.encrypt(password)));
-
+        // get loginEmail and loginPassword
+        String loginEmail = request.getParameter("loginEmail");
+        String loginPassword = request.getParameter("loginPassword");
+        User user = UserEntity.getUserByEmailAndPassword(loginEmail, String.valueOf(Encryption.encrypt(loginPassword)));
+        // processing
         if (user == null) {
-            printWriter.println("* Sai thông tin đăng nhập! Vui lòng nhập lại!");
+            printWriter.println("Error");
         } else {
             Role role = RoleEntity.getRoleByUser(user);
 

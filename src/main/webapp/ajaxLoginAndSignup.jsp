@@ -13,7 +13,7 @@
 <!-- Add your site or application content here -->
 <!-- header-area-start -->
 <header>
-    <%@ include file="header.jsp" %>
+    <%@ include file="ajaxHeader.jsp" %>
 </header>
 <!-- header-area-end -->
 
@@ -54,12 +54,12 @@
 
                 <form method="post" action="#" id="login" style="display: block;">
                     <div class="form-group">
-                        <input type="email" name="email" id="email" class=" form-control" placeholder="Nhập email">
+                        <input type="email" name="loginEmail" id="loginEmail" class=" form-control" placeholder="Nhập email">
                         <p id="username-error"></p>
                     </div>
 
                     <div class="form-group">
-                        <input type="password" name="password" id="password" class=" form-control"
+                        <input type="password" name="loginPassword" id="loginPassword" class=" form-control"
                                placeholder="Mật khẩu">
                         <p id="password-error"></p>
                     </div>
@@ -98,11 +98,11 @@
 
                 <form method="post" action="signup" id="signup" style="display: none;">
                     <div class="form-group">
-                        <input type="text" name="fullName" id="fullName" class="form-control" placeholder="Họ tên (*)">
+                        <input type="text" name="username" id="username" class="form-control" placeholder="Họ tên (*)">
                     </div>
 
                     <div class="form-group">
-                        <input type="text" name="phone" id="mobile" class="form-control" placeholder="Điện thoại (*)">
+                        <input type="text" name="mobile" id="mobile" class="form-control" placeholder="Điện thoại (*)">
                     </div>
 
                     <div class="form-group">
@@ -111,11 +111,11 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="email" name="email" id="signupEmail" class="form-control" placeholder="Email (*)">
+                        <input type="email" name="signupEmail" id="signupEmail" class="form-control" placeholder="Email (*)">
                     </div>
 
                     <div class="form-group">
-                        <select id="cityId" name="city" class="form-control" style="color: #495057 !important;">
+                        <select id="cityId" name="cityId" class="form-control" style="color: #495057 !important;">
                             <option value="">Tỉnh/Thành phố *</option>
                             <option value="254">Hà Nội</option>
                             <option value="255">Hồ Chí Minh</option>
@@ -189,12 +189,12 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="password" name="password" id="pwd" class=" form-control"
+                        <input type="password" name="signupPassword" id="signupPassword" class=" form-control"
                                placeholder="Mật khẩu của bạn (*)">
                     </div>
 
                     <div class="form-group">
-                        <input type="password" name="rePassword" id="rePassword" class=" form-control"
+                        <input type="password" name="signupRePassword" id="signupRePassword" class=" form-control"
                                placeholder="Nhập lại mật khẩu (*)">
                     </div>
 
@@ -255,15 +255,15 @@
                 type: 'POST',
                 async: false,
                 data: {
-                    email: $('#email').val(),
-                    password: $('#password').val()
+                    loginEmail: $('#loginEmail').val(),
+                    loginPassword: $('#loginPassword').val()
                 },
                 dataType: "text",
                 url: 'ajaxLogin',
                 success: function (result) {
                     console.log(result);
-                    if (result.includes("* Sai thông tin đăng nhập! Vui lòng nhập lại!")) {
-                        alert(result);
+                    if (result.includes("Error")) {
+                        alert("* Sai thông tin đăng nhập! Vui lòng nhập lại!");
                     } else {
                         $('#login').attr('action', result).submit();
                     }
@@ -276,23 +276,23 @@
                 type: 'POST',
                 async: false,
                 data: {
-                    fullname: $('#fullName').val(),
+                    username: $('#username').val(),
                     birthday: $('#birthday').val(),
-                    email: $('#signupEmail').val(),
+                    signupEmail: $('#signupEmail').val(),
                     mobile: $('#mobile').val(),
                     cityId: $('#cityId').val(),
                     address: $('#address').val(),
-                    pwd: $('#pwd').val(),
-                    rePassword: $('#rePassword').val()
+                    signupPassword: $('#signupPassword').val(),
+                    signupRePassword: $('#signupRePassword').val()
                 },
                 dataType: "text",
                 url: 'ajaxSignup',
                 success: function (result) {
                     console.log(result);
-                    if (result.includes("default?page=home")) {
-                        $('#signup').attr('action', result).submit();
-                    } else {
+                    if (result.includes("Error")) {
                         alert(result);
+                    } else {
+                        $('#signup').attr('action', result).submit();
                     }
                 }
             })
